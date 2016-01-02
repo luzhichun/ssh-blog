@@ -48,7 +48,4 @@
 
 <div id="timeArea"><script> LoadBlogParts();</script></div>
 </body>
-<script>
-	alert("账号：admin,密码：admin");
-</script>
 </html>

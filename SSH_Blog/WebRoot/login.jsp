@@ -33,7 +33,7 @@
 				      <label for="" class="col-sm-1 control-label"></label>
 				      <div class="col-sm-10">
 				         <input type="text" class="form-control" name="username" id="username" 
-				            placeholder="请输入用户名" maxlength="10" value="卧颜沉默">
+				            placeholder="请输入用户名" maxlength="10" value="">
 				      </div>
 				   </div>
 				   <div class="form-gap"></div>
@@ -41,7 +41,7 @@
 				      <label for="" class="col-sm-1 control-label"></label>
 				      <div class="col-sm-10">
 				         <input type="password" class="form-control" name="password" id="password" 
-				            placeholder="请输入密码" maxlength="20" value="123456">
+				            placeholder="请输入密码" maxlength="20" value="">
 				            <div class="height-fill">
 				           		 <lable class="hint" id="hint"><p>
 				           		 	&nbsp<s:property value="#request.loginState"/>
