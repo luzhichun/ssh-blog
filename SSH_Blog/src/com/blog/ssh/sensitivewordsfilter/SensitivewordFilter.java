@@ -7,10 +7,6 @@ import java.util.Set;
 
 /**
  * @Description: 敏感词过滤
- * @Project：test
- * @Author : chenming
- * @Date ： 2014年4月20日 下午4:17:15
- * @version 1.0
  */
 public class SensitivewordFilter {
 	@SuppressWarnings("rawtypes")

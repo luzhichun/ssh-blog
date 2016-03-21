@@ -19,7 +19,7 @@
 		<property name="javax.persistence.validation.mode">
 			none
 		</property>
-		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.show_sql">true</property>
 		<!--javax.persistence.validation.mode默认情况下是auto的，就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包，但是找不到，所以beanvalitionFactory错误  -->
 		<mapping resource="com/blog/ssh/model/pojo/Article.hbm.xml" />
 		<mapping resource="com/blog/ssh/model/pojo/Comment.hbm.xml" />

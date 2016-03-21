@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url"
+			value="${url}">
+		</property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibrtnate.show_sql">true</prop>
+				<prop key="hibernate.connection.release_mode">after_transaction</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/blog/ssh/model/pojo/User.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/Article.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/Articletype.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/Comment.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/Message.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/Tag.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/Bloginfo.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- action开始 -->
+	<bean id="indexAction" class="com.blog.ssh.control.action.IndexAction" >
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property> 
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+	</bean>
+	<bean id="userAction" class="com.blog.ssh.control.action.user.UserAction" scope="prototype">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="bloginfoService">
+			<ref bean="bloginfoService"/>
+		</property>
+	</bean>
+	<bean id="articleAction" class="com.blog.ssh.control.action.user.ArticleAction" >
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property>
+				<property name="userSiderService">
+			<ref bean="userSiderService"/>
+		</property>
+	</bean>
+	<bean id="sortAction" class="com.blog.ssh.control.action.SortAction" scope="prototype">
+		<property name="articletypeService">
+			<ref bean="articletypeService"/>
+		</property>
+		<property name="tagService">
+			<ref bean="tagService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property>
+	</bean>
+	<bean id="showMsgAction" class="com.blog.ssh.control.action.ShowMsgAction" >
+		<property name="messageService">
+			<ref bean="messageService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+	</bean>
+	<bean id="defaultAction" class="com.blog.ssh.control.action.DefaultAction" >
+	</bean>
+	<bean id="lightAction" class="com.blog.ssh.control.action.LightAction" >
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>
+		<property name="messageService">
+			<ref bean="messageService"/>
+		</property>
+	</bean>
+	<bean id="showIndex" class="com.blog.ssh.control.action.admin.ShowIndex" >
+	</bean>
+	<bean id="addCommentAction" class="com.blog.ssh.control.action.AddCommentAction"  scope="prototype">
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property>
+	</bean>
+	<bean id="addMessageAction" class="com.blog.ssh.control.action.AddMessageAction"  scope="prototype">
+		<property name="messageService">
+			<ref bean="messageService"/>
+		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean id="userManageAction" class="com.blog.ssh.control.action.admin.UserManage" scope="prototype">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean id="articleManageAction" class="com.blog.ssh.control.action.admin.ArticleManage" >
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property>
+		<property name="articletypeService">
+			<ref bean="articletypeService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+	</bean>
+	<bean id="columnManageAction" class="com.blog.ssh.control.action.admin.ColumnManage" >
+		<property name="articletypeService">
+			<ref bean="articletypeService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+	</bean>
+	<bean id="commentManageAction" class="com.blog.ssh.control.action.admin.CommentManage" scope="prototype">
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean id="messageManageAction" class="com.blog.ssh.control.action.admin.MessageManage" scope="prototype">
+		<property name="messageService">
+			<ref bean="messageService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+	</bean>
+	<bean id="showUsersAction" class="com.blog.ssh.control.action.admin.ShowUsers" scope="prototype">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean id="showArticlesAction" class="com.blog.ssh.control.action.admin.ShowArticles" scope="prototype">
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property>
+		<property name="articletypeService">
+			<ref bean="articletypeService"/>
+		</property>
+	</bean>
+	<bean id="showMessagesAction" class="com.blog.ssh.control.action.admin.ShowMessages" scope="prototype">
+		<property name="messageService">
+			<ref bean="messageService"/>
+		</property>
+		
+	</bean>
+	<bean id="showColumnsAction" class="com.blog.ssh.control.action.admin.ShowColumns" >
+		<property name="articletypeService">
+			<ref bean="articletypeService"/>
+		</property>
+	</bean>
+	<bean id="showCommentsAction" class="com.blog.ssh.control.action.admin.ShowComments" scope="prototype">
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>
+	</bean>
+	<bean id="releaseArticleAction" class="com.blog.ssh.control.action.user.ReleaseArticle" scope="prototype">
+		<property name="articleService">
+			<ref bean="articleService"/>
+		</property>
+		<property name="tagService">
+			<ref bean="tagService"/>
+		</property>
+		<property name="headerSiderService">
+			<ref bean="headerSiderService"/>
+		</property>
+	</bean>
+	<bean id="userIndexAction" class="com.blog.ssh.control.action.user.UserIndex" >
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="userSiderService">
+			<ref bean="userSiderService"/>
+		</property>
+	</bean>
+	<bean id="myCenter" class="com.blog.ssh.control.action.user.MyCenter" scope="prototype">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="articletypeService">
+			<ref bean="articletypeService"/>
+		</property>
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>
+		<property name="tagService">
+			<ref bean="tagService"/>
+		</property>
+		<property name="bloginfoService">
+			<ref bean="bloginfoService"/>
+		</property>
+	</bean>
+	<!-- action结束 -->
+	<!-- service层开始 -->
+	<bean id="headerSiderService" class="com.blog.ssh.control.service.HeaderSiderService">
+		<property name="articleDAO">
+			<ref bean="articleDAO" />
+		</property>
+		<property name="articletypeDAO">
+			<ref bean="articletypeDAO" />
+		</property>
+		<property name="commentDAO">
+			<ref bean="commentDAO" />
+		</property>
+		<property name="messageDAO">
+			<ref bean="messageDAO" />
+		</property>
+		<property name="tagDAO">
+			<ref bean="tagDAO" />
+		</property>
+	</bean>
+	<bean id="userSiderService" class="com.blog.ssh.control.service.UserSiderService">
+		<property name="articleService">
+			<ref bean="articleService" />
+		</property>
+		<property name="commentService">
+			<ref bean="commentService" />
+		</property>
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		<property name="bloginfoService">
+			<ref bean="bloginfoService" />
+		</property>
+	</bean>
+	<bean id="articleService" class="com.blog.ssh.control.service.ArticleService">
+		<property name="articleDAO">
+			<ref bean="articleDAO"/>
+		</property>
+	</bean>
+	<bean id="articletypeService" class="com.blog.ssh.control.service.ArticletypeService">
+		<property name="articletypeDAO">
+			<ref bean="articletypeDAO"/>
+		</property>
+	</bean>
+	<bean id="commentService" class="com.blog.ssh.control.service.CommentService">
+		<property name="commentDAO">
+			<ref bean="commentDAO"/>
+		</property>
+	</bean>
+	<bean id="messageService" class="com.blog.ssh.control.service.MessageService">
+		<property name="messageDAO">
+			<ref bean="messageDAO"/>
+		</property>
+	</bean>
+	<bean id="userService" class="com.blog.ssh.control.service.UserService">
+		<property name="userDAO">
+			<ref bean="userDAO"/>
+		</property>
+	</bean>
+	<bean id="tagService" class="com.blog.ssh.control.service.TagService">
+		<property name="tagDAO">
+			<ref bean="tagDAO"/>
+		</property>
+	</bean>
+	<bean id="bloginfoService" class="com.blog.ssh.control.service.BloginfoService">
+		<property name="bloginfoDAO">
+			<ref bean="bloginfoDAO"/>
+		</property>
+	</bean>
+	<!-- service层结束 -->
+	
+	<!-- DAO层开始-->
+	<bean id="userDAO" class="com.blog.ssh.control.dao.UserHbmSQL">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="articleDAO" class="com.blog.ssh.control.dao.ArticleHbmSQL">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="articletypeDAO" class="com.blog.ssh.control.dao.ArticletypeHbmSQL">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="messageDAO" class="com.blog.ssh.control.dao.MessageHbmSQL">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="commentDAO" class="com.blog.ssh.control.dao.CommentHbmSQL">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="tagDAO" class="com.blog.ssh.control.dao.TagDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- DAO层结束-->
+	<bean id="bloginfoDAO"
+		class="com.blog.ssh.control.dao.BloginfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>

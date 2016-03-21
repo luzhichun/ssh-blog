@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<property name="connection.url">
+			jdbc:mysql://120.27.36.59:3306/blog
+		</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">12345</property>
+		<property name="connection.driver_class">
+			org.gjt.mm.mysql.Driver
+		</property>
+		<property name="javax.persistence.validation.mode">
+			none
+		</property>
+		<property name="hibernate.show_sql">false</property>
+		<!--javax.persistence.validation.mode默认情况下是auto的，就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包，但是找不到，所以beanvalitionFactory错误  -->
+		<mapping resource="com/blog/ssh/model/pojo/Article.hbm.xml" />
+		<mapping resource="com/blog/ssh/model/pojo/Comment.hbm.xml" />
+		<mapping resource="com/blog/ssh/model/pojo/Articletype.hbm.xml" />
+		<mapping resource="com/blog/ssh/model/pojo/Message.hbm.xml" />
+		<mapping resource="com/blog/ssh/model/pojo/User.hbm.xml" />
+		<mapping resource="com/blog/ssh/model/pojo/Tag.hbm.xml" />
+		<mapping resource="com/blog/ssh/model/pojo/Bloginfo.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
