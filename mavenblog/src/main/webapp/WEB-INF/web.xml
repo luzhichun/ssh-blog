@@ -12,6 +12,11 @@
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 防止使用多个项目使用log4j名称冲突时 -->
+  <context-param>  
+    <param-name>webAppRootKey</param-name>  
+    <param-value>maven.root</param-value>  
+  </context-param> 
   <filter>
     <filter-name>OpenSessionInViewFilter</filter-name>
     <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
