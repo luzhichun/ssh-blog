@@ -25,12 +25,6 @@ public class ArticleHbmSQL{
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	/**
-	 * 该构造方法为了方便直接在main函数中测试
-	 */
-	public ArticleHbmSQL(){
-		this.sessionFactory = new Configuration().configure().buildSessionFactory();
-	}
 	
 	protected void initDao() {
 		// do nothing

@@ -9,6 +9,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
+	<!-- hibernate数据源 -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${driver}"></property>
@@ -18,6 +19,7 @@
 		<property name="username" value="${username}"></property>
 		<property name="password" value="${password}"></property>
 	</bean>
+	<!-- hibernate session -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		
@@ -97,9 +99,9 @@
 			<ref bean="headerSiderService"/>
 		</property>
 	</bean>
-	<bean id="defaultAction" class="com.blog.ssh.control.action.DefaultAction" >
+	<bean id="defaultAction" class="com.blog.ssh.control.action.DefaultAction" scope="prototype">
 	</bean>
-	<bean id="lightAction" class="com.blog.ssh.control.action.LightAction" >
+	<bean id="lightAction" class="com.blog.ssh.control.action.LightAction" scope="prototype">
 		<property name="commentService">
 			<ref bean="commentService"/>
 		</property>

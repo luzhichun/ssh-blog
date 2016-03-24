@@ -2,20 +2,21 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html>
  <head>  
-  	<title><s:property value="article.title"/></title> 
+  	<title><s:property value="article.title"/></title>
+  	<%@ include file="../path.jsp" %> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery_cmhello.js"></script>
+	<link rel="shortcut icon" href="file/pic/blog.ico"/>
+	<script type="text/javascript" src="file/js/jquery.min.js"></script>
+	<script type="text/javascript" src="file/js/jquery_cmhello.js"></script>
 	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   <script src="<%=request.getContextPath()%>/file/js/comment.js">"></script>
-   <link href="<%=request.getContextPath()%>/file/css/style.css" rel="stylesheet" type="text/css">
+   <script src="file/js/comment.js">"></script>
+   <link href="file/css/style.css" rel="stylesheet" type="text/css">
 <style >
    		#user-all{
 			width:100%;
 			height:auto;
-			background: url(../file/pic/skin/<s:property value="userSider.user.bloginfo.background"/>) repeat;
+			background: url(file/pic/skin/<s:property value="userSider.user.bloginfo.background"/>) repeat;
 		}
    </style>
 </head>
@@ -25,7 +26,7 @@
 	<div id="user-header">   
 		<div id="blog_title"> 
             <h2>
-                <a href="<%=request.getContextPath()%>/user/<s:property value="article.user.url"/>"><s:property value="article.user.username"/> 的博客</a></h2>
+                <a href="user/<s:property value="article.user.url"/>"><s:property value="article.user.username"/> 的博客</a></h2>
             <h3><s:property value="article.user.bloginfo.intro"/></h3>
             <div class="clear">
             </div>
@@ -34,8 +35,8 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="<%=request.getContextPath()%>/index.action" title="返回首页">home</a></strong>
-				<a href="<%=request.getContextPath()%>/user/<s:property value="article.user.url"/>" title="<s:property value="article.user.username"/>"><s:property value="article.user.username"/></a>
+				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+				<a href="user/<s:property value="article.user.url"/>" title="<s:property value="article.user.username"/>"><s:property value="article.user.username"/></a>
 				<a><s:property value="article.title"/></a>
 				</div>
 	</div> 
@@ -47,7 +48,7 @@
 				<h1><s:property value="article.title" /></h1>
 				<p class="info">
 				<small>时间:</small><s:property value="article.releasetime" />  
-				<small>栏目:</small><a href="<%=request.getContextPath()%>/sort.action?sortByColumn=<s:property value="article.articletype.linkname" />" title="查看 <s:property value="article.articletype.value" /> 的全部文章" rel="category tag"><s:property value="article.articletype.value" /></a>
+				<small>栏目:</small><a href="sort.action?sortByColumn=<s:property value="article.articletype.linkname" />" title="查看 <s:property value="article.articletype.value" /> 的全部文章" rel="category tag"><s:property value="article.articletype.value" /></a>
 				<small>作者:</small><s:property value="article.user.username" />
 				<small>评论:</small><s:property value="article.comments.{?#this.throughFlag==1}.size()" />
 				<small>点击:</small><s:property value="article.visits" />次
@@ -57,7 +58,7 @@
 				<div class="article-tag">
 					<p><strong>本文标签</strong>：
 					<s:iterator value="article.tags"> 
-					<a href="<%=request.getContextPath()%>/sort.action?sortByTag=<s:property value="id"/>"><span name="标签" class="label label-info"><s:property value="value"/></span></a>
+					<a href="sort.action?sortByTag=<s:property value="id"/>"><span name="标签" class="label label-info"><s:property value="value"/></span></a>
 					</s:iterator>
 					</p>				
 				</div>
@@ -77,7 +78,7 @@
 			<li class="ds-post">
 			<div class="ds-post-self"  comment-id="">
 				<div class="ds-avatar">
-					<a href="<%=request.getContextPath()%>/user/<s:property value="user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
+					<a href="user/<s:property value="user.url"/>"><img src="upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
 				</div>
 				<div class="ds-comment-body">
 					<div class="ds-comment-header">
@@ -100,10 +101,10 @@
 				<div class="ds-post-self" style="display:none" id="<s:property value="id" />">
 				<div class="ds-avatar">
 					<s:if test="%{#session.user == null}">
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:if>
 				<s:else>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:else>
 				</div>
 				<div class="ds-comment-body">
@@ -132,7 +133,7 @@
 	<s:iterator value="chiComments">
 	<s:if test="%{throughFlag == 1}">
 				<div class="ds-avatar">
-					<a href="<%=request.getContextPath()%>/user/<s:property value="user.url"/>"><img src="<%=request.getContextPath() %>/upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
+					<a href="user/<s:property value="user.url"/>"><img src="<%=request.getContextPath() %>/upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
 				</div>
 				<div class="ds-comment-body">
 					<div class="ds-comment-header">
@@ -159,10 +160,10 @@
 			<div class="ds-post-self" style="display:none">
 				<div class="ds-avatar">
 					<s:if test="%{#session.user == null}">
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:if>
 				<s:else>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:else>
 				</div>
 				<div class="ds-comment-body">
@@ -199,10 +200,10 @@
 	<div class="ds-post-self" style="display:none"  id="new-comment">
 				<div class="ds-avatar">
 					<s:if test="%{#session.user == null}">
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:if>
 				<s:else>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:else>
 				</div>
 				<div class="ds-comment-body">
@@ -230,10 +231,10 @@
 		<div class="ds-post-self">
 				<div class="ds-avatar">
 					<s:if test="%{#session.user == null}">
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:if>
 				<s:else>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:else>
 				</div>
 				<div class="ds-comment-body" id="comment">

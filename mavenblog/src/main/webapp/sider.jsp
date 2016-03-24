@@ -8,14 +8,14 @@
      		<div class="userinfo">
 				    <div class="head pub-style ">
 				    	<div class="user_img">
-				    	<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>" title="我的博客">
-				    	<img class="img-rounded img-thumbnail" src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>" width="80px" height="80px">
+				    	<a href="user/<s:property value="#session.user.url"/>" title="我的博客">
+				    	<img class="img-rounded img-thumbnail" src="upload/headpic/<s:property value="#session.user.headpicname"/>" width="80px" height="80px">
 				    	</a>
 				    	</div>
 				    	<div class="username">
 				    		<label style="font-size:18px;"><s:property value="#session.user.username"/></label>
-				    		<p><a href="<%=request.getContextPath()%>/user/CommentManage.action?sort" class="notice">消息(<span msgtype="notice"><s:property value="#session.user.msgCounts"/></span>)</a> | 
-				    		<a href="<%=request.getContextPath()%>/user/loginout.action" class="logout">退出</a>
+				    		<p><a href="user/CommentManage.action?sort" class="notice">消息(<span msgtype="notice"><s:property value="#session.user.msgCounts"/></span>)</a> | 
+				    		<a href="user/loginout.action" class="logout">退出</a>
 				    		</p>
 				    	</div>
 				    </div>
@@ -28,9 +28,9 @@
 				    		</ul>
 				    </div>
 				    <div class="shortcut pub-style">
-				    	<button type="button" class="btn btn-success" onclick="window.open('<%=request.getContextPath()%>/user/ReleaseArticle.action')">发表文章</button>
-				    	<button type="button" class="btn btn-success" onclick="window.open('<%=request.getContextPath()%>/user/ArticleManage.action')">文章管理</button>
-				    	<button type="button" class="btn btn-success" onclick="window.open('<%=request.getContextPath()%>/user/CommentManage.action')">评论管理</button>
+				    	<button type="button" class="btn btn-success" onclick="window.open('user/ReleaseArticle.action')">发表文章</button>
+				    	<button type="button" class="btn btn-success" onclick="window.open('user/ArticleManage.action')">文章管理</button>
+				    	<button type="button" class="btn btn-success" onclick="window.open('user/CommentManage.action')">评论管理</button>
 				    </div>
    			</div>
    		</div>
@@ -44,7 +44,7 @@
 		<div id="new_art" class="com_cont" style="display: block;">   
 			<ul>
 				<s:iterator value="#application.headerAndSider.latestArticles">                   
-					<li><a href="<%=request.getContextPath()%>/article/<s:property value="id" />" title="<s:property value="title" />" class="title">
+					<li><a href="article/<s:property value="id" />" title="<s:property value="title" />" class="title">
 						<s:if test="%{title.length() >= 19}">
 							<s:property value="title.substring(0,18)" />...
 						</s:if>
@@ -58,7 +58,7 @@
         <div id="hot_art" class="com_cont" style="display: none;">  
     		<ul>
 				<s:iterator value="#application.headerAndSider.hotArticles">                   
-					<li><a href="<%=request.getContextPath()%>/article/<s:property value="id" />" title="<s:property value="title" />" class="title">
+					<li><a href="article/<s:property value="id" />" title="<s:property value="title" />" class="title">
 						<s:if test="%{title.length() >= 19}">
 							<s:property value="title.substring(0,18)" />...
 						</s:if>
@@ -72,7 +72,7 @@
 		<div id="rand_art" class="com_cont" style="display: none;">  
 			<ul>
 				<s:iterator value="#application.headerAndSider.randomArticles">                   
-					<li><a href="<%=request.getContextPath()%>/article/<s:property value="id" />" title="<s:property value="title" />" class="title">
+					<li><a href="article/<s:property value="id" />" title="<s:property value="title" />" class="title">
 						<s:if test="%{title.length() >= 19}">
 							<s:property value="title.substring(0,18)" />...
 						</s:if>
@@ -100,7 +100,7 @@
       <ul class="tagcloudy">
 				<li>
 				<s:iterator value="#application.headerAndSider.hotTags"> 
-					<a href="<%=request.getContextPath()%>/sort.action?sortByTag=<s:property value="id"/>" title="包含  <s:property value="value"/>  标签文章"><s:property value="value"/></a>
+					<a href="sort.action?sortByTag=<s:property value="id"/>" title="包含  <s:property value="value"/>  标签文章"><s:property value="value"/></a>
 				</s:iterator>
 				</li>
 				</ul> 
@@ -111,7 +111,7 @@
       			<ul>
 			<s:iterator value="#application.headerAndSider.latestMsgs">
 				<li>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="user.url"/>" title="<s:property value="content" />">
+					<a href="user/<s:property value="user.url"/>" title="<s:property value="content" />">
 					<s:property value="user.username" />:<br>
 					</a>
 					<s:if test="%{content.length() >= 19}">
@@ -131,10 +131,10 @@
 			<ul>
 				<s:iterator value="#application.headerAndSider.latestComments">
 				<li>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="user.url" />" title="<s:property value="user.username" />的主页">
+					<a href="user/<s:property value="user.url" />" title="<s:property value="user.username" />的主页">
 					<s:property value="user.username" />
 					</a>:<br>
-					<a href="<%=request.getContextPath()%>/article/<s:property value="article.id" />" title="发表在： <s:property value="aritlce.title" />">
+					<a href="article/<s:property value="article.id" />" title="发表在： <s:property value="aritlce.title" />">
 					<s:if test="%{content.length() >= 19}">
 							<s:property value="content.substring(0,18)" />...
 					</s:if>

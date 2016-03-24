@@ -7,8 +7,8 @@
       <div class="readers clearfix"> 
       		<div class="person-info">
       			<div class="headpic">
-      			<a href="<%=request.getContextPath()%>/user/<s:property value="userSider.user.url"/>" title="<s:property value="userSider.user.username"/>的主页">
-					<img class="img-rounded" src="<%=request.getContextPath()%>/upload/headpic/<s:property value="userSider.user.headpicname"/>" width="120px" height="120px">
+      			<a href="user/<s:property value="userSider.user.url"/>" title="<s:property value="userSider.user.username"/>的主页">
+					<img class="img-rounded" src="upload/headpic/<s:property value="userSider.user.headpicname"/>" width="120px" height="120px">
 				</a>
 				<strong><s:property value="userSider.user.username"/></strong>
 				</div>
@@ -29,7 +29,7 @@
       			<ul>
 			<s:iterator value="userSider.userHotArticles">                  
 					<li>
-					<a href="<%=request.getContextPath()%>/article/<s:property value="id" />" title="<s:property value="title" />" class="title">
+					<a href="article/<s:property value="id" />" title="<s:property value="title" />" class="title">
 						<s:if test="%{title.length() >= 16}">
 							<s:property value="title.substring(0,15)" />
 						</s:if>
@@ -52,7 +52,7 @@
 			<ul>
 				<s:iterator value="userSider.userLatestComments">
 				<li>
-					<a href="<%=request.getContextPath()%>/article/<s:property value="article.id" />" title="发表在： <s:property value="article.title" />">
+					<a href="article/<s:property value="article.id" />" title="发表在： <s:property value="article.title" />">
 						<s:if test="%{article.title.length() >= 19}">
 							<s:property value="article.title.substring(0,18)" /><br>
 						</s:if>
@@ -60,7 +60,7 @@
 							<s:property value="article.title" /><br>
 						</s:else>
 					</a>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="userSider.user.url" />" title="发表在： <s:property value="article.title" />">
+					<a href="user/<s:property value="userSider.user.url" />" title="发表在： <s:property value="article.title" />">
 						<s:property value="user.username" />
 					</a>:
 					<s:property value="content" /><br>
@@ -75,7 +75,7 @@
 			<ul>
 				<s:iterator value="userSider.userRandomArticles">
 				<li>
-					<a href="<%=request.getContextPath()%>/article/<s:property value="id" />" title="<s:property value="title" />" class="title">
+					<a href="article/<s:property value="id" />" title="<s:property value="title" />" class="title">
 						<s:if test="%{title.length() >= 19}">
 							<s:property value="title.substring(0,18)" />
 						</s:if>

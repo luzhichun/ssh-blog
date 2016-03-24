@@ -3,15 +3,16 @@
 <html>
 <head>  
   <title>用户注册</title> 
+  <%@ include file="../path.jsp" %>
   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery_cmhello.js"></script>
+  	<link rel="shortcut icon" href="file/pic/blog.ico"/>
+	<script type="text/javascript" src="file/js/jquery.min.js"></script>
+	<script type="text/javascript" src="file/js/jquery.js"></script>
+	<script type="text/javascript" src="file/js/jquery_cmhello.js"></script>
 	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   <link href="<%=request.getContextPath()%>/file/css/style.css" rel="stylesheet" type="text/css">
-   <script type="text/javascript" src="<%=request.getContextPath()%>/file/js/register.js"></script>  
+   <link href="file/css/style.css" rel="stylesheet" type="text/css">
+   <script type="text/javascript" src="file/js/register.js"></script>  
 </head> 
 <body>
 <%@ include file="header.jsp" %>
@@ -28,7 +29,7 @@
  		<div id="art_main" class="fl">
  			<div class="register_main"> 
 					<div class="register_form"> 
-	<form class="form-horizontal" id="form" role="form" method="post" action="<%=request.getContextPath()%>/user/subregister.action">
+	<form class="form-horizontal" id="form" role="form" method="post" action="user/subregister.action">
    <div class="form-group">
       <label for="" class="col-sm-2 control-label">用户名</label>
       <div class="col-sm-10">

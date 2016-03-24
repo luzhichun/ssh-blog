@@ -10,21 +10,22 @@
                	全部评论
         </s:else>
   	</title> 
+  	<%@ include file="../path.jsp" %>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
+	<link rel="shortcut icon" href="file/pic/blog.ico"/>
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery_cmhello.js"></script>
+	<script type="text/javascript" src="file/js/jquery_cmhello.js"></script>
 	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   <link href="<%=request.getContextPath()%>/file/css/style.css" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/file/css/common.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/file/css/main.css"/>
-	<script src="<%=request.getContextPath()%>/admin/js/comment-manage.js"></script>
+   <link href="file/css/style.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" type="text/css" href="file/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="file/css/main.css"/>
+	<script src="admin/js/comment-manage.js"></script>
 	<style >
    		#user-all{
 			width:100%;
 			height:auto;
-			background: url(../file/pic/skin/<s:property value="background"/>) repeat;
+			background: url(file/pic/skin/<s:property value="background"/>) repeat;
 		}
    </style>
 </head>
@@ -34,7 +35,7 @@
 	<div id="user-header">
 		<div id="blog_title"> 
             <h2>
-                <a href="<%=request.getContextPath()%>/u/<s:property value="user.url"/>"><s:property value="user.username"/> 的博客</a></h2>
+                <a href="u/<s:property value="user.url"/>"><s:property value="user.username"/> 的博客</a></h2>
             <h3><s:property value="user.bloginfo.intro"/></h3>
             <div class="clear">
             </div>
@@ -43,7 +44,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="<%=request.getContextPath()%>/index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
 				<a href="<s:property value="user.url"/>"><s:property value="user.username"/></a>
 				<a>个人中心</a>
 				<a>评论管理</a>

@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>后台管理</title>
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+    <%@ include file="../path.jsp" %>
+    <link rel="shortcut icon" href="admin/file/pic/blog.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/main.css"/>
+    <script type="text/javascript" src="admin/js/libs/modernizr.min.js"></script>
 </head>
 <body>
 <%@include file="headerbar.jsp" %>
@@ -24,11 +25,11 @@
             </div>
             <div class="result-content">
                 <div class="short-wrap">
-                    <a href="article.jsp"><i class="icon-font">&#xe001;</i>文章管理</a>
-                    <a href="column.jsp"><i class="icon-font">&#xe005;</i>栏目管理</a>
-                    <a href="comment.jsp"><i class="icon-font">&#xe048;</i>评论管理</a>
-                    <a href="usermanage.jsp"><i class="icon-font">&#xe041;</i>用户管理</a>
-                    <a href="message.jsp"><i class="icon-font">&#xe01e;</i>留言管理</a>
+                    <a href="admin/article.jsp"><i class="icon-font">&#xe001;</i>文章管理</a>
+                    <a href="admin/column.jsp"><i class="icon-font">&#xe005;</i>栏目管理</a>
+                    <a href="admin/comment.jsp"><i class="icon-font">&#xe048;</i>评论管理</a>
+                    <a href="admin/usermanage.jsp"><i class="icon-font">&#xe041;</i>用户管理</a>
+                    <a href="admin/message.jsp"><i class="icon-font">&#xe01e;</i>留言管理</a>
                 </div>
             </div>
         </div>

@@ -3,9 +3,11 @@
 <html>
 <%@ page contentType="text/html;charst=UTF-8" pageEncoding="UTF-8" %>
 <head>
-	<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-	<link rel="stylesheet" type="text/css" href="css/Login_style.css" />
-	<script type="text/javascript" src="js/Login_javascript.js"></script>
+	<title>管理员登录</title>
+	<%@ include file="../path.jsp" %>
+	<link rel="shortcut icon" href="file/pic/blog.ico"/>
+	<link rel="stylesheet" type="text/css" href="admin/css/Login_style.css" />
+	<script type="text/javascript" src="admin/js/Login_javascript.js"></script>
 </head>
 <body>
 <% 
@@ -23,12 +25,12 @@
 		} 
 	}
 %>
-<a href="../index.action"><h3>返回网站首页</h3></a>
+<a href="index.jsp"><h3>返回网站首页</h3></a>
 <br><br><br>
 <h2 align="center">后台管理登录</h2>
 <div class="LoginWindow">
   <div>
-    <form method="post" action="login.jsp" class="login" name="form1">
+    <form method="post" action="admin/login.jsp" class="login" name="form1">
     <p>
       <label for="login">帐号:</label>
       <input type="text" name="id" id="id">

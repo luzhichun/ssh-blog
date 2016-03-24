@@ -9,7 +9,7 @@
     if(confirm_){
         $.ajax({
             type:"GET",
-            url:"../ajax/UserManage.action?id="+id+"&flag="+flag,
+            url:"ajax/UserManage.action?id="+id+"&flag="+flag,
             success:function(msg){
             	$("#tr_"+ id +"-through").text(flag);
             }
@@ -64,7 +64,7 @@ function batchAuditing(flag){
 	}); 
 	$.ajax({ 
 		type: "GET", 
-		url: "../ajax/UserManage.action?flag=" + flag + "&ids=" + checkedList.toString(), 
+		url: "ajax/UserManage.action?flag=" + flag + "&ids=" + checkedList.toString(), 
 		success: function(msg) { 
 			$("[name ='userIds']:checkbox").attr("checked", false); 
 		} 

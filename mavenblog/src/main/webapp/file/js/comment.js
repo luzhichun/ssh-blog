@@ -49,7 +49,7 @@ $(document).ready(function(){
 		$("#comment-textarea").val("");
 		$.ajax({
             type:"POST",
-            url:"../ajax/AddComment.action",
+            url:"ajax/AddComment.action",
             data:"&article_id=" + article_id + "&content=" + textarea,
             success:function(msg){
 //            	alert("评论成功,等待博主审核");
@@ -105,7 +105,7 @@ function light(obj){
 	var value = jobj.children().next().text();
 	$.ajax({
         type:"GET",
-        url:"../ajax/CommentLight.action?id="+comment_id,
+        url:"ajax/CommentLight.action?id="+comment_id,
         success:function(msg){
         	jobj.children().next().text(++value);
         }
@@ -139,7 +139,7 @@ function submitReply(obj){
 	$(obj).parent().prev().prev().val("");
 	$.ajax({
         type:"POST",
-        url:"../ajax/AddComment.action",
+        url:"ajax/AddComment.action",
         data:"&article_id=" + article_id + "&content=" + textareaValue + "&reply_id=" + reply_id + "&parent_id=" + parent_id,
         success:function(msg){
 //        	alert("回复评论成功,等待博主审核");

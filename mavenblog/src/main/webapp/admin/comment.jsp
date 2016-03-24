@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>评论管理</title>
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <%@ include file="../path.jsp" %>
+    <link rel="shortcut icon" href="admin/file/pic/blog.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/main.css"/>
     <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-    <script src="js/comment-manage.js"></script>
+    <script src="admin/js/comment-manage.js"></script>
     
 </head>
 <body>
@@ -21,7 +22,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.action">首页</a>
+            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index.action">首页</a>
             <span class="crumb-step">&gt;</span>
             <span class="crumb-name">评论管理</span>
             <span class=\"crumb-step\">&gt;</span>
@@ -35,7 +36,7 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="comment.action" method="post">
+                <form action="admin/comment.action" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择分类:</th>
@@ -61,7 +62,7 @@
                     <div class="result-list">
                         <a id="messageBatchThrough" href="javascript:void(0)"><i class="icon-font"></i>批量通过</a>
                         <a id="messageBatchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="comment.jsp"><i class="icon-font"></i>刷新</a>
+                        <a id="updateOrd" href="admin/comment.jsp"><i class="icon-font"></i>刷新</a>
                     </div>
                 </div>
                 <div class="result-content">

@@ -4,13 +4,14 @@
 <head> 
     <meta charset="UTF-8">
     <title>文章管理</title>
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
-    <script type="text/javascript" src="js/Login_javascript.js"></script>
+    <%@ include file="../path.jsp" %>
+    <link rel="shortcut icon" href="file/pic/blog.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/main.css"/>
+    <script type="text/javascript" src="admin/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="admin/js/Login_javascript.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-    <script src="js/myjquery.js"></script>
+    <script src="admin/js/myjquery.js"></script>
 </head>
 <body>
 <%@include file="headerbar.jsp" %>
@@ -21,7 +22,7 @@
 
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i>
-            	<a href="index.jsp">首页</a>
+            	<a href="admin/index.jsp">首页</a>
             	<span class="crumb-step">&gt;</span>
             	<span class="crumb-name">博文管理</span>
             	<span class=\"crumb-step\">&gt;</span>
@@ -35,7 +36,7 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="article.jsp" method="post">
+                <form action="admin/article.jsp" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择分类:</th>
@@ -65,7 +66,7 @@
                 <div class="result-title">
                     <div class="result-list">
                         <a id="articleBatchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="article.jsp"><i class="icon-font"></i>刷新</a>
+                        <a id="updateOrd" href="admin/article.jsp"><i class="icon-font"></i>刷新</a>
                     </div>
                 </div>
                 <div class="result-content">
@@ -87,7 +88,7 @@
                             <td class="tc"><input name="articleIds" value="<s:property value="id"/>" type="checkbox"></td>
                             <td><s:property value="id"/></td>
                             <td>
-                            	<a target="_blank" href="<%=request.getContextPath() %>/sort.action?sortByColumn=<s:property value="articletype.linkname"/>" title="<s:property value="articletype.value"/>">
+                            	<a target="_blank" href="sort.action?sortByColumn=<s:property value="articletype.linkname"/>" title="<s:property value="articletype.value"/>">
                             		<s:property value="articletype.value"/>
                             	</a>
                             </td>

@@ -11,7 +11,7 @@
 		var linkName = $("#linkName").val();
 		$.ajax({ 
 			type: "post", 
-			url: "../ajax/ColumnManage.action", 
+			url: "ajax/ColumnManage.action", 
 			data:"pid=" + pid+ "&columnName=" + columnName+ "&linkName=" + linkName +"&what=addColumn",
 			success: function(msg) { 
 				alert("栏目添加成功...");

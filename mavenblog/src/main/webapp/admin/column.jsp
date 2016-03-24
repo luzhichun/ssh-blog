@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>栏目管理</title>
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+    <%@ include file="../path.jsp" %>
+    <link rel="shortcut icon" href="file/pic/blog.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/main.css"/>
+    <script type="text/javascript" src="admin/js/libs/modernizr.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-    <script src="js/column.js"></script>
+    <script src="admin/js/column.js"></script>
     
 </head>
 <body>
@@ -20,7 +21,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.action">首页</a>
+            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index.action">首页</a>
             <span class="crumb-step">&gt;</span>
             <span class="crumb-name">栏目管理</span>
         </div>

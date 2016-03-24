@@ -3,14 +3,15 @@
 <html>
 <head>  
   <title>用户登录</title> 
+  	<%@ include file="path.jsp" %>
   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery_cmhello.js"></script>
+  	<link rel="shortcut icon" href="file/pic/blog.ico"/>
+	<script type="text/javascript" src="file/js/jquery.min.js"></script>
+	<script type="text/javascript" src="file/js/jquery_cmhello.js"></script>
 	<!-- bootstrap插件 -->
 	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   <link href="<%=request.getContextPath()%>/file/css/style.css" rel="stylesheet" type="text/css"> 
+   <link href="file/css/style.css" rel="stylesheet" type="text/css"> 
 </head> 
 <body>
 <%@ include file="header.jsp" %>
@@ -28,7 +29,7 @@
 				<div class="login_main">
 					<div class="con_box userinfo_box clearfix">
      		<div class="login_form">
-				    <form class="form-horizontal" id="form" role="form" method="post" action="<%=request.getContextPath()%>/user/sublogin.action">
+				    <form class="form-horizontal" id="form" role="form" method="post" action="user/sublogin.action">
 				   <div class="form-group">
 				      <label for="" class="col-sm-1 control-label"></label>
 				      <div class="col-sm-10">
@@ -60,7 +61,7 @@
 				   <div class="form-group">
 				   	  <label for="" class="col-sm-1 control-label"></label>
 				      <div class="col-sm-offset-0 col-sm-10">
-				         <a href="<%=request.getContextPath()%>/register.action">还没有账号，立即注册
+				         <a href="register.action">还没有账号，立即注册
 				         </a>
 				      </div>
 				   </div>

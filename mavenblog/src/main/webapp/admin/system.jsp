@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>后台管理</title>
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+    <%@ include file="../path.jsp" %>
+    <link rel="shortcut icon" href="admin/file/pic/blog.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/main.css"/>
+    <script type="text/javascript" src="admin/js/libs/modernizr.min.js"></script>
 </head>
 <body>
 <%@include file="headerbar.jsp" %>
@@ -16,7 +17,7 @@
     <!--/sidebar-->
     <div class="main-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="index.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">系统设置</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">系统设置</span></div>
         </div>
         <div class="result-wrap">
             <form action="" method="post" id="myform" name="myform">

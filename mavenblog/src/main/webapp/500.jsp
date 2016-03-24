@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>很抱歉，服务器异常！</title>
+<%@ include file="path.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link href='http://fonts.googleapis.com/css?family=Metal+Mania' rel='stylesheet' type='text/css'>
 <style type="text/css">
@@ -56,7 +57,7 @@ body{
 		  <h1>500</h1>
 		  <p>很抱歉，服务器异常！</p>
 		   <div class="sub">
-		     <p><a href="<%=request.getContextPath()%>/index.jsp">Go Back to Home</a></p>
+		     <p><a href="index.jsp">Go Back to Home</a></p>
 		    </div>
 		</div>
 	</div>

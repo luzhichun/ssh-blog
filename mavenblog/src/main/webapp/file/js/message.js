@@ -101,7 +101,7 @@ function light(obj){
 	var value = jobj.children().next().text();
 	$.ajax({
         type:"GET",
-        url:"./ajax/MessageLight.action?id="+message_id,
+        url:"ajax/MessageLight.action?id="+message_id,
         success:function(msg){
         	jobj.children().next().text(++value);
         }

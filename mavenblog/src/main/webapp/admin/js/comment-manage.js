@@ -5,7 +5,7 @@
     	$("#tr_"+id).fadeOut("slow");
         $.ajax({
             type:"GET",
-            url:"../ajax/CommentManage.action?id="+id,
+            url:"ajax/CommentManage.action?id="+id,
             success:function(msg){
 //            	$("#tr_"+id).fadeOut("slow");
             }
@@ -21,7 +21,7 @@ function auditing(id,var2){
         	$("#tr_"+ id +"-auditing").text("1");
 	        $.ajax({
 	            type:"GET",
-	            url:"../ajax/CommentManage.action",
+	            url:"ajax/CommentManage.action",
 	            data:"id=" + id+ "&flag=" + 1,
 	            success:function(msg){
 //	            	$("#tr_"+ id +"-through").text("1");
@@ -37,7 +37,7 @@ function auditing(id,var2){
         	$("#tr_"+ id +"-auditing").text("1");
 	        $.ajax({
 	            type:"GET",
-	            url:"../ajax/CommentManage.action",
+	            url:"ajax/CommentManage.action",
 	            data:"id=" + id+ "&flag=" + 0,
 	            success:function(msg){
 //	            	$("#tr_"+ id +"-through").text("0");
@@ -81,7 +81,7 @@ $(document).ready(function() {
 			$("[name ='articleIds']:checkbox").attr("checked", false);
 			$.ajax({ 
 				type: "GET", 
-				url: "../ajax/CommentManage.action", 
+				url: "ajax/CommentManage.action", 
 				data:"ids=" + checkedList.toString(),
 				success: function(msg) { 
 //					$("[name ='articleIds']:checkbox").attr("checked", false); 
@@ -110,7 +110,7 @@ $(document).ready(function() {
 			$("[name ='articleIds']:checkbox").attr("checked", false); 
 			$.ajax({ 
 				type: "GET", 
-				url: "../ajax/CommentManage.action", 
+				url: "ajax/CommentManage.action", 
 				data:"ids=" + checkedList.toString() + "&flag=1",
 				success: function(msg) { 
 //					$("[name ='articleIds']:checkbox").attr("checked", false); 

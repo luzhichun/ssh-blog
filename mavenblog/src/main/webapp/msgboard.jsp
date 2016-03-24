@@ -3,15 +3,16 @@
 <html> 
 <head>  
 		<title>留言板</title>
+		<%@ include file="path.jsp" %>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-		<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery.min.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery_cmhello.js"></script>
-   		<script src="<%=request.getContextPath()%>/file/js/message.js"></script>
+		<link rel="shortcut icon" href="file/pic/blog.ico"/>
+		<script type="text/javascript" src="file/js/jquery.min.js"></script>
+		<script type="text/javascript" src="file/js/jquery_cmhello.js"></script>
+   		<script src="file/js/message.js"></script>
    		<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    		<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   		<link href="<%=request.getContextPath()%>/file/css/style.css" rel="stylesheet" type="text/css">
-   		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/file/css/login.css" /> 
+   		<link href="file/css/style.css" rel="stylesheet" type="text/css">
+   		<link rel="stylesheet" type="text/css" href="file/css/login.css" /> 
 <style type="text/css">
 	body {background: #606060;}
 	.name-font{font-size:12px;color:red;}
@@ -55,7 +56,7 @@
 			<li class="ds-post">
 			<div class="ds-post-self"  message-id="<s:property value="id"/>">
 				<div class="ds-avatar">
-					<a href="<%=request.getContextPath()%>/user/<s:property value="user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
+					<a href="user/<s:property value="user.url"/>"><img src="upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
 				</div>
 				<div class="ds-comment-body">
 					<div class="ds-comment-header">
@@ -79,10 +80,10 @@
 					<div class="ds-post-self" style="display:none" id="<s:property value="id"/>">
 				<div class="ds-avatar">
 				<s:if test="%{#session.user == null}">
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:if>
 				<s:else>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:else>
 				</div>
 				<div class="ds-comment-body">
@@ -111,7 +112,7 @@
 			<s:iterator value="chiMessages">
 			<s:if test="%{throughFlag==1}">
 				<div class="ds-avatar">
-					<a href="<%=request.getContextPath()%>/user/<s:property value="user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
+					<a href="user/<s:property value="user.url"/>"><img src="upload/headpic/<s:property value="user.headpicname"/>" alt="picture"></a>
 				</div>
 				<div class="ds-comment-body">
 					<div class="ds-comment-header">
@@ -138,10 +139,10 @@
 			<div class="ds-post-self" style="display:none">
 				<div class="ds-avatar">
 					<s:if test="%{#session.user == null}">
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:if>
 				<s:else>
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:else>
 				</div>
 				<div class="ds-comment-body">
@@ -178,10 +179,10 @@
 		<div class="ds-post-self">
 				<div class="ds-avatar">
 				<s:if test="%{#session.user != null}">
-					<a href="<%=request.getContextPath()%>/user/<s:property value="#session.user.url"/>"><img src="<%=request.getContextPath()%>/upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
+					<a href="user/<s:property value="#session.user.url"/>"><img src="upload/headpic/<s:property value="#session.user.headpicname"/>"></a>
 				</s:if>
 				<s:else>
-					<img src="<%=request.getContextPath()%>/upload/headpic/default_head.jpg">
+					<img src="upload/headpic/default_head.jpg">
 				</s:else>
 				</div>
 				<div class="ds-comment-body">

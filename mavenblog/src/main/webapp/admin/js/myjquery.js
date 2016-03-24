@@ -14,7 +14,7 @@ function deleteArticle(id){
     	$("#tr_"+id).fadeOut("slow");
         $.ajax({
             type:"GET",
-            url:"../ajax/ArticleManage.action?id="+id,
+            url:"ajax/ArticleManage.action?id="+id,
             success:function(msg){
 //            	$("#tr_"+id).fadeOut("slow");
             }
@@ -56,7 +56,7 @@ $(document).ready(function() {
 			$("[name ='articleIds']:checkbox").attr("checked", false); 
 			$.ajax({ 
 				type: "GET", 
-				url: "../ajax/ArticleManage.action?ids=" + checkedList.toString(), 
+				url: "ajax/ArticleManage.action?ids=" + checkedList.toString(), 
 				success: function(msg) { 
 //					$("[name ='articleIds']:checkbox").attr("checked", false); 
 				} 
@@ -114,7 +114,7 @@ function deleteMessage(id){
     	$("#tr_"+id).fadeOut("slow");
         $.ajax({
             type:"GET",
-            url:"../ajax/MessageManage.action?id="+id,
+            url:"ajax/MessageManage.action?id="+id,
             success:function(msg){
 //            	$("#tr_"+id).fadeOut("slow");
             }
@@ -130,7 +130,7 @@ function auditing(id,var2){
         	$("#tr_"+ id +"-auditing").text("1");
 	        $.ajax({
 	            type:"GET",
-	            url:"../ajax/MessageManage.action",
+	            url:"ajax/MessageManage.action",
 	            data:"id=" + id+ "&flag=" + 1,
 	            success:function(msg){
 //	            	$("#tr_"+ id +"-through").text("1");
@@ -146,7 +146,7 @@ function auditing(id,var2){
         	$("#tr_"+ id +"-auditing").text("1");
 	        $.ajax({
 	            type:"GET",
-	            url:"../ajax/MessageManage.action",
+	            url:"ajax/MessageManage.action",
 	            data:"id=" + id+ "&flag=" + 0,
 	            success:function(msg){
 //	            	$("#tr_"+ id +"-through").text("0");
@@ -190,7 +190,7 @@ $(document).ready(function() {
 			$("[name ='articleIds']:checkbox").attr("checked", false); 
 			$.ajax({ 
 				type: "GET", 
-				url: "../ajax/MessageManage.action", 
+				url: "ajax/MessageManage.action", 
 				data:"ids=" + checkedList.toString(),
 				success: function(msg) { 
 //					$("[name ='articleIds']:checkbox").attr("checked", false); 
@@ -219,7 +219,7 @@ $(document).ready(function() {
 			$("[name ='articleIds']:checkbox").attr("checked", false);
 			$.ajax({ 
 				type: "GET", 
-				url: "../ajax/MessageManage.action", 
+				url: "ajax/MessageManage.action", 
 				data:"ids=" + checkedList.toString() + "&flag=1",
 				success: function(msg) { 
 //					$("[name ='articleIds']:checkbox").attr("checked", false); 

@@ -3,28 +3,29 @@
 <html>
  <head>  
   	<title>发布文章</title> 
+  	<%@ include file="../path.jsp" %>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
+	<link rel="shortcut icon" href="file/pic/blog.ico"/>
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/file/js/jquery_cmhello.js"></script>
+	<script type="text/javascript" src="file/js/jquery_cmhello.js"></script>
 	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-   <link href="<%=request.getContextPath()%>/file/css/style.css" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/file/css/common.css"/>
+   <link href="file/css/style.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" type="text/css" href="file/css/common.css"/>
    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-   <script type="text/javascript" src="<%=request.getContextPath()%>/admin/js/release.js"></script>
+   <script type="text/javascript" src="admin/js/release.js"></script>
     
-    <script type="text/javascript" charset="utf-8" src="<%=request.getContextPath()%>/file/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="<%=request.getContextPath()%>/file/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="file/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="file/ueditor/ueditor.all.min.js"> </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="../file/ueditor/lang/zh-cn/zh-cn.js"></script>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/file/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="file/css/main.css"/>
 	<style >
    		#user-all{
 			width:100%;
 			height:auto;
-			background: url(../file/pic/skin/<s:property value="background"/>) repeat;
+			background: url(file/pic/skin/<s:property value="background"/>) repeat;
 		}
    </style>
 </head>
@@ -34,7 +35,7 @@
 	<div id="user-header">
 		<div id="blog_title">
             <h2>
-                <a href="<%=request.getContextPath()%>/u/<s:property value="user.url"/>"><s:property value="user.username"/> 的博客</a></h2>
+                <a href="u/<s:property value="user.url"/>"><s:property value="user.username"/> 的博客</a></h2>
             <h3><s:property value="user.bloginfo.intro"/></h3>
             <div class="clear">
             </div>
@@ -43,7 +44,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="<%=request.getContextPath()%>/index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
 				<a href="<s:property value="user.url"/>"><s:property value="user.username"/></a>
 				<a>个人中心</a>
 				<a>发布文章</a>
@@ -58,7 +59,7 @@
         <div class="result-wrap">
             <div class="result-content">
 
-                <form action="<%=request.getContextPath()%>/user/Release.action" method="post" id="valueform" name="valueform" enctype="multipart/form-data">
+                <form action="user/Release.action" method="post" id="valueform" name="valueform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody><tr>
                             <th width="120"><i class="require-red">*</i>分类：</th>

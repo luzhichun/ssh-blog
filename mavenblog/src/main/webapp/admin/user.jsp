@@ -4,13 +4,14 @@
 <head> 
     <meta charset="UTF-8">
     <title>用户管理</title>
-    <link rel="shortcut icon" href="<%=request.getContextPath()%>/file/pic/blog.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
-    <script type="text/javascript" src="js/Login_javascript.js"></script>
+    <%@ include file="../path.jsp" %>
+    <link rel="shortcut icon" href="admin/file/pic/blog.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="admin/css/main.css"/>
+    <script type="text/javascript" src="admin/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="admin/js/Login_javascript.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-    <script src="js/user.js"></script>
+    <script src="admin/js/user.js"></script>
 </head>
 <body>
 <%@include file="headerbar.jsp" %>
@@ -21,14 +22,14 @@
 
         <div class="crumb-wrap">
             <div class="crumb-list"><i class="icon-font"></i>
-            	<a href="index.jsp">首页</a>
+            	<a href="admin/index.jsp">首页</a>
             	<span class="crumb-step">&gt;</span>
             	<span class="crumb-name">用户管理</span>
             </div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="article.jsp" method="post">
+                <form action="admin/user.jsp" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择分类:</th>
@@ -59,7 +60,7 @@
                     <div class="result-list">
                     	 <a id="userBatchThrough" href="javascript:void(0)"><i class="icon-font"></i>批量通过</a>
                         <a id="userBatchClosure" href="javascript:void(0)"><i class="icon-font"></i>批量封禁</a>
-                        <a id="updateOrd" href="user.jsp"><i class="icon-font"></i>刷新</a>
+                        <a id="updateOrd" href="admin/user.jsp"><i class="icon-font"></i>刷新</a>
                     </div>
                 </div>
                 <div class="result-content">
@@ -80,7 +81,7 @@
                             <td><s:property value="id"/></td>
                             <td><s:property value="username"/></td>
                             <td><s:property value="email"/></td>
-                            <td title="<s:property value="title"/>"><a target="_blank" href="<%=request.getContextPath()%>/user/<s:property value="url"/>"><%=request.getContextPath()%>/user/<s:property value="url"/></a>
+                            <td title="<s:property value="title"/>"><a target="_blank" href="admin/user/<s:property value="url"/>">user/<s:property value="url"/></a>
                             </td>
                             <td id="tr_<s:property value="id"/>-through"><s:property value="throughFlag"/></td>
                             <td><s:property value="registertime"/></td>

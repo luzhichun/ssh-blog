@@ -11,7 +11,7 @@
       <a target="_blank" title="APP安全免费检测" href="http://jiagu.qcloud.com/">APP安全免费检测</a> 
       <a target="_blank" title="步行街" href="http://bbs.hupu.com/bxj/">步行街</a> 
       <a target="_blank" title="BT猫" href="http://btcat.org/">BT Cat</a> 
-      <a target="_blank" title="BT猫" href="<%=request.getContextPath()%>/admin/login.jsp">管理员登录</a> 
+      <a target="_blank" title="BT猫" href="admin/login.jsp">管理员登录</a> 
      </div> 
     </div> 
     <div class="footer_bug"> 
