@@ -15,7 +15,7 @@
   <!-- 防止使用多个项目使用log4j名称冲突时 -->
   <context-param>  
     <param-name>webAppRootKey</param-name>  
-    <param-value>maven.root</param-value>  
+    <param-value>blog.root</param-value>  
   </context-param> 
   <filter>
     <filter-name>OpenSessionInViewFilter</filter-name>
