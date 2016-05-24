@@ -5,7 +5,7 @@ import java.util.List;
 import com.blog.ssh.control.service.ArticletypeService;
 import com.blog.ssh.model.pojo.Articletype;
 /**
- * 获取栏目管理页面所需要的页面
+ * 鑾峰彇鏍忕洰绠＄悊椤甸潰鎵�闇�瑕佺殑椤甸潰
  * @author wy
  *
  */

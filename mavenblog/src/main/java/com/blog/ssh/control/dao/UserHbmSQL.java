@@ -112,7 +112,7 @@ public class UserHbmSQL {
 		return user;
 	}
 	public int findMaxId(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select max(id) from User as u");
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
@@ -125,20 +125,20 @@ public class UserHbmSQL {
 		System.out.println(u.getArticles().size());
 	}
 	public int getBlogComments(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select count(*) from Article as a right join a.comments as c where c.auditingFlag=1 and a.user.id=" + user_id);
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}
 
 	public int getmsgCounts(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select count(*) from Comment as c where c.auditingFlag=0 and c.article.user.id=" + user_id);
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}
 	public int getArticleCounts(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select count(*) from Article as a where a.user.id=" + user_id);
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;

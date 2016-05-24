@@ -72,7 +72,7 @@ public class AddCommentAction {
 		this.articleService = articleService;
 	}
 	/**
-	 * ¸ù¾İÎÄÕÂidÅĞ¶Ï¸Ã²©Ö÷ÓĞÆÀÂÛÊ±£¬ÊÇ·ñĞèÒªÓÊÏäÍ¨Öª£¬ĞèÒªÍ¨ÖªÔòÍ¨Öª
+	 * æ ¹æ®æ–‡ç« idåˆ¤æ–­è¯¥åšä¸»æœ‰è¯„è®ºæ—¶ï¼Œæ˜¯å¦éœ€è¦é‚®ç®±é€šçŸ¥ï¼Œéœ€è¦é€šçŸ¥åˆ™é€šçŸ¥
 	 * @param article_id
 	 * @return
 	 */
@@ -81,36 +81,36 @@ public class AddCommentAction {
 		Article article = articleService.getArticle(article_id);
 		int flag = article.getUser().getBloginfo().getEmailNoticeflag();
 		if(flag == 0){
-			//²»Í¨ÌáÊ¾ÓÃ»§
+			//ä¸é€šæç¤ºç”¨æˆ·
 			return ;
 		}
 		else{
-			//ÌáÊ¾ÓÃ»§
+			//æç¤ºç”¨æˆ·
 			Map application = ActionContext.getContext().getApplication();
 			String key = MD5.getInstance().getMD5(System.currentTimeMillis() + "");
 			System.out.println(key);
 			application.put(key, article.getUser().getId());
-			//½«µ±Ç°Ê±¼ä½øĞĞmd5¼ÓÃÜ×÷Îªkey£¬½«ÓÃ»§idµ±×öÖµ£¬½«key·¢ËÍÓÊÏä£¬È»ºóÍ¨¹ıkeyÖ±½ÓµÇÂ¼
+			//å°†å½“å‰æ—¶é—´è¿›è¡Œmd5åŠ å¯†ä½œä¸ºkeyï¼Œå°†ç”¨æˆ·idå½“åšå€¼ï¼Œå°†keyå‘é€é‚®ç®±ï¼Œç„¶åé€šè¿‡keyç›´æ¥ç™»å½•
 			String href = "http://localhost:8080/blog";
 			if(SystemManage.isAliServer()){
 				href = "http://120.27.36.59:8080/blog";
 			}
 			String content = "<div class=\"wrapper\" style=\"margin: 20px auto 0; width: 500px; padding-top:16px; padding-bottom:10px;\">" +
 						"<div class=\"header clearfix\">" +
-						"<a class=\"logo\" href=\"" + href + "/index.jsp\" target=\"_blank\"><b>ÃÎÏë²©¿Í</b></a>" +
+						"<a class=\"logo\" href=\"" + href + "/index.jsp\" target=\"_blank\"><b>æ¢¦æƒ³åšå®¢</b></a>" +
 						"</div>" +
 						"<br style=\"clear:both; height:0\">" +
 						"<div class=\"content\" style=\"background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #E9E9E9; margin: 2px 0 0; padding: 30px;\">" +
-						"<p>" + article.getUser().getUsername() +  "£¬ÄúºÃ£º</p>" +
-						"<p>ÕâÊÇÄúÔÚ ÃÎÏë²©¿Í ÉÏµÄÖØÒªÓÊ¼ş£¬¹¦ÄÜÊÇÄãµÄÎÄÕÂ¡¾" + article.getTitle() + "¡¿ÓĞÁËĞÂµÄÆÀÂÛ£¬Çëµã»÷ÏÂÃæµÄÁ´½Ó½øĞĞÉóºË</p>" +
+						"<p>" + article.getUser().getUsername() +  "ï¼Œæ‚¨å¥½ï¼š</p>" +
+						"<p>è¿™æ˜¯æ‚¨åœ¨ æ¢¦æƒ³åšå®¢ ä¸Šçš„é‡è¦é‚®ä»¶ï¼ŒåŠŸèƒ½æ˜¯ä½ çš„æ–‡ç« ã€" + article.getTitle() + "ã€‘æœ‰äº†æ–°çš„è¯„è®ºï¼Œè¯·ç‚¹å‡»ä¸‹é¢çš„é“¾æ¥è¿›è¡Œå®¡æ ¸</p>" +
 						"<p class=\"answer\" style=\"border-top: 1px solid #DDDDDD;margin: 15px 0 25px;padding: 15px;\">" +
-						"Çëµã»÷Á´½Ó¼ÌĞø: <a href=\"" + href + "/user/CommentManage.action?sort=&key=" + key + "\" target=\"_blank\">" + href + "/user/CommentManage.action?sort&key=" + key + "</a>" +
+						"è¯·ç‚¹å‡»é“¾æ¥ç»§ç»­: <a href=\"" + href + "/user/CommentManage.action?sort=&key=" + key + "\" target=\"_blank\">" + href + "/user/CommentManage.action?sort&key=" + key + "</a>" +
 						"</p><p>" +
-						"</p><p class=\"footer\" style=\"border-top: 1px solid #DDDDDD; padding-top:6px; margin-top:25px; color:#838383;\">ÇëÎğ»Ø¸´±¾ÓÊ¼ş¡£´ËÓÊÏäÎ´ÊÜ¼à¿Ø£¬Äú²»»áµÃµ½ÈÎºÎ»Ø¸´¡£Òª»ñµÃ°ïÖú£¬ÇëµÇÂ¼ÍøÕ¾¡£<br><a href=\"" + href + "/login.jsp" + "\" target=\"_blank\">ÃÎÏë²©¿Í</a></p>" +
+						"</p><p class=\"footer\" style=\"border-top: 1px solid #DDDDDD; padding-top:6px; margin-top:25px; color:#838383;\">è¯·å‹¿å›å¤æœ¬é‚®ä»¶ã€‚æ­¤é‚®ç®±æœªå—ç›‘æ§ï¼Œæ‚¨ä¸ä¼šå¾—åˆ°ä»»ä½•å›å¤ã€‚è¦è·å¾—å¸®åŠ©ï¼Œè¯·ç™»å½•ç½‘ç«™ã€‚<br><a href=\"" + href + "/login.jsp" + "\" target=\"_blank\">æ¢¦æƒ³åšå®¢</a></p>" +
 						"</div>" +
 						"</div>";
 			try {
-				Test_Email.send_email(article.getUser().getEmail(),"¡¾ÃÎÏë²©¿Í¡¿ÄãµÄÎÄÕÂÓĞĞÂÆÀÂÛÁË",content);
+				Test_Email.send_email(article.getUser().getEmail(),"ã€æ¢¦æƒ³åšå®¢ã€‘ä½ çš„æ–‡ç« æœ‰æ–°è¯„è®ºäº†",content);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -124,7 +124,7 @@ public class AddCommentAction {
 			return "notlogin";
 		}
 		if(parent_id == 0 && reply_id == 0){
-			//Ö±½ÓÆÀÂÛ
+			//ç›´æ¥è¯„è®º
 			Comment cmt = new Comment();
 			cmt.setTime(Time.time());
 			cmt.setAuditingFlag(0);
@@ -135,7 +135,7 @@ public class AddCommentAction {
 			commentService.insertComment(cmt,article_id);
 			noticeUser(article_id);
 		}else{
-			//»Ø¸´ÆÀÂÛ
+			//å›å¤è¯„è®º
 			Comment cmt = new Comment();
 			cmt.setTime(Time.time());
 			cmt.setAuditingFlag(0);

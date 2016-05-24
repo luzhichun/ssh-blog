@@ -7,7 +7,7 @@ import com.blog.ssh.model.pojo.Comment;
 
 public class ShowComments {
 	private List<Comment> comments;
-	private String sort;//·ÖÀà¹ÜÀí
+	private String sort;//åˆ†ç±»ç®¡ç†
 	private CommentService commentService;
 	public ShowComments(){
 		
@@ -37,11 +37,11 @@ public class ShowComments {
 			return "notlogin";
 		}
 		if(sort == null  || sort.equals("all")){
-			//ÏÔÊ¾ËùÓĞÆÀÂÛ
+			//æ˜¾ç¤ºæ‰€æœ‰è¯„è®º
 			this.comments = commentService.getAllComment();
 		}
 		else{
-			//´ıÉóºËµÄÆÀÂÛ
+			//å¾…å®¡æ ¸çš„è¯„è®º
 			this.comments = commentService.getUnauditing();
 		}
 		return "success";

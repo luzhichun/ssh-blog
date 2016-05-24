@@ -6,7 +6,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 public class RightsManagement {
 	/**
-	 * ÅĞ¶Ï¹ÜÀíÔ±ÊÇ·ñµÇÂ¼
+	 * åˆ¤æ–­ç®¡ç†å‘˜æ˜¯å¦ç™»å½•
 	 * @return
 	 */
 	public static boolean adminIsLogin(){
@@ -19,7 +19,7 @@ public class RightsManagement {
 		}
 	}
 	/**
-	 * ÅĞ¶ÏÓÃ»§ÊÇ·ñµÇÂ¼
+	 * åˆ¤æ–­ç”¨æˆ·æ˜¯å¦ç™»å½•
 	 * @return
 	 */
 	public static boolean userIsLogin(){

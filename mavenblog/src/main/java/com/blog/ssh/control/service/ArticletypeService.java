@@ -22,29 +22,29 @@ public class ArticletypeService {
 		articletypeDAO.save(articletype);
 	}
 	/**
-	 * »ñÈ¡ËùÓÐ×Ó·ÖÀà
+	 * èŽ·å–æ‰€æœ‰å­åˆ†ç±»
 	 * @return
 	 */
 	public List<Articletype> getAllChildrenArticletype(){
 		return articletypeDAO.getAllChildrenArticletype();
 	}
 	/**
-	 * ¸ù¾Ýpid»ñÈ¡ËùÓÐ×Ó·ÖÀà
-	 * @param pid ¸¸id
+	 * æ ¹æ®pidèŽ·å–æ‰€æœ‰å­åˆ†ç±»
+	 * @param pid çˆ¶id
 	 * @return
 	 */
 	public List<Articletype> getChildrenArticletype(int pid){
 		return articletypeDAO.getChildrenArticletype(pid);
 	}
 	/**
-	 * »ñÈ¡ËùÓÐ¸¸·ÖÀà
+	 * èŽ·å–æ‰€æœ‰çˆ¶åˆ†ç±»
 	 * @return
 	 */
 	public List<Articletype> getAllParentArticletype(){
 		return articletypeDAO.getAllParentArticletype();
 	}
 	/**
-	 * Í¨¹ýid²éÑ¯Articletype
+	 * é€šè¿‡idæŸ¥è¯¢Articletype
 	 * @param id
 	 * @return
 	 */
@@ -52,7 +52,7 @@ public class ArticletypeService {
 		return articletypeDAO.getArticletype(id);
 	}
 	/**
-	 * Í¨¹ýlinkName»ñÈ¡Articletype
+	 * é€šè¿‡linkNameèŽ·å–Articletype
 	 * @param linkName
 	 * @return
 	 */

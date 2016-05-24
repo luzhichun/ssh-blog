@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 /**
- * 显示文章页面
+ * 鏄剧ず鏂囩珷椤甸潰
  * @author wy
  *
  */
@@ -58,7 +58,7 @@ public class ArticleAction extends ActionSupport{
 	public String execute(){
 		try{
 			ActionInvocation ai = (ActionInvocation) ActionContext.getContext().get(ActionContext.ACTION_INVOCATION);
-			final String action = ai.getProxy().getActionName();//文章id
+			final String action = ai.getProxy().getActionName();//鏂囩珷id
 			id = Integer.valueOf(action);
 			this.userSider = userSiderService.getUserSider(articleService.getArticle(id).getUser().getId());
 			articleService.setArticleVisits(id);

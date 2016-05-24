@@ -39,11 +39,11 @@ public class UserManage {
 			return "notlogin";
 		}
 		if(id != null && flag != null){
-			//审核单个用户
+			//瀹℃牳鍗曚釜鐢ㄦ埛
 			userService.auditing(id, flag);
 		}
 		if(ids != null && flag != null){
-			//批量审核
+			//鎵归噺瀹℃牳
 			String [] idArr = ids.split(",");
 			for(int i = 0;i < idArr.length;i++ ){
 				userService.auditing(Integer.valueOf(idArr[i]), Integer.valueOf(flag));

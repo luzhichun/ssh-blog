@@ -57,7 +57,7 @@ public class ColumnManage {
 			return "notlogin";
 		}
 		if(what.equals("addColumn")){
-			//ĞÂÔöÀ¸Ä¿
+			//æ–°å¢æ ç›®
 			Articletype pat = articletypeService.getArticletype(pid);
 			Articletype at = new Articletype();
 			at.setValue(columnName);

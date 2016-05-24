@@ -7,14 +7,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 /**
- * ÎÄ¼ş¹ÜÀí£¬ÔöÉ¾¸Ä²é
+ * æ–‡ä»¶ç®¡ç†ï¼Œå¢åˆ æ”¹æŸ¥
  * @author wy
  *
  */
 public class FileManage {
 	/**
 	 * 
-	 * @param fileRealPath ÎÄ¼şÂ·¾¶
+	 * @param fileRealPath æ–‡ä»¶è·¯å¾„
 	 * @return 
 	 * @throws Exception
 	 */
@@ -22,7 +22,7 @@ public class FileManage {
 		System.out.println(fileRealPath);
 		boolean flag = false;  
 		File file = new File(fileRealPath);  
-		// Â·¾¶ÎªÎÄ¼şÇÒ²»Îª¿ÕÔò½øĞĞÉ¾³ı  
+		// è·¯å¾„ä¸ºæ–‡ä»¶ä¸”ä¸ä¸ºç©ºåˆ™è¿›è¡Œåˆ é™¤  
 		if (file.isFile() && file.exists()) {  
 		    file.delete();  
 		    flag = true;  
@@ -31,8 +31,8 @@ public class FileManage {
 	}
 	/**
 	 * 
-	 * @param sourceFilePath Òª¸´ÖÆÎÄ¼şµÄÂ·¾¶
-	 * @param targetFilePath Ä¿±êÎÄ¼şÂ·¾¶
+	 * @param sourceFilePath è¦å¤åˆ¶æ–‡ä»¶çš„è·¯å¾„
+	 * @param targetFilePath ç›®æ ‡æ–‡ä»¶è·¯å¾„
 	 * @throws IOException
 	 */
     public static void copyFile(String sourceFilePath, String targetFilePath) throws IOException {
@@ -41,22 +41,22 @@ public class FileManage {
     	BufferedInputStream inBuff = null;
         BufferedOutputStream outBuff = null;
         try {
-            // ĞÂ½¨ÎÄ¼şÊäÈëÁ÷²¢¶ÔËü½øĞĞ»º³å
+            // æ–°å»ºæ–‡ä»¶è¾“å…¥æµå¹¶å¯¹å®ƒè¿›è¡Œç¼“å†²
             inBuff = new BufferedInputStream(new FileInputStream(sourceFile));
 
-            // ĞÂ½¨ÎÄ¼şÊä³öÁ÷²¢¶ÔËü½øĞĞ»º³å
+            // æ–°å»ºæ–‡ä»¶è¾“å‡ºæµå¹¶å¯¹å®ƒè¿›è¡Œç¼“å†²
             outBuff = new BufferedOutputStream(new FileOutputStream(targetFile));
 
-            // »º³åÊı×é
+            // ç¼“å†²æ•°ç»„
             byte[] b = new byte[1024 * 5];
             int len;
             while ((len = inBuff.read(b)) != -1) {
                 outBuff.write(b, 0, len);
             }
-            // Ë¢ĞÂ´Ë»º³åµÄÊä³öÁ÷
+            // åˆ·æ–°æ­¤ç¼“å†²çš„è¾“å‡ºæµ
             outBuff.flush();
         } finally {
-            // ¹Ø±ÕÁ÷
+            // å…³é—­æµ
             if (inBuff != null)
                 inBuff.close();
             if (outBuff != null)

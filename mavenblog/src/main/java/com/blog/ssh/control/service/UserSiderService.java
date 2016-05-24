@@ -46,7 +46,7 @@ public class UserSiderService {
 		userSider.setUserLatestComments(commentService.getLatestComment(user_id));
 		userSider.setUser(userService.getUser(user_id));
 		userSider.setBlogComments(userService.getBlogComments(user_id));
-		userService.setBlogVisits(user_id);//ÉèÖÃ²©¿Í·ÃÎÊÁ¿
+		userService.setBlogVisits(user_id);//è®¾ç½®åšå®¢è®¿é—®é‡
 		return userSider;
 	}
 }

@@ -53,7 +53,7 @@ public class AddMessageAction {
 		System.out.println("reply_id:" + parent_id);
 		User user = (User)ActionContext.getContext().getSession().get("user");
 		if(parent_id == 0 && reply_id == 0){
-			//Ö±½ÓÁôÑÔ
+			//ç›´æ¥ç•™è¨€
 			Message msg = new Message();
 			msg.setTime(Time.time());
 			msg.setAuditingFlag(0);
@@ -63,7 +63,7 @@ public class AddMessageAction {
 			msg.setUser(user);
 			messageService.insertMessage(msg);
 		}else{
-			//»Ø¸´ÁôÑÔ
+			//å›å¤ç•™è¨€
 			Message msg = new Message();
 			msg.setTime(Time.time());
 			msg.setAuditingFlag(0);

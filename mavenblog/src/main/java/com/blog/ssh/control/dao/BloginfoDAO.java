@@ -177,7 +177,7 @@ public class BloginfoDAO {
 		return (BloginfoDAO) ctx.getBean("BloginfoDAO");
 	}
 	public int findMaxId(){
-		Session session = getCurrentSession();//得到一个Session对象
+		Session session = getCurrentSession();//寰楀埌涓�涓猄ession瀵硅薄
 		Query query = session.createQuery("select max(id) from Bloginfo as b");
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;

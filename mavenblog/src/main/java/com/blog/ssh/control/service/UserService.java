@@ -28,7 +28,7 @@ public class UserService {
 		return userDAO.findMaxId();
 	}
 	/**
-	 * ¼ì²âÓÃ»§ÃûÊÇ·ñÒÑ¾­´æÔÚ
+	 * æ£€æµ‹ç”¨æˆ·åæ˜¯å¦å·²ç»å­˜åœ¨
 	 * @param username
 	 * @return
 	 */
@@ -43,7 +43,7 @@ public class UserService {
 	 * 
 	 * @param username
 	 * @param password
-	 * @return 0±íÊ¾ÃÜÂë´íÎó 1µÇÂ¼³É¹¦ 2±íÊ¾ÓÃ»§±»·â½û
+	 * @return 0è¡¨ç¤ºå¯†ç é”™è¯¯ 1ç™»å½•æˆåŠŸ 2è¡¨ç¤ºç”¨æˆ·è¢«å°ç¦
 	 */
 	public int checkLogin(String username,String password){
 		List<User> us= userDAO.findByProperty("username",username);
@@ -57,7 +57,7 @@ public class UserService {
 					return 1;
 				}
 				else{
-					//ÓÃ»§±»·â½û
+					//ç”¨æˆ·è¢«å°ç¦
 					return 2;
 				}
 			}
@@ -65,7 +65,7 @@ public class UserService {
 		}
 	}
 	/**
-	 * ÓÃ»§×¢Ïú£¬Çå³şsession
+	 * ç”¨æˆ·æ³¨é”€ï¼Œæ¸…æ¥šsession
 	 * @return
 	 */
 	public boolean loginOut(){
@@ -74,12 +74,12 @@ public class UserService {
 		return true;
 	}
 	/**
-	 * ¸ù¾İurlÅĞ¶ÏÊÇ·ñ´æÔÚÓÃ»§
+	 * æ ¹æ®urlåˆ¤æ–­æ˜¯å¦å­˜åœ¨ç”¨æˆ·
 	 * @param url
 	 */
 	public boolean hasUserByurl(String url){
 		if(userDAO.findByProperty("url", url).size() == 0){
-			//²»´æÔÚ¸ÃÓÃ»§
+			//ä¸å­˜åœ¨è¯¥ç”¨æˆ·
 			return false;
 		}
 		return true;
@@ -102,9 +102,9 @@ public class UserService {
 		user.getBloginfo().setVisits(user.getBloginfo().getVisits() + 1);
 	}
 	/**
-	 * ÉóºËÆÀÂÛ
-	 * @param id ÆÀÂÛid
-	 * @param flag ÉóºË±êÖ¾£¬1±íÊ¾Í¨¹ı£¬0±íÊ¾²»Í¨¹ı
+	 * å®¡æ ¸è¯„è®º
+	 * @param id è¯„è®ºid
+	 * @param flag å®¡æ ¸æ ‡å¿—ï¼Œ1è¡¨ç¤ºé€šè¿‡ï¼Œ0è¡¨ç¤ºä¸é€šè¿‡
 	 */
 	public void auditing(int id ,int flag){
 		User u = userDAO.findById(id);
@@ -115,7 +115,7 @@ public class UserService {
 		userDAO.update(u);
 	}
 	/**
-	 * µ±ÓÃ»§´¦ÀíÏûÏ¢ºó£¬Ë¢ĞÂÓÃ»§session
+	 * å½“ç”¨æˆ·å¤„ç†æ¶ˆæ¯åï¼Œåˆ·æ–°ç”¨æˆ·session
 	 * @param user_id
 	 */
 	public void setUserSession(Integer user_id){
@@ -125,7 +125,7 @@ public class UserService {
 		user.setMsgCounts(userDAO.getmsgCounts(user_id));
 		user.setArticleCounts(userDAO.getArticleCounts(user_id));
 		session.put("user", user);
-		System.out.println("ÉèÖÃÓÃ»§session");
+		System.out.println("è®¾ç½®ç”¨æˆ·session");
 	}
 	public int getmsgCounts(Integer user_id){
 		return userDAO.getmsgCounts(user_id);

@@ -8,11 +8,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ShowIndex extends ActionSupport{
-	private String osName;//²Ù×÷ÏµÍ³Ãû³Æ
-	private String javaVersion;//javaÔËĞĞ»·¾³°æ±¾
-	private String jvmName;//javaĞéÄâ»úÃû³Æ
-	private String ip;//·şÎñÆ÷ipµØÖ·
-	private String hostName;//Ö÷»úÃû
+	private String osName;//æ“ä½œç³»ç»Ÿåç§°
+	private String javaVersion;//javaè¿è¡Œç¯å¢ƒç‰ˆæœ¬
+	private String jvmName;//javaè™šæ‹Ÿæœºåç§°
+	private String ip;//æœåŠ¡å™¨ipåœ°å€
+	private String hostName;//ä¸»æœºå
 	
 	public String getOsName() {
 		return osName;
@@ -48,13 +48,13 @@ public class ShowIndex extends ActionSupport{
 	public static void Config(){ 
 	        try{ 
 	            InetAddress addr = InetAddress.getLocalHost();  
-	            String ip=addr.getHostAddress().toString(); //»ñÈ¡±¾»úip  
-	            String hostName=addr.getHostName().toString(); //»ñÈ¡±¾»ú¼ÆËã»úÃû³Æ»òÕßÓòÃû
-	            System.out.println("±¾»úIP£º"+ip+"\n±¾»úÃû³Æ:"+hostName); 
+	            String ip=addr.getHostAddress().toString(); //è·å–æœ¬æœºip  
+	            String hostName=addr.getHostName().toString(); //è·å–æœ¬æœºè®¡ç®—æœºåç§°æˆ–è€…åŸŸå
+	            System.out.println("æœ¬æœºIPï¼š"+ip+"\næœ¬æœºåç§°:"+hostName); 
 	            Properties props=System.getProperties(); 
-	            System.out.println("JavaµÄÔËĞĞ»·¾³°æ±¾£º"+props.getProperty("java.version")); 
-	            System.out.println("²Ù×÷ÏµÍ³µÄÃû³Æ£º"+props.getProperty("os.name")); 
-	            System.out.println("JavaµÄĞéÄâ»úÊµÏÖÃû³Æ£º"+props.getProperty("java.vm.name")); 
+	            System.out.println("Javaçš„è¿è¡Œç¯å¢ƒç‰ˆæœ¬ï¼š"+props.getProperty("java.version")); 
+	            System.out.println("æ“ä½œç³»ç»Ÿçš„åç§°ï¼š"+props.getProperty("os.name")); 
+	            System.out.println("Javaçš„è™šæ‹Ÿæœºå®ç°åç§°ï¼š"+props.getProperty("java.vm.name")); 
 	        }catch(Exception e){ 
 	            e.printStackTrace(); 
 	        } 
@@ -66,8 +66,8 @@ public class ShowIndex extends ActionSupport{
 		}
 		try{ 
             InetAddress addr = InetAddress.getLocalHost();  
-            this.ip=addr.getHostAddress().toString(); //»ñÈ¡±¾»úip  
-            this.hostName=addr.getHostName().toString(); //»ñÈ¡±¾»ú¼ÆËã»úÃû³Æ»òÕßÓòÃû 
+            this.ip=addr.getHostAddress().toString(); //è·å–æœ¬æœºip  
+            this.hostName=addr.getHostName().toString(); //è·å–æœ¬æœºè®¡ç®—æœºåç§°æˆ–è€…åŸŸå 
             Properties props=System.getProperties();
             this.javaVersion = props.getProperty("java.version");
             this.osName = props.getProperty("os.name");

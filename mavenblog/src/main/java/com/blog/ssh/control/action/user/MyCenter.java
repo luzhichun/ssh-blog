@@ -24,7 +24,7 @@ import com.blog.ssh.model.pojo.User;
 import com.opensymphony.xwork2.ActionContext;
 
 /**
- * ÓÃ»§µÇÂ¼ºóµÄ¸öÈËÖĞĞÄ£¬¹ÜÀíÆÀÂÛ£¬·¢²¼ÎÄÕÂµÈµÈ
+ * ç”¨æˆ·ç™»å½•åçš„ä¸ªäººä¸­å¿ƒï¼Œç®¡ç†è¯„è®ºï¼Œå‘å¸ƒæ–‡ç« ç­‰ç­‰
  * @author wy
  *
  */
@@ -41,19 +41,19 @@ public class MyCenter {
 	private TagService tagService;
 	private String username;
 	private String personinfo;
-	private String skin;//Æ¤·ô
-	private String currentPage;//ÓÃÓÚÅĞ¶Ïµ±Ç°´¦ÓÚÄÄ¸öÒ³Ãæ
+	private String skin;//çš®è‚¤
+	private String currentPage;//ç”¨äºåˆ¤æ–­å½“å‰å¤„äºå“ªä¸ªé¡µé¢
 	private String imageFileName;
-	 //ÉÏ´«µÄÎÄ¼ş¶ÔÏó  
+	 //ä¸Šä¼ çš„æ–‡ä»¶å¯¹è±¡  
 	private File uploadFile;  
-	//ÎÄ¼şÃû³Æ  
+	//æ–‡ä»¶åç§°  
 	private String uploadFileFileName;  
-	//ÎÄ¼şÀàĞÍ  
+	//æ–‡ä»¶ç±»å‹  
 	private String uploadFileContentType;
 	private UserSiderService userSiderService;
 	private String background;
-	private Integer email_notice;//ÓÊÏäÍ¨Öª±êÖ¾
-	private String key;//ÓÊÏäÁ´½ÓÖ±½ÓµÇÂ¼key
+	private Integer email_notice;//é‚®ç®±é€šçŸ¥æ ‡å¿—
+	private String key;//é‚®ç®±é“¾æ¥ç›´æ¥ç™»å½•key
 	public UserService getUserService() {
 		return userService;
 	}
@@ -189,8 +189,8 @@ public class MyCenter {
 		this.key = key;
 	}
 	/**
-	 * ÉèÖÃstruts2ÉÏ´«ÎÄ¼şµÄ´æ´¢Â·¾¶
-	 * @param path ´æ´¢µÄÏà¶ÔÂ·¾¶
+	 * è®¾ç½®struts2ä¸Šä¼ æ–‡ä»¶çš„å­˜å‚¨è·¯å¾„
+	 * @param path å­˜å‚¨çš„ç›¸å¯¹è·¯å¾„
 	 * @throws Exception
 	 */
 	@SuppressWarnings("deprecation")
@@ -198,11 +198,11 @@ public class MyCenter {
 		String [] ufn = null;
         path = ServletActionContext.getRequest().getRealPath(path); 
         System.out.println(path);
-        //Êä³öÁ÷  
+        //è¾“å‡ºæµ  
         InputStream is;
         OutputStream os;
-        ufn = uploadFileFileName.split("\\.");//»ñÈ¡picºó×ºÃû
-        uploadFileFileName =System.currentTimeMillis() + "." + ufn[ufn.length - 1];//ĞŞ¸ÄÎÄ¼şÃûÎªµ±Ç°Ê±¼ä
+        ufn = uploadFileFileName.split("\\.");//è·å–picåç¼€å
+        uploadFileFileName =System.currentTimeMillis() + "." + ufn[ufn.length - 1];//ä¿®æ”¹æ–‡ä»¶åä¸ºå½“å‰æ—¶é—´
         System.out.println(uploadFileFileName);
         os = new FileOutputStream(new File(path,uploadFileFileName));  
 		is = new FileInputStream(uploadFile); 
@@ -247,40 +247,40 @@ public class MyCenter {
 		Map application = ActionContext.getContext().getApplication();
 		if((key == null || !application.containsKey(key))){
 			if(u == null){
-				//²»ÄÜµÇÂ¼
+				//ä¸èƒ½ç™»å½•
 				return "notlogin";
 			}
 			else{
-				//±íÊ¾ÓÃ»§Í¨¹ısessionµÇÂ¼
+				//è¡¨ç¤ºç”¨æˆ·é€šè¿‡sessionç™»å½•
 				int user_id = u.getId();
 				this.user = userService.getUser(user_id);
 				if(sort == null  || sort.equals("all")){
-					//ÏÔÊ¾¸ÃÓÃ»§ËùÓĞÆÀÂÛ
+					//æ˜¾ç¤ºè¯¥ç”¨æˆ·æ‰€æœ‰è¯„è®º
 					this.comments = commentService.getCommentsByUser(user_id);
 				}
 				else{
-					//´ıÉóºËµÄÆÀÂÛ
+					//å¾…å®¡æ ¸çš„è¯„è®º
 					this.comments = commentService.getUnauditing(user_id);
 				}
-				this.currentPage = "commentManage";//±íÊ¾µ±Ç°Ò³Ãæ´¦ÓÚÆÀÂÛ¹ÜÀíÒ³Ãæ
+				this.currentPage = "commentManage";//è¡¨ç¤ºå½“å‰é¡µé¢å¤„äºè¯„è®ºç®¡ç†é¡µé¢
 				this.background = u.getBloginfo().getBackground();
 				return "success";
 			}
 		}
 		else{
-			//Í¨¹ıkeyÖµµÇÂ¼
+			//é€šè¿‡keyå€¼ç™»å½•
 			int user_id = (Integer) application.get(key);
 			userService.setUserSession(user_id);
 			this.user = userService.getUser(user_id);
 			if(sort == null  || sort.equals("all")){
-				//ÏÔÊ¾¸ÃÓÃ»§ËùÓĞÆÀÂÛ
+				//æ˜¾ç¤ºè¯¥ç”¨æˆ·æ‰€æœ‰è¯„è®º
 				this.comments = commentService.getCommentsByUser(user_id);
 			}
 			else{
-				//´ıÉóºËµÄÆÀÂÛ
+				//å¾…å®¡æ ¸çš„è¯„è®º
 				this.comments = commentService.getUnauditing(user_id);
 			}
-			this.currentPage = "commentManage";//±íÊ¾µ±Ç°Ò³Ãæ´¦ÓÚÆÀÂÛ¹ÜÀíÒ³Ãæ
+			this.currentPage = "commentManage";//è¡¨ç¤ºå½“å‰é¡µé¢å¤„äºè¯„è®ºç®¡ç†é¡µé¢
 			this.background = user.getBloginfo().getBackground();
 			return "success";
 		}
@@ -296,7 +296,7 @@ public class MyCenter {
 			this.user = userService.getUser(Integer.valueOf(u.getId()));
 			chiArticletypes = articletypeService.getAllChildrenArticletype();
 			tags = tagService.getHotTags(10);
-			this.currentPage = "releaseArticle";//±íÊ¾µ±Ç°Ò³Ãæ´¦ÓÚ·¢²¼ÎÄÕÂÒ³Ãæ
+			this.currentPage = "releaseArticle";//è¡¨ç¤ºå½“å‰é¡µé¢å¤„äºå‘å¸ƒæ–‡ç« é¡µé¢
 			this.background = u.getBloginfo().getBackground();
 			return "success";
 		}
@@ -307,7 +307,7 @@ public class MyCenter {
 			return "notlogin";
 		}
 		else{
-			this.currentPage = "modifyInfo";//±íÊ¾µ±Ç°Ò³Ãæ´¦ÓÚĞŞ¸Ä¸öÈË×ÊÁÏÒ³Ãæ
+			this.currentPage = "modifyInfo";//è¡¨ç¤ºå½“å‰é¡µé¢å¤„äºä¿®æ”¹ä¸ªäººèµ„æ–™é¡µé¢
 			this.background = u.getBloginfo().getBackground();
 			return "success";
 		}

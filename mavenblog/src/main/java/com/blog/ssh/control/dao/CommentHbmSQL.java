@@ -96,7 +96,7 @@ public class CommentHbmSQL {
 		}
 	}
 	/**
-	 * »ñÈ¡¸ÃÓÃ»§²©¿ÍÎÄÕÂµÄËùÓĞÆÀÂÛ
+	 * è·å–è¯¥ç”¨æˆ·åšå®¢æ–‡ç« çš„æ‰€æœ‰è¯„è®º
 	 * @param user_id
 	 * @return
 	 */
@@ -123,8 +123,8 @@ public class CommentHbmSQL {
 		}
 	}
 	/**
-	 * ²åÈëÆÀÂÛ
-	 * @param c ÆÀÂÛ
+	 * æ’å…¥è¯„è®º
+	 * @param c è¯„è®º
 	 * @param article_id
 	 */
 	@SuppressWarnings("unchecked")
@@ -139,7 +139,7 @@ public class CommentHbmSQL {
 		}
 	}
 	/**
-	 * @return ËùÓĞÆÀÂÛ
+	 * @return æ‰€æœ‰è¯„è®º
 	 */
 	public List<Comment> getAllComment(){
 		Session session = getCurrentSession();
@@ -148,7 +148,7 @@ public class CommentHbmSQL {
 		return cl;
 	}
 	/**
-	 * @return ËùÓĞÎ´ÉóºËÆÀÂÛÁĞ±í
+	 * @return æ‰€æœ‰æœªå®¡æ ¸è¯„è®ºåˆ—è¡¨
 	 */
 	public List<Comment> getUnauditing(){
 		Session session = getCurrentSession();
@@ -170,9 +170,9 @@ public class CommentHbmSQL {
 		return comment;
 	}
 	/**
-	 * Í¨¹ıarticle_id²éÑ¯ËùÓĞÆÀÂÛ
+	 * é€šè¿‡article_idæŸ¥è¯¢æ‰€æœ‰è¯„è®º
 	 * @param article_id
-	 * @return ¸ÃÎÄÕÂËùÓĞ(ÒÑÍ¨¹ıÉóºË)µÚÒ»¼¶CommentÁĞ±í
+	 * @return è¯¥æ–‡ç« æ‰€æœ‰(å·²é€šè¿‡å®¡æ ¸)ç¬¬ä¸€çº§Commentåˆ—è¡¨
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Comment> getParentComments(int article_id){
@@ -182,9 +182,9 @@ public class CommentHbmSQL {
 		return cl;
 	}
 	/**
-	 * Í¨¹ıparent_id²éÑ¯ËùÓĞ×ÓÆÀÂÛ
+	 * é€šè¿‡parent_idæŸ¥è¯¢æ‰€æœ‰å­è¯„è®º
 	 * @param parent_id
-	 * @return parent_id¶ÔÓ¦×ÓÆÀÂÛÁĞ±í
+	 * @return parent_idå¯¹åº”å­è¯„è®ºåˆ—è¡¨
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Comment> getChildrenComments(int parent_id){
@@ -194,12 +194,12 @@ public class CommentHbmSQL {
 		return cl;
 	}
 	/**
-	 * »ñÈ¡×îĞÂÆÀÂÛ
-	 * @return ×î½ü5ÌõÆÀÂÛList
+	 * è·å–æœ€æ–°è¯„è®º
+	 * @return æœ€è¿‘5æ¡è¯„è®ºList
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Comment> getLatestComments(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Comment as c where c.throughFlag=1 order by c.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -207,7 +207,7 @@ public class CommentHbmSQL {
 		return list;
 	}
 	public List<Comment> getLatestComments(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Comment as c where c.article.user.id=" + user_id + " and c.throughFlag=1 order by c.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -215,18 +215,18 @@ public class CommentHbmSQL {
 		return list;
 	}
 	/**
-	 * Í¨¹ıComment id²éÑ¯user_id
+	 * é€šè¿‡Comment idæŸ¥è¯¢user_id
 	 * @param id
 	 * @return user_id
 	 */
 	public int getUser_id(int id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select c.userId from Comment as c where id=" + id);
 		int userId = ((Number)query.uniqueResult()).intValue();
 		return userId;
 	}
 	/**
-	 * É¾³ıarticle_id¶ÔÓ¦ÎÄÕÂµÄËùÓĞÆÀÂÛ
+	 * åˆ é™¤article_idå¯¹åº”æ–‡ç« çš„æ‰€æœ‰è¯„è®º
 	 * @param article_id
 	 */
 	public void deleteArticleAllComment(int article_id){
@@ -240,9 +240,9 @@ public class CommentHbmSQL {
 		}
 	}
 	/**
-	 * ÉóºËÆÀÂÛ
-	 * @param id ÆÀÂÛid
-	 * @param flag ÉóºË±êÖ¾£¬1±íÊ¾Í¨¹ı£¬0±íÊ¾²»Í¨¹ı
+	 * å®¡æ ¸è¯„è®º
+	 * @param id è¯„è®ºid
+	 * @param flag å®¡æ ¸æ ‡å¿—ï¼Œ1è¡¨ç¤ºé€šè¿‡ï¼Œ0è¡¨ç¤ºä¸é€šè¿‡
 	 */
 	public void auditing(int id ,int flag){
 		String hql = "UPDATE Comment c SET c.throughFlag=" + flag + " ,c.auditingFlag=1 WHERE ID="+id;
@@ -255,7 +255,7 @@ public class CommentHbmSQL {
 		}
 	}
 	/**
-	 * »ñÈ¡ËùÓĞÆÀÂÛÊı
+	 * è·å–æ‰€æœ‰è¯„è®ºæ•°
 	 * @return
 	 */
 	public int getCommentCount(){
@@ -266,7 +266,7 @@ public class CommentHbmSQL {
 		return count;
 	}
 	/**
-	 * ¸ù¾İidÉ¾³ıÆÀÂÛ
+	 * æ ¹æ®idåˆ é™¤è¯„è®º
 	 * @param id
 	 */
 	public void deleteComment(int id){
@@ -280,7 +280,7 @@ public class CommentHbmSQL {
 		} 
 	}
 	/**
-	 *¶¥ÆÀÂÛ
+	 *é¡¶è¯„è®º
 	 * @param id
 	 */
 	public void setCommentLight(int id){
@@ -295,10 +295,10 @@ public class CommentHbmSQL {
 	}
 	/**
 	 * @param article_id
-	 * @return article_id¶ÔÓ¦ÎÄÕÂÆÀÂÛÊı
+	 * @return article_idå¯¹åº”æ–‡ç« è¯„è®ºæ•°
 	 */
 	public int getArticleCommentCount(int article_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select count(*) from Comment as c where c.throughFlag=1 and c.articleId=" + article_id);
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;

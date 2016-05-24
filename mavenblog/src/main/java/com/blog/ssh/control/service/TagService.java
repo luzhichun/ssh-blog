@@ -26,7 +26,7 @@ public class TagService {
 		return tagDAO.findById(id);
 	}
 	/**
-	 * ÅĞ¶Ï±êÇ©±íÖĞÊÇ·ñ´æÔÚ¸Ã±êÇ©
+	 * åˆ¤æ–­æ ‡ç­¾è¡¨ä¸­æ˜¯å¦å­˜åœ¨è¯¥æ ‡ç­¾
 	 * @param value
 	 * @return
 	 */
@@ -37,7 +37,7 @@ public class TagService {
 		return true;
 	}
 	/**
-	 * Í¨¹ıvalue²éÕÒtag
+	 * é€šè¿‡valueæŸ¥æ‰¾tag
 	 * @param value
 	 * @return
 	 */
@@ -45,7 +45,7 @@ public class TagService {
 		return tagDAO.findByValue(value);
 	}
 	/**
-	 * »ñÈ¡ËùÓĞtags
+	 * è·å–æ‰€æœ‰tags
 	 * @return
 	 */
 	public List<Tag> getAllTags(){

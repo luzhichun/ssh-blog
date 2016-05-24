@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Time{
 	public static String time(){
-			//返回当前输出时间
+			//杩斿洖褰撳墠杈撳嚭鏃堕棿
 		     SimpleDateFormat matter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		     return matter.format(new Date());
 	}

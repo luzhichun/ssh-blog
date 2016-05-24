@@ -96,7 +96,7 @@ public class ArticletypeHbmSQL {
 		}
 	}
 	/*
-	 * ¸ù¾İÀ¸Ä¿Á´½ÓÃû»ñÈ¡¸ÃÀ¸Ä¿ÏÂËùÓĞÎÄÕÂ
+	 * æ ¹æ®æ ç›®é“¾æ¥åè·å–è¯¥æ ç›®ä¸‹æ‰€æœ‰æ–‡ç« 
 	 */
 	public List findArticleByArticletype(String linkname){
 		Session session = getCurrentSession();
@@ -118,7 +118,7 @@ public class ArticletypeHbmSQL {
 	}
 	
 	/**
-	 * »ñÈ¡ËùÓĞ×Ó·ÖÀà
+	 * è·å–æ‰€æœ‰å­åˆ†ç±»
 	 * @return
 	 */
 	public List<Articletype> getAllChildrenArticletype(){
@@ -129,8 +129,8 @@ public class ArticletypeHbmSQL {
 		return ats;
 	}
 	/**
-	 * ¸ù¾İpid»ñÈ¡ËùÓĞ×Ó·ÖÀà
-	 * @param pid ¸¸id
+	 * æ ¹æ®pidè·å–æ‰€æœ‰å­åˆ†ç±»
+	 * @param pid çˆ¶id
 	 * @return
 	 */
 	public List<Articletype> getChildrenArticletype(int pid){
@@ -143,7 +143,7 @@ public class ArticletypeHbmSQL {
 		return ats;
 	}
 	/**
-	 * »ñÈ¡ËùÓĞ¸¸·ÖÀà
+	 * è·å–æ‰€æœ‰çˆ¶åˆ†ç±»
 	 * @return
 	 */
 	public List<Articletype> getAllParentArticletype(){
@@ -156,7 +156,7 @@ public class ArticletypeHbmSQL {
 		return ats;
 	}
 	/**
-	 * Í¨¹ıid²éÑ¯Articletype
+	 * é€šè¿‡idæŸ¥è¯¢Articletype
 	 * @param id
 	 * @return
 	 */

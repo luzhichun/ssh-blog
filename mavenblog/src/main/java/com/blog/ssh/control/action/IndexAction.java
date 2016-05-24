@@ -13,7 +13,7 @@ public class IndexAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Article> articles;//Ê×Ò³ÎÄÕÂ½éÉÜ£¬°üº¬Ïà¹ØÁªµÄÊôĞÔ
+	private List<Article> articles;//é¦–é¡µæ–‡ç« ä»‹ç»ï¼ŒåŒ…å«ç›¸å…³è”çš„å±æ€§
 	private ArticleService articleService;
 	private HeaderSiderService headerSiderService;
 	public IndexAction() {
@@ -41,7 +41,7 @@ public class IndexAction extends ActionSupport{
 		this.headerSiderService = headerSiderService;
 	}
 	/**
-	 * ·ÃÎÊindex.actionÖ´ĞĞµÄ·½·¨
+	 * è®¿é—®index.actionæ‰§è¡Œçš„æ–¹æ³•
 	 * @return
 	 */
 	public String execute(){

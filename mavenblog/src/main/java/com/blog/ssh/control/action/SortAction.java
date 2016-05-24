@@ -111,10 +111,10 @@ public class SortAction extends ActionSupport{
 		if(sortByTag != null){
 			this.articles = tagService.findById(sortByTag).getArticles();
 			this.tagValue = tagService.findById(sortByTag).getValue();
-			request.put("title", "°üº¬  " + tagValue + " ±êÇ©µÄÎÄÕÂ");
+			request.put("title", "åŒ…å«  " + tagValue + " æ ‡ç­¾çš„æ–‡ç« ");
 			return "success";
 		}
-		if(q != null && !q.equals("") && !q.equals("ÇëÊäÈë¹Ø¼ü×Ö½øĞĞËÑË÷")){
+		if(q != null && !q.equals("") && !q.equals("è¯·è¾“å…¥å…³é”®å­—è¿›è¡Œæœç´¢")){
 			String ts = null;
 			//System.out.println(q);
 			List<Article> as = articleService.serach(q);
@@ -128,7 +128,7 @@ public class SortAction extends ActionSupport{
 //			}
 			this.articles = new HashSet();
 			this.articles.addAll(as);
-			request.put("title","°üº¬ " + q + " ¹Ø¼ü×ÖµÄËÑË÷½á¹û");
+			request.put("title","åŒ…å« " + q + " å…³é”®å­—çš„æœç´¢ç»“æœ");
 			return "success";
 		}
 		return "notinput";

@@ -6,7 +6,7 @@ import com.blog.ssh.control.service.MessageService;
 import com.blog.ssh.model.pojo.Message;
 
 public class ShowMessages {
-	private String sort;//分类管理
+	private String sort;//鍒嗙被绠＄悊
 	private List<Message> messages;
 	private MessageService messageService;
 	public ShowMessages(){
@@ -36,7 +36,7 @@ public class ShowMessages {
 			return "notlogin";
 		}
 		if(sort != null && !sort.equals("all")){
-			//分类管理
+			//鍒嗙被绠＄悊
 			this.messages = messageService.getUnAuditing();
 		}
 		else{

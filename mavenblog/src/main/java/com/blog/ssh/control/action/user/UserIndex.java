@@ -61,12 +61,12 @@ public class UserIndex {
 		return "success";
 	}
 	/**
-	 * »ñÈ¡Ä³¸öÓÃ»§µÄÖ÷Ò³
+	 * è·å–æŸä¸ªç”¨æˆ·çš„ä¸»é¡µ
 	 * @return
 	 */
 	public String execute(){
 		ActionInvocation ai = (ActionInvocation) ActionContext.getContext().get(ActionContext.ACTION_INVOCATION);
-		final String action = ai.getProxy().getActionName();//ÓÃ»§url
+		final String action = ai.getProxy().getActionName();//ç”¨æˆ·url
 		System.out.println("action:" + action);
 		if(userService.hasUserByurl(action)){
 			User u = userService.findUserByurl(action);
@@ -79,7 +79,7 @@ public class UserIndex {
 		}
 	}
 	/**
-	 * »ñÈ¡ÎÄÕÂ
+	 * è·å–æ–‡ç« 
 	 * @return
 	 */
 }

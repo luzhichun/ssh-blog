@@ -59,32 +59,32 @@ public class CommentManage {
 	}
 	public String execute(){
 		if(!RightsManagement.adminIsLogin()  && !RightsManagement.userIsLogin()){
-			//用户和管理员都未登录
+			//鐢ㄦ埛鍜岀鐞嗗憳閮芥湭鐧诲綍
 			return "notlogin";
 		}
 		if(flag == null && id != 0){
-			//删除单个留言
+			//鍒犻櫎鍗曚釜鐣欒█
 			commentService.deleteComment(id);
 		}
 		if(flag == null && id == 0 && ids != null){
-			//批量删除留言
+			//鎵归噺鍒犻櫎鐣欒█
 			String[] idArr = ids.split(",");
 			for(int i = 0;i < idArr.length;i++){
 				commentService.deleteComment(Integer.valueOf(idArr[i]));
 			}
 		}
 		if(flag != null && id != 0 && ids == null){
-			//审核单个留言
+			//瀹℃牳鍗曚釜鐣欒█
 				commentService.auditing(id, Integer.valueOf(flag));
 		}
 		if(flag != null && id == 0 && ids != null){
-			//批量通过留言
+			//鎵归噺閫氳繃鐣欒█
 			String [] idArr = ids.split(",");
 			for(int i = 0;i < idArr.length;i++ ){
 				commentService.auditing(Integer.valueOf(idArr[i]), Integer.valueOf(flag));
 			}
  		}
-		headerSiderService.setApplication();//设置评论后，重新设置网站session
+		headerSiderService.setApplication();//璁剧疆璇勮鍚庯紝閲嶆柊璁剧疆缃戠珯session
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User user = (User) session.get("user");
 		user.setMsgCounts(userService.getmsgCounts(user.getId()));

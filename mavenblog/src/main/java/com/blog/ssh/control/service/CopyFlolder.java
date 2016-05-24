@@ -10,26 +10,26 @@ import java.io.IOException;
 public class CopyFlolder {
 
     
-    //Ô´ÎÄ¼ş¼Ğ
+    //æºæ–‡ä»¶å¤¹
     static String url1="D:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\blog\\upload";
-    //Ä¿±êÎÄ¼ş¼Ğ
+    //ç›®æ ‡æ–‡ä»¶å¤¹
     static String url2="D:\\myworkspaces\\myeclipse\\SSH_Blog\\WebRoot\\upload\\";
     
     
     
     public static void main(String[] args) throws IOException {
         // TODO Auto-generated method stub
-        //´´½¨Ä¿±êÎÄ¼ş¼Ğ
+        //åˆ›å»ºç›®æ ‡æ–‡ä»¶å¤¹
       (new File(url2)).mkdirs();
-      //»ñÈ¡Ô´ÎÄ¼ş¼Ğµ±Ç°ÏÂµÄÎÄ¼ş»òÄ¿Â¼
+      //è·å–æºæ–‡ä»¶å¤¹å½“å‰ä¸‹çš„æ–‡ä»¶æˆ–ç›®å½•
        File[] file=(new File(url1)).listFiles();
        for (int i = 0; i < file.length; i++) {
         if(file[i].isFile()){
-            //¸´ÖÆÎÄ¼ş
+            //å¤åˆ¶æ–‡ä»¶
             copyFile(file[i],new File(url2+file[i].getName()));
         }
         if(file[i].isDirectory()){
-            //¸´ÖÆÄ¿Â¼
+            //å¤åˆ¶ç›®å½•
             String sorceDir=url1+File.separator+file[i].getName();
             String targetDir=url2+File.separator+file[i].getName();
             copyDirectiory(sorceDir, targetDir);
@@ -41,25 +41,25 @@ public class CopyFlolder {
 
   public static void copyFile(File sourcefile,File targetFile) throws IOException{
         
-        //ĞÂ½¨ÎÄ¼şÊäÈëÁ÷²¢¶ÔËü½øĞĞ»º³å
+        //æ–°å»ºæ–‡ä»¶è¾“å…¥æµå¹¶å¯¹å®ƒè¿›è¡Œç¼“å†²
         FileInputStream input=new FileInputStream(sourcefile);
         BufferedInputStream inbuff=new BufferedInputStream(input);
         
-        //ĞÂ½¨ÎÄ¼şÊä³öÁ÷²¢¶ÔËü½øĞĞ»º³å
+        //æ–°å»ºæ–‡ä»¶è¾“å‡ºæµå¹¶å¯¹å®ƒè¿›è¡Œç¼“å†²
         FileOutputStream out=new FileOutputStream(targetFile);
         BufferedOutputStream outbuff=new BufferedOutputStream(out);
         
-        //»º³åÊı×é
+        //ç¼“å†²æ•°ç»„
         byte[] b=new byte[1024*5];
         int len=0;
         while((len=inbuff.read(b))!=-1){
             outbuff.write(b, 0, len);
         }
         
-        //Ë¢ĞÂ´Ë»º³åµÄÊä³öÁ÷
+        //åˆ·æ–°æ­¤ç¼“å†²çš„è¾“å‡ºæµ
         outbuff.flush();
         
-        //¹Ø±ÕÁ÷
+        //å…³é—­æµ
         inbuff.close();
         outbuff.close();
         out.close();
@@ -70,18 +70,18 @@ public class CopyFlolder {
     
     public static void copyDirectiory(String sourceDir,String targetDir) throws IOException{
         
-        //ĞÂ½¨Ä¿±êÄ¿Â¼
+        //æ–°å»ºç›®æ ‡ç›®å½•
         
         (new File(targetDir)).mkdirs();
         
-        //»ñÈ¡Ô´ÎÄ¼ş¼Ğµ±ÏÂµÄÎÄ¼ş»òÄ¿Â¼
+        //è·å–æºæ–‡ä»¶å¤¹å½“ä¸‹çš„æ–‡ä»¶æˆ–ç›®å½•
         File[] file=(new File(sourceDir)).listFiles();
         
         for (int i = 0; i < file.length; i++) {
             if(file[i].isFile()){
-                //Ô´ÎÄ¼ş
+                //æºæ–‡ä»¶
                 File sourceFile=file[i];
-                    //Ä¿±êÎÄ¼ş
+                    //ç›®æ ‡æ–‡ä»¶
                 File targetFile=new File(new File(targetDir).getAbsolutePath()+File.separator+file[i].getName());
                 
                 copyFile(sourceFile, targetFile);
@@ -90,9 +90,9 @@ public class CopyFlolder {
             
             
             if(file[i].isDirectory()){
-                //×¼±¸¸´ÖÆµÄÔ´ÎÄ¼ş¼Ğ
+                //å‡†å¤‡å¤åˆ¶çš„æºæ–‡ä»¶å¤¹
                 String dir1=sourceDir+file[i].getName();
-                //×¼±¸¸´ÖÆµÄÄ¿±êÎÄ¼ş¼Ğ
+                //å‡†å¤‡å¤åˆ¶çš„ç›®æ ‡æ–‡ä»¶å¤¹
                 String dir2=targetDir+"/"+file[i].getName();
                 
                 copyDirectiory(dir1, dir2);

@@ -11,8 +11,8 @@ import com.blog.ssh.model.pojo.HeaderAndSider;
 import com.opensymphony.xwork2.ActionContext;
 
 /**
- * 管理网站herader和sider部分内容
- * 将该部分所需数据设置为session
+ * 绠＄悊缃戠珯herader鍜宻ider閮ㄥ垎鍐呭
+ * 灏嗚閮ㄥ垎鎵�闇�鏁版嵁璁剧疆涓簊ession
  * @author wy
  *
  */
@@ -64,7 +64,7 @@ public class HeaderSiderService {
 		this.tagDAO = tagDAO;
 	}
 	/**
-	 * 将网站hearder和sider部分设置为session
+	 * 灏嗙綉绔檋earder鍜宻ider閮ㄥ垎璁剧疆涓簊ession
 	 * @return
 	 */
 	public boolean setApplication(){
@@ -80,7 +80,7 @@ public class HeaderSiderService {
 		return true;
 	}
 	/**
-	 * 判断是否存在hs部分的session，如果存在，不创建session，不存在，创建session
+	 * 鍒ゆ柇鏄惁瀛樺湪hs閮ㄥ垎鐨剆ession锛屽鏋滃瓨鍦紝涓嶅垱寤簊ession锛屼笉瀛樺湪锛屽垱寤簊ession
 	 * @return
 	 */
 	public void SessionManage(){

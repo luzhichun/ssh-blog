@@ -105,20 +105,20 @@ public class MessageHbmSQL {
 		}
 	}
 	/**
-	 * ºóÌ¨¹ÜÀíÊ±
-	 * »ñÈ¡ËùÓĞÎÄÕÂ
-	 * @return ËùÓĞÁôÑÔÁĞ±í
+	 * åå°ç®¡ç†æ—¶
+	 * è·å–æ‰€æœ‰æ–‡ç« 
+	 * @return æ‰€æœ‰ç•™è¨€åˆ—è¡¨
 	 */
 	public List<Message> getAllMessage(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Message as m order by m.id desc");
 		List<Message> list = query.list();
 		
 		return list;
 	}
 	/**
-	 * »ñÈ¡ËùÓĞ¸¸ÁôÑÔ
-	 * @return ËùÓĞÁôÑÔÁĞ±í
+	 * è·å–æ‰€æœ‰çˆ¶ç•™è¨€
+	 * @return æ‰€æœ‰ç•™è¨€åˆ—è¡¨
 	 */
 	public List<Message> getAllParMessages(){
 		Session session = getCurrentSession();
@@ -129,7 +129,7 @@ public class MessageHbmSQL {
 		return msgs;
 	}
 	/**
-	 * É¾³ıÁôÑÔ,Í¬Ê±É¾³ıÁôÑÔµÄuserĞÅÏ¢
+	 * åˆ é™¤ç•™è¨€,åŒæ—¶åˆ é™¤ç•™è¨€çš„userä¿¡æ¯
 	 * @param id
 	 */
 	public void deleteMsg(int id){
@@ -144,9 +144,9 @@ public class MessageHbmSQL {
 		}
 	}
 	/**
-	 * ÉóºËÁôÑÔ
-	 * @param id ÁôÑÔid
-	 * @param flag ÉóºË±êÖ¾
+	 * å®¡æ ¸ç•™è¨€
+	 * @param id ç•™è¨€id
+	 * @param flag å®¡æ ¸æ ‡å¿—
 	 */
 	public void auditing(int id ,int flag){
 		Session session = getCurrentSession();
@@ -159,7 +159,7 @@ public class MessageHbmSQL {
 		} 
 	}
 	/**
-	 * ¸ù¾İparent_id»ñÈ¡ÒÑ¾­Í¨¹ıµÄ×ÓÁôÑÔÁôÑÔÁĞ±í
+	 * æ ¹æ®parent_idè·å–å·²ç»é€šè¿‡çš„å­ç•™è¨€ç•™è¨€åˆ—è¡¨
 	 * @param parent_id
 	 * @return
 	 */
@@ -172,7 +172,7 @@ public class MessageHbmSQL {
 		return cMsgs;
 	}
 	/**
-	 * »ñÈ¡ËùÓĞÎ´ÉóºËµÄÁôÑÔ
+	 * è·å–æ‰€æœ‰æœªå®¡æ ¸çš„ç•™è¨€
 	 * @return
 	 */
 	public List<Message> getUnAuditing(){
@@ -184,11 +184,11 @@ public class MessageHbmSQL {
 		return cMsgs;
 	}
 	/**
-	 * »ñÈ¡×îĞÂÍ¨¹ıÉóºËµÄÆÀÂÛ
-	 * @return 5Ìõ×îĞÂÆÀÂÛ
+	 * è·å–æœ€æ–°é€šè¿‡å®¡æ ¸çš„è¯„è®º
+	 * @return 5æ¡æœ€æ–°è¯„è®º
 	 */
 	public List<Message> getLatestMessage(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Message as m where m.throughFlag=1 order by m.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -198,7 +198,7 @@ public class MessageHbmSQL {
 		return list;
 	}
 	/**
-	 * ¶¥ÁôÑÔ
+	 * é¡¶ç•™è¨€
 	 * @param id
 	 */
 	public void setMessageLight(int id){
@@ -212,11 +212,11 @@ public class MessageHbmSQL {
 		} 
 	}
 	/**
-	 * »ñÈ¡Êı¾İ¿âÖĞÁôÑÔÊıÁ¿
-	 * @return ÁôÑÔÊıÁ¿
+	 * è·å–æ•°æ®åº“ä¸­ç•™è¨€æ•°é‡
+	 * @return ç•™è¨€æ•°é‡
 	 */
 	public int getMessageCount(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select count(*) from Message as m");
 		int count = ((Number)query.uniqueResult()).intValue();
 		

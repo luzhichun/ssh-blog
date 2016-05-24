@@ -18,7 +18,7 @@ public class ArticleService {
 		this.articleDAO = articleDAO;
 	}
 	/**
-	 * ²åÈëÎÄÕÂ
+	 * æ’å…¥æ–‡ç« 
 	 * @param c
 	 * @param article_id
 	 */
@@ -26,72 +26,72 @@ public class ArticleService {
 		articleDAO.insertArticle(a, articletype_id);
 	}
 	/**
-	 * »ñÈ¡ËùÓĞÎÄÕÂ
-	 * @return ËùÓĞÎÄÕÂÁĞ±í
+	 * è·å–æ‰€æœ‰æ–‡ç« 
+	 * @return æ‰€æœ‰æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getAllArticle(){
 		return articleDAO.getAllArticle();
 	}
 	/**
-	 * »ñÈ¡×îÈÈÎÄÕÂ
-	 * @return 5Æª·ÃÎÊÁ¿×î¶àµÄÎÄÕÂÁĞ±í
+	 * è·å–æœ€çƒ­æ–‡ç« 
+	 * @return 5ç¯‡è®¿é—®é‡æœ€å¤šçš„æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getHotArticleTitle(){
 		return articleDAO.getHotArticleTitle();
 	}
 	/**
-	 * »ñÈ¡×îĞÂÎÄÕÂ
-	 * @return 5Æª×îĞÂÎÄÕÂÁĞ±í
+	 * è·å–æœ€æ–°æ–‡ç« 
+	 * @return 5ç¯‡æœ€æ–°æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getLatestArticleTitle(){
 		return articleDAO.getLatestArticleTitle();
 	}
 	/**
-	 * Ëæ»ú»ñÈ¡ÎÄÕÂ
-	 * @return 5ÆªËæ»úÎÄÕÂÁĞ±í
+	 * éšæœºè·å–æ–‡ç« 
+	 * @return 5ç¯‡éšæœºæ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getRandomArticleTitle(Integer user_id){
 		return articleDAO.getRandomArticleTitle(user_id);
 	}
 	/**
-	 * »ñÈ¡×îÈÈÎÄÕÂ
-	 * @return 5Æª·ÃÎÊÁ¿×î¶àµÄÎÄÕÂÁĞ±í
+	 * è·å–æœ€çƒ­æ–‡ç« 
+	 * @return 5ç¯‡è®¿é—®é‡æœ€å¤šçš„æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getHotArticleTitle(Integer user_id){
 		return articleDAO.getHotArticleTitle(user_id);
 	}
 	/**
-	 * »ñÈ¡×îĞÂÎÄÕÂ
-	 * @return 5Æª×îĞÂÎÄÕÂÁĞ±í
+	 * è·å–æœ€æ–°æ–‡ç« 
+	 * @return 5ç¯‡æœ€æ–°æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getLatestArticleTitle(Integer user_id){
 		return articleDAO.getLatestArticleTitle(user_id);
 	}
 	/**
-	 * Ëæ»ú»ñÈ¡ÎÄÕÂ
-	 * @return 5ÆªËæ»úÎÄÕÂÁĞ±í
+	 * éšæœºè·å–æ–‡ç« 
+	 * @return 5ç¯‡éšæœºæ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getRandomArticleTitle(){
 		return articleDAO.getRandomArticleTitle();
 	}
 	/**
-	 * Í¨¹ıid²éÕÒArticle
-	 * @param id ÎÄÕÂid
+	 * é€šè¿‡idæŸ¥æ‰¾Article
+	 * @param id æ–‡ç« id
 	 * @return Article
 	 */
 	public Article getArticle(Integer id){
 		return articleDAO.getArticle(id);
 	}
 	/**
-	 * Í¨¹ıÎÄ¼şÃû²éÕÒArticle
-	 * @param ÎÄÕÂ¶ÔÓ¦Ò³ÃæµÄÎÄ¼şÃû
+	 * é€šè¿‡æ–‡ä»¶åæŸ¥æ‰¾Article
+	 * @param æ–‡ç« å¯¹åº”é¡µé¢çš„æ–‡ä»¶å
 	 * @return Article
 	 */
 	public Article getArticle(String fileName){
 		return articleDAO.getArticle(fileName);
 	}
 	/**
-	 * Í¨¹ıidÉ¾³ıÎÄÕÂ
+	 * é€šè¿‡idåˆ é™¤æ–‡ç« 
 	 * @param id
 	 * 
 	 */
@@ -99,7 +99,7 @@ public class ArticleService {
 		articleDAO.delete(articleDAO.findById(id));
 	}
 	/**
-	 * ÉèÖÃÎÄÕÂ·ÃÎÊÁ¿
+	 * è®¾ç½®æ–‡ç« è®¿é—®é‡
 	 * @param fileName
 	 */
 	public void setArticleVisits(int id){
@@ -109,8 +109,8 @@ public class ArticleService {
 		
 	}
 	/**
-	 * »ñÈ¡Êı¾İ¿âÖĞÎÄÕÂÊıÁ¿
-	 * @return ÎÄÕÂÊıÁ¿
+	 * è·å–æ•°æ®åº“ä¸­æ–‡ç« æ•°é‡
+	 * @return æ–‡ç« æ•°é‡
 	 */
 	public int getArticleCount(){
 		return articleDAO.getArticleCount();

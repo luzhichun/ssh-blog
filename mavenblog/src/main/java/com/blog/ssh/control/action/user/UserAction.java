@@ -92,28 +92,28 @@ public class UserAction {
 	public String login(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		if(username == null || password == null){
-			request.setAttribute("loginState", "ÇëÊäÈëÓÃ»§ÃûºÍÃÜÂë");
+			request.setAttribute("loginState", "è¯·è¾“å…¥ç”¨æˆ·åå’Œå¯†ç ");
 			return "failed";
 		}
 		try{
 			System.out.println(username);
 			int rVal = userService.checkLogin(username,password);
 			if(rVal == 1){
-				//µÇÂ¼³É¹¦
-				request.setAttribute("loginState", "µÇÂ¼³É¹¦");
+				//ç™»å½•æˆåŠŸ
+				request.setAttribute("loginState", "ç™»å½•æˆåŠŸ");
 				return "success";
 			}
 			else if(rVal == 2){
-				request.setAttribute("loginState", "¸ÃÕË»§ÒÑ±»·â½û£¬ÇëÁªÏµ¹ÜÀíÔ±");
+				request.setAttribute("loginState", "è¯¥è´¦æˆ·å·²è¢«å°ç¦ï¼Œè¯·è”ç³»ç®¡ç†å‘˜");
 				return "failed";
 			}
 			else{
-				request.setAttribute("loginState", "ÕËºÅ»òÃÜÂë´íÎó");
+				request.setAttribute("loginState", "è´¦å·æˆ–å¯†ç é”™è¯¯");
 				return "failed";
-				//µÇÂ¼Ê§°Ü
+				//ç™»å½•å¤±è´¥
 			}
 		} catch(Exception e){
-			request.setAttribute("loginState", "ÕËºÅ»òÃÜÂë´íÎó");
+			request.setAttribute("loginState", "è´¦å·æˆ–å¯†ç é”™è¯¯");
 			return "failed";
 		}
 	}
@@ -122,55 +122,55 @@ public class UserAction {
 		return "success";
 	}
 	/**
-	 * ×¢²áÊ±¼ì²âÓÃ»§Ãû
+	 * æ³¨å†Œæ—¶æ£€æµ‹ç”¨æˆ·å
 	 * @return
 	 */
 	public String checkUsername(){
 		if(!userService.hasUser(username)){
-			setResult("¸ÃÓÃ»§Ãû¿ÉÓÃ£¡"); 
+			setResult("è¯¥ç”¨æˆ·åå¯ç”¨ï¼"); 
 		}
 		else{
-			setResult("¸ÃÓÃ»§ÃûÒÑ´æÔÚ£¡");
+			setResult("è¯¥ç”¨æˆ·åå·²å­˜åœ¨ï¼");
 		}
 		return "success";
 	}
 	/**
-	 * ·¢ËÍÑéÖ¤Âëµ½ÓÊÏä
+	 * å‘é€éªŒè¯ç åˆ°é‚®ç®±
 	 * @return
 	 */
 	public String sendVlidatecode(){
 		try {
 			String vlidateCode = (int)(Math.random()*10000) + "";
 			Map map = ActionContext.getContext().getSession();
-			map.put("vlidateCode", vlidateCode);//½«ÑéÖ¤Âë´æÈësessionÖĞ
-			String content = "¡¾ÃÎÏë²©¿Í¡¿ÕËºÅ×¢²áÑéÖ¤Âë<br>ÑéÖ¤ÂëÎª£º<span style=\"font-size:20px;color:red\">" + vlidateCode +
+			map.put("vlidateCode", vlidateCode);//å°†éªŒè¯ç å­˜å…¥sessionä¸­
+			String content = "ã€æ¢¦æƒ³åšå®¢ã€‘è´¦å·æ³¨å†ŒéªŒè¯ç <br>éªŒè¯ç ä¸ºï¼š<span style=\"font-size:20px;color:red\">" + vlidateCode +
 		"</span>";
-			Test_Email.send_email(email,"¡¾ÃÎÏë²©¿Í¡¿ÕËºÅ×¢²áÑéÖ¤Âë",content);
+			Test_Email.send_email(email,"ã€æ¢¦æƒ³åšå®¢ã€‘è´¦å·æ³¨å†ŒéªŒè¯ç ",content);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "failed";
 		}
-		setResult("ÑéÖ¤Âë·¢ËÍ³É¹¦!");
+		setResult("éªŒè¯ç å‘é€æˆåŠŸ!");
 		return "success";
 	}
 	/**
-	 * ×¢²áÊ±ÓÊÏäÑéÖ¤
+	 * æ³¨å†Œæ—¶é‚®ç®±éªŒè¯
 	 * @return
 	 */
 	public String emailVlidate(){
 		String sessionCode = null;
 		sessionCode = (String) ActionContext.getContext().getSession().get("vlidateCode");
 		if(sessionCode == null || vlidatecode == null || !vlidatecode.equals(sessionCode)){
-			setResult("ÑéÖ¤Âë´íÎó£¡"); 
+			setResult("éªŒè¯ç é”™è¯¯ï¼"); 
 		}
 		else{
-			setResult("ÑéÖ¤ÂëÕıÈ·£¡");
+			setResult("éªŒè¯ç æ­£ç¡®ï¼");
 		}
 		return "success";
 	}
 	/**
-	 * ×¢²á
+	 * æ³¨å†Œ
 	 * @return
 	 */
 	public String addUser(){
@@ -185,7 +185,7 @@ public class UserAction {
 			User user = new User();
 			user.setEmail(email);
 			user.setUsername(username);
-			user.setPassword(MD5.getInstance().getMD5(password));//¶ÔÓÃ»§ÃÜÂë½øĞĞmd5¼ÓÃÜ
+			user.setPassword(MD5.getInstance().getMD5(password));//å¯¹ç”¨æˆ·å¯†ç è¿›è¡Œmd5åŠ å¯†
 			user.setHeadpicname("wycm.jpg");
 			user.setRegistertime(Time.time());
 			user.setUrl(System.currentTimeMillis() + "");
@@ -195,7 +195,7 @@ public class UserAction {
 		} catch(Exception e){
 			return "failed";
 		}
-		//×¢²á³É¹¦ºó£¬Ö±½ÓµÇÂ¼
+		//æ³¨å†ŒæˆåŠŸåï¼Œç›´æ¥ç™»å½•
 		userService.setUserSession(userService.findMaxId());
 		return "success";
 	}

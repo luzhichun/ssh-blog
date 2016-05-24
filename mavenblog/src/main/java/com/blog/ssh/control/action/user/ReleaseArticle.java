@@ -23,7 +23,7 @@ import com.blog.ssh.model.pojo.User;
 import com.blog.ssh.sensitivewordsfilter.SensitivewordFilter;
 import com.opensymphony.xwork2.ActionContext;
 /*
- * ·¢²¼ÎÄÕÂ
+ * å‘å¸ƒæ–‡ç« 
  */
 public class ReleaseArticle {
 	private String title;
@@ -31,11 +31,11 @@ public class ReleaseArticle {
 	private String tagsValue;
 	private int articletypeId;
 	private String imageFileName;
-	 //ÉÏ´«µÄÎÄ¼ş¶ÔÏó  
+	 //ä¸Šä¼ çš„æ–‡ä»¶å¯¹è±¡  
 	private File uploadFile;  
-	//ÎÄ¼şÃû³Æ  
+	//æ–‡ä»¶åç§°  
 	private String uploadFileFileName;  
-	//ÎÄ¼şÀàĞÍ  
+	//æ–‡ä»¶ç±»å‹  
 	private String uploadFileContentType;
 	private ArticleService articleService;
 	private TagService tagService;
@@ -112,8 +112,8 @@ public class ReleaseArticle {
 		this.headerSiderService = headerSiderService;
 	}
 	/**
-	 * ÉèÖÃstruts2ÉÏ´«ÎÄ¼şµÄ´æ´¢Â·¾¶
-	 * @param path ´æ´¢µÄÏà¶ÔÂ·¾¶
+	 * è®¾ç½®struts2ä¸Šä¼ æ–‡ä»¶çš„å­˜å‚¨è·¯å¾„
+	 * @param path å­˜å‚¨çš„ç›¸å¯¹è·¯å¾„
 	 * @throws Exception
 	 */
 	@SuppressWarnings("deprecation")
@@ -121,11 +121,11 @@ public class ReleaseArticle {
 		String [] ufn = null;
         path = ServletActionContext.getRequest().getRealPath(path); 
         System.out.println(path);
-        //Êä³öÁ÷  
+        //è¾“å‡ºæµ  
         InputStream is;
         OutputStream os;
-        ufn = uploadFileFileName.split("\\.");//»ñÈ¡picºó×ºÃû
-        uploadFileFileName =System.currentTimeMillis() + "." + ufn[ufn.length - 1];//ĞŞ¸ÄÎÄ¼şÃûÎªµ±Ç°Ê±¼ä
+        ufn = uploadFileFileName.split("\\.");//è·å–picåç¼€å
+        uploadFileFileName =System.currentTimeMillis() + "." + ufn[ufn.length - 1];//ä¿®æ”¹æ–‡ä»¶åä¸ºå½“å‰æ—¶é—´
         System.out.println(uploadFileFileName);
         os = new FileOutputStream(new File(path,uploadFileFileName));  
 		is = new FileInputStream(uploadFile); 
@@ -161,9 +161,9 @@ public class ReleaseArticle {
 		for(int i = 0;i < tagsArray.length;i++){
 			Tag t = null;
 			if(tagService.hasValue(tagsArray[i])){
-				//¸Ã±êÇ©Êı¾İ¿âÖĞÒÑ¾­´æÔÚ
+				//è¯¥æ ‡ç­¾æ•°æ®åº“ä¸­å·²ç»å­˜åœ¨
 				t = (Tag) tagService.findByValue(tagsArray[i]).get(0);
-				System.out.println("Êı¾İ¿âÖĞ´æÔÚÒ»¸ö±êÇ©");
+				System.out.println("æ•°æ®åº“ä¸­å­˜åœ¨ä¸€ä¸ªæ ‡ç­¾");
 			}
 			else{
 				t = new Tag();
@@ -190,7 +190,7 @@ public class ReleaseArticle {
 				uploadPath("/upload");
 				a.setImagename(uploadFileFileName);
 				if(!SystemManage.isAliServer()){
-					FileManage.copyFile(ServletActionContext.getRequest().getRealPath("/upload/" + uploadFileFileName) , "D:/myworkspaces/myeclipse/SSH_Blog/WebRoot/upload/" + uploadFileFileName);//¸´ÖÆÎÄ¼ş±¾µØ
+					FileManage.copyFile(ServletActionContext.getRequest().getRealPath("/upload/" + uploadFileFileName) , "D:/myworkspaces/myeclipse/SSH_Blog/WebRoot/upload/" + uploadFileFileName);//å¤åˆ¶æ–‡ä»¶æœ¬åœ°
 				}
 			}
 //			System.out.println(content);
@@ -204,7 +204,7 @@ public class ReleaseArticle {
 			a.setReleasetime(Time.time());
 			a.setTags(getArticleTags());
 			articleService.insertArticle(a, articletypeId);
-			headerSiderService.setApplication();//·¢²¼ÎÄÕÂºó£¬ÖØĞÂÉèÖÃsession
+			headerSiderService.setApplication();//å‘å¸ƒæ–‡ç« åï¼Œé‡æ–°è®¾ç½®session
 			return "success";
 		} catch(Exception e){
 			e.printStackTrace();

@@ -9,14 +9,14 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * ºóÌ¨¹ÜÀí£¬ÏÔÊ¾ËùÓĞÎÄÕÂ
+ * åå°ç®¡ç†ï¼Œæ˜¾ç¤ºæ‰€æœ‰æ–‡ç« 
  */
 public class ShowArticles extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private List<Article> articles;
 	private Articletype articletype;
 	private List<Articletype> articletypes;
-	private String sort;//·ÖÀà¹ÜÀí
+	private String sort;//åˆ†ç±»ç®¡ç†
 	private ArticletypeService articletypeService;
 	private ArticleService articleService;
 	public ShowArticles(){
@@ -69,17 +69,17 @@ public class ShowArticles extends ActionSupport{
 		}
 		ActionContext cxt = ActionContext.getContext();
 		if(sort != null && !sort.equals("all")){
-			//·ÖÀà¹ÜÀíÎÄ
+			//åˆ†ç±»ç®¡ç†æ–‡
 			this.articletype = articletypeService.getArticletype(sort);
 			this.articletypes = articletypeService.getAllChildrenArticletype();
 			cxt.put("articles", articletype.getArticles());
-			System.out.println("·ÖÀà²é¿´È«²¿ÎÄÕÂ");
+			System.out.println("åˆ†ç±»æŸ¥çœ‹å…¨éƒ¨æ–‡ç« ");
 		}
 		else{
 			this.articles = articleService.getAllArticle();
 			this.articletypes = articletypeService.getAllChildrenArticletype();
 			cxt.put("articles", articles);
-			System.out.println("²é¿´È«²¿ÎÄÕÂ");
+			System.out.println("æŸ¥çœ‹å…¨éƒ¨æ–‡ç« ");
 		}
 		return "success";
 	}

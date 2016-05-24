@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 public class SystemManage {
 	/**
-	 * 判断当前运行环境是否在阿里云服务器上
+	 * 鍒ゆ柇褰撳墠杩愯鐜鏄惁鍦ㄩ樋閲屼簯鏈嶅姟鍣ㄤ笂
 	 * @return
 	 */
 	public static boolean isAliServer(){

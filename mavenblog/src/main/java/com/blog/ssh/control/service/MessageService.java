@@ -19,37 +19,37 @@ public class MessageService {
 		messageDAO.save(message);
 	}
 	/**
-	 * ºóÌ¨¹ÜÀíÊ±
-	 * »ñÈ¡ËùÓĞÎÄÕÂ
-	 * @return ËùÓĞÁôÑÔÁĞ±í
+	 * åå°ç®¡ç†æ—¶
+	 * è·å–æ‰€æœ‰æ–‡ç« 
+	 * @return æ‰€æœ‰ç•™è¨€åˆ—è¡¨
 	 */
 	public List<Message> getAllMessage(){
 		return messageDAO.getAllMessage();
 	}
 	/**
-	 * »ñÈ¡ËùÓĞ¸¸ÁôÑÔ
-	 * @return ËùÓĞÁôÑÔÁĞ±í
+	 * è·å–æ‰€æœ‰çˆ¶ç•™è¨€
+	 * @return æ‰€æœ‰ç•™è¨€åˆ—è¡¨
 	 */
 	public List<Message> getAllParMessages(){
 		return messageDAO.getAllParMessages();
 	}
 	/**
-	 * É¾³ıÁôÑÔ,Í¬Ê±É¾³ıÁôÑÔµÄuserĞÅÏ¢
+	 * åˆ é™¤ç•™è¨€,åŒæ—¶åˆ é™¤ç•™è¨€çš„userä¿¡æ¯
 	 * @param id
 	 */
 	public void deleteMsg(int id){
 		messageDAO.deleteMsg(id);
 	}
 	/**
-	 * ÉóºËÁôÑÔ
-	 * @param id ÁôÑÔid
-	 * @param flag ÉóºË±êÖ¾
+	 * å®¡æ ¸ç•™è¨€
+	 * @param id ç•™è¨€id
+	 * @param flag å®¡æ ¸æ ‡å¿—
 	 */
 	public void auditing(int id ,int flag){
 		messageDAO.auditing(id, flag);
 	}
 	/**
-	 * ¸ù¾İparent_id»ñÈ¡ÒÑ¾­Í¨¹ıµÄ×ÓÁôÑÔÁôÑÔÁĞ±í
+	 * æ ¹æ®parent_idè·å–å·²ç»é€šè¿‡çš„å­ç•™è¨€ç•™è¨€åˆ—è¡¨
 	 * @param parent_id
 	 * @return
 	 */
@@ -57,29 +57,29 @@ public class MessageService {
 		return messageDAO.getChildrenMsgs(parent_id);
 	}
 	/**
-	 * »ñÈ¡ËùÓĞÎ´ÉóºËµÄÁôÑÔ
+	 * è·å–æ‰€æœ‰æœªå®¡æ ¸çš„ç•™è¨€
 	 * @return
 	 */
 	public List<Message> getUnAuditing(){
 		return messageDAO.getUnAuditing();
 	}
 	/**
-	 * »ñÈ¡×îĞÂÍ¨¹ıÉóºËµÄÆÀÂÛ
-	 * @return 5Ìõ×îĞÂÆÀÂÛ
+	 * è·å–æœ€æ–°é€šè¿‡å®¡æ ¸çš„è¯„è®º
+	 * @return 5æ¡æœ€æ–°è¯„è®º
 	 */
 	public List<Message> getLatestMessage(){
 		return messageDAO.getLatestMessage();
 	}
 	/**
-	 * ¶¥ÁôÑÔ
+	 * é¡¶ç•™è¨€
 	 * @param id
 	 */
 	public void setMessageLight(int id){
 		messageDAO.setMessageLight(id);
 	}
 	/**
-	 * »ñÈ¡Êı¾İ¿âÖĞÁôÑÔÊıÁ¿
-	 * @return ÁôÑÔÊıÁ¿
+	 * è·å–æ•°æ®åº“ä¸­ç•™è¨€æ•°é‡
+	 * @return ç•™è¨€æ•°é‡
 	 */
 	public int getMessageCount(){
 		return messageDAO.getMessageCount();

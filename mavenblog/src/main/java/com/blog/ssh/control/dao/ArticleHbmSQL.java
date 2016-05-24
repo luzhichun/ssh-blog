@@ -106,7 +106,7 @@ public class ArticleHbmSQL{
 		}
 	}
 	/**
-	 * ²åÈëÎÄÕÂ
+	 * æ’å…¥æ–‡ç« 
 	 * @param c
 	 * @param article_id
 	 */
@@ -121,11 +121,11 @@ public class ArticleHbmSQL{
 		}
 	}
 	/**
-	 * »ñÈ¡ËùÓĞÎÄÕÂ
-	 * @return ËùÓĞÎÄÕÂÁĞ±í
+	 * è·å–æ‰€æœ‰æ–‡ç« 
+	 * @return æ‰€æœ‰æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getAllArticle(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as a order by a.id desc");
 		@SuppressWarnings("unchecked")
 		List<Article> list = query.list();
@@ -133,11 +133,11 @@ public class ArticleHbmSQL{
 		return list;
 	}
 	/**
-	 * »ñÈ¡×îÈÈÎÄÕÂ
-	 * @return 5Æª·ÃÎÊÁ¿×î¶àµÄÎÄÕÂÁĞ±í
+	 * è·å–æœ€çƒ­æ–‡ç« 
+	 * @return 5ç¯‡è®¿é—®é‡æœ€å¤šçš„æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getHotArticleTitle(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as u order by u.visits desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -145,11 +145,11 @@ public class ArticleHbmSQL{
 		return list;
 	}
 	/**
-	 * »ñÈ¡×îÈÈÎÄÕÂ
-	 * @return 5Æª·ÃÎÊÁ¿×î¶àµÄÎÄÕÂÁĞ±í
+	 * è·å–æœ€çƒ­æ–‡ç« 
+	 * @return 5ç¯‡è®¿é—®é‡æœ€å¤šçš„æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getHotArticleTitle(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as a where a.user.id=" + user_id + " order by a.visits desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -157,11 +157,11 @@ public class ArticleHbmSQL{
 		return list;
 	}
 	/**
-	 * »ñÈ¡×îĞÂÎÄÕÂ
-	 * @return 5Æª×îĞÂÎÄÕÂÁĞ±í
+	 * è·å–æœ€æ–°æ–‡ç« 
+	 * @return 5ç¯‡æœ€æ–°æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getLatestArticleTitle(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as u order by u.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -169,11 +169,11 @@ public class ArticleHbmSQL{
 		return list;
 	}
 	/**
-	 * »ñÈ¡×îĞÂÎÄÕÂ
-	 * @return 5Æª×îĞÂÎÄÕÂÁĞ±í
+	 * è·å–æœ€æ–°æ–‡ç« 
+	 * @return 5ç¯‡æœ€æ–°æ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getLatestArticleTitle(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as a where a.user.id=" + user_id + " order by a.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
@@ -181,15 +181,15 @@ public class ArticleHbmSQL{
 		return list;
 	}
 	/**
-	 * Ëæ»ú»ñÈ¡ÎÄÕÂ
-	 * @return 5ÆªËæ»úÎÄÕÂÁĞ±í
+	 * éšæœºè·å–æ–‡ç« 
+	 * @return 5ç¯‡éšæœºæ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getRandomArticleTitle(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as u");
 		List<Article> list = query.list();
 		
-		Collections.shuffle(list);//½«listË³Ğò´òÂÒ
+		Collections.shuffle(list);//å°†listé¡ºåºæ‰“ä¹±
 		List<Article> randomList = new ArrayList<Article>();
 		for(int i = 0;i < (list.size() <= 5?list.size():5);i++){
 			randomList.add(list.get(i));
@@ -197,15 +197,15 @@ public class ArticleHbmSQL{
 		return randomList;
 	}
 	/**
-	 * ¸ù¾İÓÃ»§idËæ»ú»ñÈ¡ÎÄÕÂ
-	 * @return 5ÆªËæ»úÎÄÕÂÁĞ±í
+	 * æ ¹æ®ç”¨æˆ·idéšæœºè·å–æ–‡ç« 
+	 * @return 5ç¯‡éšæœºæ–‡ç« åˆ—è¡¨
 	 */
 	public List<Article> getRandomArticleTitle(Integer user_id){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article as a where a.user.id=" + user_id);
 		List<Article> list = query.list();
 		
-		Collections.shuffle(list);//½«listË³Ğò´òÂÒ
+		Collections.shuffle(list);//å°†listé¡ºåºæ‰“ä¹±
 		List<Article> randomList = new ArrayList<Article>();
 		for(int i = 0;i < (list.size() <= 5?list.size():5);i++){
 			randomList.add(list.get(i));
@@ -213,8 +213,8 @@ public class ArticleHbmSQL{
 		return randomList;
 	}
 	/**
-	 * Í¨¹ıid²éÕÒArticle
-	 * @param id ÎÄÕÂid
+	 * é€šè¿‡idæŸ¥æ‰¾Article
+	 * @param id æ–‡ç« id
 	 * @return Article
 	 */
 	public Article getArticle(Integer id){
@@ -223,29 +223,29 @@ public class ArticleHbmSQL{
 		return article;
 	}
 	/**
-	 * Í¨¹ıÎÄ¼şÃû²éÕÒArticle
-	 * @param ÎÄÕÂ¶ÔÓ¦Ò³ÃæµÄÎÄ¼şÃû
+	 * é€šè¿‡æ–‡ä»¶åæŸ¥æ‰¾Article
+	 * @param æ–‡ç« å¯¹åº”é¡µé¢çš„æ–‡ä»¶å
 	 * @return Article
 	 */
 	public Article getArticle(String fileName){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("from Article where fileName='" + fileName + "'");
 		@SuppressWarnings("unchecked")
 		List<Article> list = query.list();
 		return list.get(0);
 	}
 	/**
-	 * »ñÈ¡Êı¾İ¿âÖĞÎÄÕÂÊıÁ¿
-	 * @return ÎÄÕÂÊıÁ¿
+	 * è·å–æ•°æ®åº“ä¸­æ–‡ç« æ•°é‡
+	 * @return æ–‡ç« æ•°é‡
 	 */
 	public int getArticleCount(){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		Query query = session.createQuery("select count(*) from Article as a");
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}
 	public List<Article> serach(String value){
-		Session session = getCurrentSession();//µÃµ½Ò»¸öSession¶ÔÏó
+		Session session = getCurrentSession();//å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		String hql="from Article as a where a.title like ? or a.content like ?";
 		Query query = session.createQuery(hql); 
 		query.setString(0,"%"+value+"%");

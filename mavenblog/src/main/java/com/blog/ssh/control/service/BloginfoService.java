@@ -13,13 +13,13 @@ public class BloginfoService {
 		this.bloginfoDAO = bloginfoDAO;
 	}
 	/**
-	 * ÉèÖÃ²©¿Í·ÃÎÊÁ¿
+	 * è®¾ç½®åšå®¢è®¿é—®é‡
 	 * @param fileName
 	 */
 	public Bloginfo createDefaultBloginfo(){
 		Bloginfo bloginfo = new Bloginfo();
 		bloginfo.setBackground("black.jpg");
-		bloginfo.setIntro("»¶Ó­À´µ½ÃÎÏë²©¿Í");
+		bloginfo.setIntro("æ¬¢è¿æ¥åˆ°æ¢¦æƒ³åšå®¢");
 		bloginfo.setVisits(0);
 		bloginfo.setEmailNoticeflag(1);
 		bloginfoDAO.save(bloginfo);

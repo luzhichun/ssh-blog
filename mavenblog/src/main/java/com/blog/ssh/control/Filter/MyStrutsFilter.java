@@ -8,21 +8,21 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 /**
- * //²»ÈÃueditorÇëÇóÍ¨¹ıstruts2
+ * //ä¸è®©ueditorè¯·æ±‚é€šè¿‡struts2
  * @author wy
  *
  */
 public class MyStrutsFilter extends StrutsPrepareAndExecuteFilter {
 	public void doFilter(ServletRequest req, ServletResponse res,FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
-        //²»¹ıÂËµÄurl
+        //ä¸è¿‡æ»¤çš„url
         String url = request.getRequestURI();
         //System.out.println(url);
         if (url.contains("/file/ueditor/jsp/")) {
-            //System.out.println("Ê¹ÓÃ×Ô¶¨ÒåµÄ¹ıÂËÆ÷");
+            //System.out.println("ä½¿ç”¨è‡ªå®šä¹‰çš„è¿‡æ»¤å™¨");
             chain.doFilter(req, res);
         }else{
-            //System.out.println("Ê¹ÓÃÄ¬ÈÏµÄ¹ıÂËÆ÷");
+            //System.out.println("ä½¿ç”¨é»˜è®¤çš„è¿‡æ»¤å™¨");
             super.doFilter(req, res, chain);
         }
     }

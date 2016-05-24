@@ -52,47 +52,47 @@ public class ArticleManage {
 		this.headerSiderService = headerSiderService;
 	}
 	/**
-	 * É¾³ıÎÄÕÂÊ±£¬ÏÈÉ¾³ıÎÄÕÂËõÂÔÍ¼
+	 * åˆ é™¤æ–‡ç« æ—¶ï¼Œå…ˆåˆ é™¤æ–‡ç« ç¼©ç•¥å›¾
 	 * @param picName
 	 */
 	public void deletePic(String picName){
 		try {
 			FileManage.deleteFile(ServletActionContext.getRequest().getRealPath("/file/pic/" + picName));
-			//É¾³ı·şÎñÆ÷ÉÏµÄÎÄÕÂËõÂÔÍ¼
+			//åˆ é™¤æœåŠ¡å™¨ä¸Šçš„æ–‡ç« ç¼©ç•¥å›¾
 			if(!SystemManage.isAliServer()){
 				FileManage.deleteFile("D:/myworkspaces/myeclipse/SSH_Blog/WebRoot/file/pic/" + picName);
-				//É¾³ı±¾µØworkspaceÍ¼Æ¬
+				//åˆ é™¤æœ¬åœ°workspaceå›¾ç‰‡
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("É¾³ıËõÂÔÍ¼Ê§°Ü");
+			System.out.println("åˆ é™¤ç¼©ç•¥å›¾å¤±è´¥");
 			e.printStackTrace();
 		}
 	}
 	public String execute(){
 		if(!RightsManagement.adminIsLogin()  && !RightsManagement.userIsLogin()){
-			//ÓÃ»§ºÍ¹ÜÀíÔ±¶¼Î´µÇÂ¼
+			//ç”¨æˆ·å’Œç®¡ç†å‘˜éƒ½æœªç™»å½•
 			return "notlogin";
 		}
 		String picName = null;
 		if(id != null){
-			//µ¥¸öÉ¾³ı
+			//å•ä¸ªåˆ é™¤
 			picName = articleService.getArticle(id).getImagename();
 			if(!picName.equals("default.jpg")){
-				//µ±ËõÂÔÍ¼²»ÎªdefaultÊ±£¬²ÅÉ¾³ıÍ¼Æ¬
+				//å½“ç¼©ç•¥å›¾ä¸ä¸ºdefaultæ—¶ï¼Œæ‰åˆ é™¤å›¾ç‰‡
 				deletePic(picName);
 			}
 			articleService.deleteArticle(id);
 		}
 		else{
-			//ÅúÁ¿É¾³ı
+			//æ‰¹é‡åˆ é™¤
 			String[] idArr = ids.split(",");
 			try {
 				for(int i = 0;i < idArr.length;i++){
 					int articleNumber = Integer.parseInt(idArr[i]);
 					picName = articleService.getArticle(articleNumber).getImagename();
 					if(!picName.equals("default.jpg")){
-						//µ±ËõÂÔÍ¼²»ÎªdefaultÊ±£¬²ÅÉ¾³ıÍ¼Æ¬
+						//å½“ç¼©ç•¥å›¾ä¸ä¸ºdefaultæ—¶ï¼Œæ‰åˆ é™¤å›¾ç‰‡
 						deletePic(picName);
 					}
 					articleService.deleteArticle(articleNumber);
@@ -102,7 +102,7 @@ public class ArticleManage {
 				e.printStackTrace();
 			}
 		}
-		headerSiderService.setApplication();//É¾³ıÎÄÕÂºó£¬ÖØĞÂÉèÖÃApplication
+		headerSiderService.setApplication();//åˆ é™¤æ–‡ç« åï¼Œé‡æ–°è®¾ç½®Application
 		return "success";
 	}
 }

@@ -16,24 +16,24 @@ public class CommentService {
 		this.commentDAO = commentDAO;
 	}
 	/**
-	 * ²åÈëÆÀÂÛ
-	 * @param c ÆÀÂÛ
+	 * æ’å…¥è¯„è®º
+	 * @param c è¯„è®º
 	 * @param article_id
 	 */
 	@SuppressWarnings("unchecked")
 	public void insertComment(Comment c,int article_id){
-		//ÌáĞÑÓÃ»§ÉóºËÆÀÂÛ
+		//æé†’ç”¨æˆ·å®¡æ ¸è¯„è®º
 		commentDAO.insertComment(c, article_id);
 		
 	}
 	/**
-	 * @return ËùÓĞÆÀÂÛ
+	 * @return æ‰€æœ‰è¯„è®º
 	 */
 	public List<Comment> getAllComment(){
 		return commentDAO.findAll();
 	}
 	/**
-	 * @return ËùÓĞÎ´ÉóºËÆÀÂÛÁĞ±í
+	 * @return æ‰€æœ‰æœªå®¡æ ¸è¯„è®ºåˆ—è¡¨
 	 */
 	public List<Comment> getUnauditing(){
 		return commentDAO.getUnauditing();
@@ -42,33 +42,33 @@ public class CommentService {
 		return commentDAO.getComment(id);
 	}
 	/**
-	 * Í¨¹ıarticle_id²éÑ¯ËùÓĞÆÀÂÛ
+	 * é€šè¿‡article_idæŸ¥è¯¢æ‰€æœ‰è¯„è®º
 	 * @param article_id
-	 * @return ¸ÃÎÄÕÂËùÓĞ(ÒÑÍ¨¹ıÉóºË)µÚÒ»¼¶CommentÁĞ±í
+	 * @return è¯¥æ–‡ç« æ‰€æœ‰(å·²é€šè¿‡å®¡æ ¸)ç¬¬ä¸€çº§Commentåˆ—è¡¨
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Comment> getParentComments(int article_id){
 		return commentDAO.getParentComments(article_id);
 	}
 	/**
-	 * Í¨¹ıparent_id²éÑ¯ËùÓĞ×ÓÆÀÂÛ
+	 * é€šè¿‡parent_idæŸ¥è¯¢æ‰€æœ‰å­è¯„è®º
 	 * @param parent_id
-	 * @return parent_id¶ÔÓ¦×ÓÆÀÂÛÁĞ±í
+	 * @return parent_idå¯¹åº”å­è¯„è®ºåˆ—è¡¨
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Comment> getChildrenComments(int parent_id){
 		return commentDAO.getChildrenComments(parent_id);
 	}
 	/**
-	 * »ñÈ¡×îĞÂÆÀÂÛ
-	 * @return ×î½ü5ÌõÆÀÂÛList
+	 * è·å–æœ€æ–°è¯„è®º
+	 * @return æœ€è¿‘5æ¡è¯„è®ºList
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Comment> getLatestComments(){
 		return commentDAO.getLatestComments();
 	}
 	/**
-	 * Í¨¹ıComment id²éÑ¯user_id
+	 * é€šè¿‡Comment idæŸ¥è¯¢user_id
 	 * @param id
 	 * @return user_id
 	 */
@@ -76,39 +76,39 @@ public class CommentService {
 		return commentDAO.getUser_id(id);
 	}
 	/**
-	 * É¾³ıarticle_id¶ÔÓ¦ÎÄÕÂµÄËùÓĞÆÀÂÛ
+	 * åˆ é™¤article_idå¯¹åº”æ–‡ç« çš„æ‰€æœ‰è¯„è®º
 	 * @param article_id
 	 */
 	public void deleteArticleAllComment(int article_id){
 		commentDAO.deleteArticleAllComment(article_id);
 	}
 	/**
-	 * ÉóºËÆÀÂÛ
-	 * @param id ÆÀÂÛid
-	 * @param flag ÉóºË±êÖ¾£¬1±íÊ¾Í¨¹ı£¬0±íÊ¾²»Í¨¹ı
+	 * å®¡æ ¸è¯„è®º
+	 * @param id è¯„è®ºid
+	 * @param flag å®¡æ ¸æ ‡å¿—ï¼Œ1è¡¨ç¤ºé€šè¿‡ï¼Œ0è¡¨ç¤ºä¸é€šè¿‡
 	 */
 	public void auditing(int id ,int flag){
 		Comment c = commentDAO.findById(id);
-		c.setAuditingFlag(1);//±íÊ¾ÒÑÉóºË
+		c.setAuditingFlag(1);//è¡¨ç¤ºå·²å®¡æ ¸
 		c.setThroughFlag(flag);
 		commentDAO.update(c);
 	}
 	/**
-	 * »ñÈ¡ËùÓĞÆÀÂÛÊı
+	 * è·å–æ‰€æœ‰è¯„è®ºæ•°
 	 * @return
 	 */
 	public int getCommentCount(){
 		return commentDAO.getCommentCount();
 	}
 	/**
-	 * ¸ù¾İidÉ¾³ıÆÀÂÛ
+	 * æ ¹æ®idåˆ é™¤è¯„è®º
 	 * @param id
 	 */
 	public void deleteComment(int id){
 		commentDAO.delete(commentDAO.findById(id));
 	}
 	/**
-	 *¶¥ÆÀÂÛ
+	 *é¡¶è¯„è®º
 	 * @param id
 	 */
 	public void setCommentLight(int id){
@@ -116,13 +116,13 @@ public class CommentService {
 	}
 	/**
 	 * @param article_id
-	 * @return article_id¶ÔÓ¦ÎÄÕÂÆÀÂÛÊı
+	 * @return article_idå¯¹åº”æ–‡ç« è¯„è®ºæ•°
 	 */
 	public int getArticleCommentCount(int article_id){
 		return commentDAO.getArticleCommentCount(article_id);
 	}
 	/**
-	 * »ñÈ¡¸ÃÓÃ»§²©¿ÍµÄËùÓĞÆÀÂÛ
+	 * è·å–è¯¥ç”¨æˆ·åšå®¢çš„æ‰€æœ‰è¯„è®º
 	 * @param user_id
 	 * @return
 	 */
@@ -130,7 +130,7 @@ public class CommentService {
 		return commentDAO.findAll(user_id);
 	}
 	/**
-	 * »ñÈ¡¸ÃÓÃ»§²©¿ÍËùÓĞ´ıÉóºËµÄÆÀÂÛ
+	 * è·å–è¯¥ç”¨æˆ·åšå®¢æ‰€æœ‰å¾…å®¡æ ¸çš„è¯„è®º
 	 * @return
 	 */
 	public List<Comment> getUnauditing(Integer user_id){
