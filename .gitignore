@@ -71,5 +71,8 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+# idea
+.idea/
+*.iml
 jdbc.properties
 email.properties
