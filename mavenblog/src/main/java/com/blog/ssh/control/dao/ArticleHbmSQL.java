@@ -107,8 +107,8 @@ public class ArticleHbmSQL{
 	}
 	/**
 	 * 插入文章
-	 * @param c
-	 * @param article_id
+	 * @param a
+	 * @param articletype_id
 	 */
 	public void insertArticle(Article a,int articletype_id){
 		Session session = getCurrentSession();

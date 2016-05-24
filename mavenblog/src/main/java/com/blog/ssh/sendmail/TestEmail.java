@@ -1,6 +1,5 @@
 package com.blog.ssh.sendmail;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
@@ -8,32 +7,30 @@ import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class Test_Email {
+public class TestEmail {
 
 public static void main(String args []){
 	 try {
-         send_email("355530569@qq.com","²âÊÔ","²âÊÔ²âÊÔ");
+         send_email("1057160387@qq.com","æµ‹è¯•","æµ‹è¯•æµ‹è¯•");
      }catch (Exception e) {
          e.printStackTrace();
      }
 }
     public static void send_email(String sendMailAddress,String title,String content) throws Exception{
         String to = sendMailAddress;
-        //String subject = "³É¼¨";//ÓÊ¼şÖ÷Ìâ
-        //String content = "<center>ÓÊÏä·¢ËÍ³É¹¦ÁË</center>";//ÓÊ¼şÄÚÈİ
+        //String subject = "æˆç»©";//é‚®ä»¶ä¸»é¢˜
+        //String content = "<center>é‚®ç®±å‘é€æˆåŠŸäº†</center>";//é‚®ä»¶å†…å®¹
         Properties properties = new Properties();
         InputStream resourceAsStream = null;
         try {
-             resourceAsStream = Test_Email.class.getResourceAsStream("email.properties");
+             resourceAsStream = TestEmail.class.getResourceAsStream("email.properties");
             properties.load(resourceAsStream);
         } finally{
             if (resourceAsStream!=null) {
@@ -44,22 +41,22 @@ public static void main(String args []){
         properties.put("mail.smtp.host", properties.get("mail.smtp.host"));
         properties.put("mail.smtp.port", properties.get("mail.smtp.port"));
         properties.put("mail.smtp.auth", "true");
-        Authenticator authenticator = new Email_Authenticator(properties.get("username").toString(), properties.get("password").toString());
+        Authenticator authenticator = new EmailAuthenticator(properties.get("username").toString(), properties.get("password").toString());
         javax.mail.Session sendMailSession = javax.mail.Session.getDefaultInstance(properties, authenticator);
         MimeMessage mailMessage = new MimeMessage(sendMailSession);
         mailMessage.setFrom(new InternetAddress(properties.get("username").toString()));
-        // Message.RecipientType.TOÊôĞÔ±íÊ¾½ÓÊÕÕßµÄÀàĞÍÎªTO
+        // Message.RecipientType.TOå±æ€§è¡¨ç¤ºæ¥æ”¶è€…çš„ç±»å‹ä¸ºTO
         mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
         mailMessage.setSubject(title, "UTF-8");
         mailMessage.setSentDate(new Date());
-        // MiniMultipartÀàÊÇÒ»¸öÈİÆ÷Àà£¬°üº¬MimeBodyPartÀàĞÍµÄ¶ÔÏó
+        // MiniMultipartç±»æ˜¯ä¸€ä¸ªå®¹å™¨ç±»ï¼ŒåŒ…å«MimeBodyPartç±»å‹çš„å¯¹è±¡
         Multipart mainPart = new MimeMultipart();
-        // ´´½¨Ò»¸ö°üº¬HTMLÄÚÈİµÄMimeBodyPart
+        // åˆ›å»ºä¸€ä¸ªåŒ…å«HTMLå†…å®¹çš„MimeBodyPart
         BodyPart html = new MimeBodyPart();
         html.setContent(content.trim(), "text/html; charset=utf-8");
         mainPart.addBodyPart(html);
         mailMessage.setContent(mainPart);
         Transport.send(mailMessage);
-        System.err.println("ÓÊ¼şÒÑ·¢ËÍÖÁ:"+sendMailAddress);
+        System.err.println("é‚®ä»¶å·²å‘é€è‡³:"+sendMailAddress);
     }
 }

@@ -1,8 +1,6 @@
 package com.blog.ssh.control.action;
 import java.util.Map;
 
-import org.apache.struts2.ServletActionContext;
-
 import com.blog.ssh.control.dao.Time;
 import com.blog.ssh.control.service.ArticleService;
 import com.blog.ssh.control.service.CommentService;
@@ -12,7 +10,7 @@ import com.blog.ssh.control.service.UserService;
 import com.blog.ssh.model.pojo.Article;
 import com.blog.ssh.model.pojo.Comment;
 import com.blog.ssh.model.pojo.User;
-import com.blog.ssh.sendmail.Test_Email;
+import com.blog.ssh.sendmail.TestEmail;
 import com.blog.ssh.sensitivewordsfilter.SensitivewordFilter;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -110,7 +108,7 @@ public class AddCommentAction {
 						"</div>" +
 						"</div>";
 			try {
-				Test_Email.send_email(article.getUser().getEmail(),"【梦想博客】你的文章有新评论了",content);
+				TestEmail.send_email(article.getUser().getEmail(),"【梦想博客】你的文章有新评论了",content);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

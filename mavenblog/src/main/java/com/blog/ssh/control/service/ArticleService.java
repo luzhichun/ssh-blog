@@ -19,8 +19,8 @@ public class ArticleService {
 	}
 	/**
 	 * 插入文章
-	 * @param c
-	 * @param article_id
+	 * @param a
+	 * @param articletype_id
 	 */
 	public void insertArticle(Article a,int articletype_id){
 		articleDAO.insertArticle(a, articletype_id);
@@ -84,7 +84,7 @@ public class ArticleService {
 	}
 	/**
 	 * 通过文件名查找Article
-	 * @param 文章对应页面的文件名
+	 * @param fileName 文章对应页面的文件名
 	 * @return Article
 	 */
 	public Article getArticle(String fileName){
@@ -100,7 +100,7 @@ public class ArticleService {
 	}
 	/**
 	 * 设置文章访问量
-	 * @param fileName
+	 * @param id 文章id
 	 */
 	public void setArticleVisits(int id){
 		Article a = articleDAO.getArticle(id);

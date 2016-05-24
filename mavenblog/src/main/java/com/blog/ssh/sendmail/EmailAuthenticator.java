@@ -1,12 +1,11 @@
 package com.blog.ssh.sendmail;
+
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
-public class Email_Authenticator extends Authenticator {
+public class EmailAuthenticator extends Authenticator {
     String userName = null;
     String password = null;
-    public Email_Authenticator() {
-    }
-    public Email_Authenticator(String username, String password) {
+    public EmailAuthenticator(String username, String password) {
         this.userName = username;
         this.password = password;
     }

@@ -10,10 +10,9 @@ import com.blog.ssh.control.dao.Time;
 import com.blog.ssh.control.service.BloginfoService;
 import com.blog.ssh.control.service.MD5;
 import com.blog.ssh.control.service.UserService;
-import com.blog.ssh.model.pojo.Bloginfo;
 import com.blog.ssh.model.pojo.User;
 import com.opensymphony.xwork2.ActionContext;
-import com.blog.ssh.sendmail.Test_Email;
+import com.blog.ssh.sendmail.TestEmail;
 
 public class UserAction {
 	private String username;
@@ -145,7 +144,7 @@ public class UserAction {
 			map.put("vlidateCode", vlidateCode);//将验证码存入session中
 			String content = "【梦想博客】账号注册验证码<br>验证码为：<span style=\"font-size:20px;color:red\">" + vlidateCode +
 		"</span>";
-			Test_Email.send_email(email,"【梦想博客】账号注册验证码",content);
+			TestEmail.send_email(email,"【梦想博客】账号注册验证码",content);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
