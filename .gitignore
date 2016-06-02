@@ -76,3 +76,4 @@ local.properties
 *.iml
 jdbc.properties
 email.properties
+server.properties

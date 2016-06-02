@@ -4,8 +4,6 @@ import java.util.List;
 import com.blog.ssh.control.service.ArticleService;
 import com.blog.ssh.control.service.HeaderSiderService;
 import com.blog.ssh.model.pojo.*;
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class IndexAction extends ActionSupport{

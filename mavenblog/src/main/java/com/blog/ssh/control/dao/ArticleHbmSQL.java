@@ -129,7 +129,6 @@ public class ArticleHbmSQL{
 		Query query = session.createQuery("from Article as a order by a.id desc");
 		@SuppressWarnings("unchecked")
 		List<Article> list = query.list();
-		
 		return list;
 	}
 	/**
