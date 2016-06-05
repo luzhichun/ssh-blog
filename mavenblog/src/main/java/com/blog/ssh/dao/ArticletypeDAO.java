@@ -18,7 +18,7 @@ import com.blog.ssh.pojo.Articletype;
 @Repository
 @Transactional
 public class ArticletypeDAO {
-	private final Logger log = LoggerFactory.getLogger(ArticletypeDAO.class);
+	private final Logger log = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -89,7 +89,7 @@ public class ArticletypeDAO {
 		log.debug("finding Articletype instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Articletype as where."
+			String queryString = "from Articletype as atype where atype."
 					+ propertyName + "= ?";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
