@@ -21,7 +21,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index.action">首页</a>
+            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index">首页</a>
             <span class="crumb-step">&gt;</span>
             <span class="crumb-name">栏目管理</span>
         </div>

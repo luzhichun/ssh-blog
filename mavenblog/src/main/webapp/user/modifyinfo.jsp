@@ -37,7 +37,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="index" title="返回首页">home</a></strong>
 				<a href="<s:property value="#session.user.url"/>"><s:property value="#session.user.username"/></a>
 				<a>个人中心</a>
 				<a>个人资料修改</a>
@@ -51,7 +51,7 @@
         <div class="result-wrap">
             <div class="result-content">
 
-                <form action="user/modify.action" method="post" id="valueform" name="valueform" enctype="multipart/form-data">
+                <form action="user/modify" method="post" id="valueform" name="valueform" enctype="multipart/form-data">
                     <table class="insert-tab" width="100%">
                         <tbody><tr>
                             <th width="120"><i class="require-red">*</i>用户名：</th>

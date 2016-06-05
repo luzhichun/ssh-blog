@@ -37,7 +37,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="index" title="返回首页">home</a></strong>
 				<a href="<s:property value="user.url"/>"><s:property value="user.username"/></a>
 				<a>个人中心</a>
 				<a>文章管理</a>
@@ -99,7 +99,7 @@
                         <tr id="tr_<s:property value="id"/>">
                             <td class="tc"><input name="articleIds" value="<s:property value="id"/>" type="checkbox"></td>
                             <td>
-                            	<a target="_blank" href="sort.action?sortByColumn=<s:property value="articletype.linkname"/>" title="<s:property value="articletype.value"/>">
+                            	<a target="_blank" href="sort?sortByColumn=<s:property value="articletype.linkname"/>" title="<s:property value="articletype.value"/>">
                             		<s:property value="articletype.value"/>
                             	</a>
                             </td>

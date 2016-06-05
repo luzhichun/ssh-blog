@@ -44,7 +44,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="index" title="返回首页">home</a></strong>
 				<a href="<s:property value="user.url"/>"><s:property value="user.username"/></a>
 				<a>个人中心</a>
 				<a>评论管理</a>
@@ -63,7 +63,7 @@
 		<%@include file="navigation.jsp"%>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="CommentManage.action" method="post">
+                <form action="CommentManage" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择分类:</th>

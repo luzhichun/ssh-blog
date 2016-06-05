@@ -28,8 +28,8 @@
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>
-  		com.blog.ssh.control.Filter.MyStrutsFilter
-  	</filter-class>
+      com.blog.ssh.Filter.MyStrutsFilter
+    </filter-class>
   </filter>
   <filter-mapping>
     <filter-name>struts2</filter-name>
@@ -48,7 +48,7 @@
     </context-param>
     <listener>
         <listener-class>
-          com.blog.ssh.control.listener.MyLog4jConfigListener
+          com.blog.ssh.listener.MyLog4jConfigListener
         </listener-class>
     </listener>
 	<!-- log4j end -->

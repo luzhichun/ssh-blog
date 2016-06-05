@@ -14,8 +14,8 @@
 				    	</div>
 				    	<div class="username">
 				    		<label style="font-size:18px;"><s:property value="#session.user.username"/></label>
-				    		<p><a href="user/CommentManage.action?sort" class="notice">消息(<span msgtype="notice"><s:property value="#session.user.msgCounts"/></span>)</a> | 
-				    		<a href="user/loginout.action" class="logout">退出</a>
+				    		<p><a href="user/CommentManage?sort" class="notice">消息(<span msgtype="notice"><s:property value="#session.user.msgCounts"/></span>)</a> | 
+				    		<a href="user/loginout" class="logout">退出</a>
 				    		</p>
 				    	</div>
 				    </div>
@@ -28,9 +28,9 @@
 				    		</ul>
 				    </div>
 				    <div class="shortcut pub-style">
-				    	<button type="button" class="btn btn-success" onclick="window.open('user/ReleaseArticle.action')">发表文章</button>
-				    	<button type="button" class="btn btn-success" onclick="window.open('user/ArticleManage.action')">文章管理</button>
-				    	<button type="button" class="btn btn-success" onclick="window.open('user/CommentManage.action')">评论管理</button>
+				    	<button type="button" class="btn btn-success" onclick="window.open('user/ReleaseArticle')">发表文章</button>
+				    	<button type="button" class="btn btn-success" onclick="window.open('user/ArticleManage')">文章管理</button>
+				    	<button type="button" class="btn btn-success" onclick="window.open('user/CommentManage')">评论管理</button>
 				    </div>
    			</div>
    		</div>
@@ -100,7 +100,7 @@
       <ul class="tagcloudy">
 				<li>
 				<s:iterator value="#application.headerAndSider.hotTags"> 
-					<a href="sort.action?sortByTag=<s:property value="id"/>" title="包含  <s:property value="value"/>  标签文章"><s:property value="value"/></a>
+					<a href="sort?sortByTag=<s:property value="id"/>" title="包含  <s:property value="value"/>  标签文章"><s:property value="value"/></a>
 				</s:iterator>
 				</li>
 				</ul> 

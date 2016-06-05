@@ -17,7 +17,7 @@
 		<div id="wrapper" class="clearfix">
 		<div class="gap"></div>
  		<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="./index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="./index" title="返回首页">home</a></strong>
 				<a rel="category tag">
 				<s:property value="#request.title" />
 				</a>		

@@ -9,11 +9,11 @@
 								<img class="img-circle" src="upload/headpic/<s:property value="#session.user.headpicname"/>" width="40px" height="40px">
 							</a>
 					    <ul class="sub-menu" id="hidden-ul" style="display:none;">
-							<li><a href="user/ReleaseArticle.action">个人中心</a></li>
-							<li><a href="user/ArticleManage.action">文章管理</a></li>
-							<li><a href="user/CommentManage.action">评论管理</a></li>
-							<li><a href="user/modifyinfo.action">资料设置</a></li>
-							<li><a href="user/loginout.action">注销</a></li>
+							<li><a href="user/ReleaseArticle">个人中心</a></li>
+							<li><a href="user/ArticleManage">文章管理</a></li>
+							<li><a href="user/CommentManage">评论管理</a></li>
+							<li><a href="user/modifyinfo">资料设置</a></li>
+							<li><a href="user/loginout">注销</a></li>
 						</ul>
 						   </li> 
 				</ul>
@@ -21,8 +21,8 @@
 			</s:if>
 			<s:else>
 			<ul class="notlogin">
-			<li><a href="register.action">注册</a></li>
-			<li><a href="login.action">登录</a></li>
+			<li><a href="register">注册</a></li>
+			<li><a href="login">登录</a></li>
 			</ul>
 			</s:else>
 	

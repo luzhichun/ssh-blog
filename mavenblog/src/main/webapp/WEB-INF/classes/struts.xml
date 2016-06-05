@@ -38,23 +38,23 @@
     </package>
     <package name="user" namespace="/user" extends="struts-default">
     <!-- 用户首页 -->
-    	<action name="ArticleManage" class="myCenter" method="articleManage">
+    	<action name="ArticleManage" class="myCenterAction" method="articleManage">
     		<result name="success">/user/ArticleManage.jsp</result>
     		<result name="notlogin" type="redirect">/login.jsp</result>
     	</action>
-    	<action name="ReleaseArticle" class="myCenter" method="showReleaseArticle">
+    	<action name="ReleaseArticle" class="myCenterAction" method="showReleaseArticle">
     		<result name="success">/user/ReleaseArticle.jsp</result>
     		<result name="notlogin" type="redirect">/login.jsp</result>
     	</action>
-    	<action name="CommentManage" class="myCenter" method="getUserComments">
+    	<action name="CommentManage" class="myCenterAction" method="getUserComments">
     		<result name="success">/user/CommentManage.jsp</result>
     		<result name="notlogin" type="redirect">/login.jsp</result>
     	</action>
-    	<action name="modifyinfo" class="myCenter" method="getUserinfo">
+    	<action name="modifyinfo" class="myCenterAction" method="getUserinfo">
     		<result name="success">/user/modifyinfo.jsp</result>
     		<result name="notlogin" type="redirect">/login.jsp</result>
     	</action>
-    	<action name="modify" class="myCenter" method="modifyInfo">
+    	<action name="modify" class="myCenterAction" method="modifyInfo">
     		<result name="success" type="chain">chain</result>
     		<result name="failed">/user/modifyinfo.jsp</result>
     		<result name="notlogin" type="redirect">/login.jsp</result>

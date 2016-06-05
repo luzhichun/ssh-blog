@@ -18,7 +18,7 @@
 		<div id="wrapper" class="clearfix">
 		<div class="gap"></div>
 		<div id="breadcrumbs" class="con_box clearfix">
-		<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+		<div class="bcrumbs"><strong><a href="index" title="返回首页">home</a></strong>
 			<a rel="category tag">
 				登录
 			</a>
@@ -29,7 +29,7 @@
 				<div class="login_main">
 					<div class="con_box userinfo_box clearfix">
      		<div class="login_form">
-				    <form class="form-horizontal" id="form" role="form" method="post" action="user/sublogin.action">
+				    <form class="form-horizontal" id="form" role="form" method="post" action="user/sublogin">
 				   <div class="form-group">
 				      <label for="" class="col-sm-1 control-label"></label>
 				      <div class="col-sm-10">
@@ -61,7 +61,7 @@
 				   <div class="form-group">
 				   	  <label for="" class="col-sm-1 control-label"></label>
 				      <div class="col-sm-offset-0 col-sm-10">
-				         <a href="register.action">还没有账号，立即注册
+				         <a href="register">还没有账号，立即注册
 				         </a>
 				      </div>
 				   </div>

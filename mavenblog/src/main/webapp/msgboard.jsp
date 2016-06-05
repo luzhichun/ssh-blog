@@ -42,9 +42,9 @@
 <div id="wrapper" class="clearfix">
 		<div class="gap"></div>
 			<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="./index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="./index" title="返回首页">home</a></strong>
 				<a rel="category tag">留言板</a>
-				<a href="./sort.action?sortByColumn=<s:property value="article.articletype.linkname" />" title="查看 <s:property value="article.articletype.value" />的全部文章" rel="category tag"><s:property value="article.articletype.value" /></a>
+				<a href="./sort?sortByColumn=<s:property value="article.articletype.linkname" />" title="查看 <s:property value="article.articletype.value" />的全部文章" rel="category tag"><s:property value="article.articletype.value" /></a>
 				<a><s:property value="article.title" /></a>
 				</div>
 			</div>

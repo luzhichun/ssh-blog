@@ -16,7 +16,7 @@
 	if(number!=null&&password!=null){
 		if(number.equals("admin")&&password.equals("admin")){
 			session.setAttribute("admin", "");
-			response.sendRedirect("index.action");
+			response.sendRedirect("index");
 			return;
 		}
 		else{

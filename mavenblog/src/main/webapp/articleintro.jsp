@@ -15,7 +15,7 @@
   
   <ul class="clearfix"> 
    <li>所属栏目：<span>
-	  			<a href="sort.action?sortByColumn=<s:property value="articletype.linkname" />" title="查看<s:property value="articletype.value" />的全部文章" rel="category tag">
+	  			<a href="sort?sortByColumn=<s:property value="articletype.linkname" />" title="查看<s:property value="articletype.value" />的全部文章" rel="category tag">
 	  			<s:property value="articletype.value"/>
 	  			</a>
   		</span>
@@ -30,7 +30,7 @@
   <div class="clearfix"></div> 
    <li class="art_tag">标签：
    		<s:iterator value="tags">
-	   <a href="sort.action?sortByTag=<s:property value="id"/>" title="查看包含 <s:property value="value"/> 标签的全部文章"><s:property value="value"/></a>
+	   <a href="sort?sortByTag=<s:property value="id"/>" title="查看包含 <s:property value="value"/> 标签的全部文章"><s:property value="value"/></a>
 	   </s:iterator> 
    </li> 
   </ul> 

@@ -22,7 +22,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index.action">首页</a>
+            <div class="crumb-list"><i class="icon-font"></i><a href="admin/index">首页</a>
             <span class="crumb-step">&gt;</span>
             <span class="crumb-name">留言管理</span>
             <span class="crumb-step">&gt;</span>
@@ -36,7 +36,7 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="admin/message.action" method="post">
+                <form action="admin/message" method="post">
                     <table class="search-tab">
                         <tr>
                             <th width="120">选择分类:</th>

@@ -35,7 +35,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="index" title="返回首页">home</a></strong>
 				<a href="user/<s:property value="article.user.url"/>" title="<s:property value="article.user.username"/>"><s:property value="article.user.username"/></a>
 				<a><s:property value="article.title"/></a>
 				</div>
@@ -48,7 +48,7 @@
 				<h1><s:property value="article.title" /></h1>
 				<p class="info">
 				<small>时间:</small><s:property value="article.releasetime" />  
-				<small>栏目:</small><a href="sort.action?sortByColumn=<s:property value="article.articletype.linkname" />" title="查看 <s:property value="article.articletype.value" /> 的全部文章" rel="category tag"><s:property value="article.articletype.value" /></a>
+				<small>栏目:</small><a href="sort?sortByColumn=<s:property value="article.articletype.linkname" />" title="查看 <s:property value="article.articletype.value" /> 的全部文章" rel="category tag"><s:property value="article.articletype.value" /></a>
 				<small>作者:</small><s:property value="article.user.username" />
 				<small>评论:</small><s:property value="article.comments.{?#this.throughFlag==1}.size()" />
 				<small>点击:</small><s:property value="article.visits" />次
@@ -58,7 +58,7 @@
 				<div class="article-tag">
 					<p><strong>本文标签</strong>：
 					<s:iterator value="article.tags"> 
-					<a href="sort.action?sortByTag=<s:property value="id"/>"><span name="标签" class="label label-info"><s:property value="value"/></span></a>
+					<a href="sort?sortByTag=<s:property value="id"/>"><span name="标签" class="label label-info"><s:property value="value"/></span></a>
 					</s:iterator>
 					</p>				
 				</div>

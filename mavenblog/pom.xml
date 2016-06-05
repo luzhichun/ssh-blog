@@ -170,6 +170,21 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
+        <!-- http://mvnrepository.com/artifact/org.apache.struts/struts2-junit-plugin -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-junit-plugin</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/javax/javaee-api -->
+        <!-- http://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
 
 
     </dependencies>

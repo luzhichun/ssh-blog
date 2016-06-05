@@ -88,7 +88,7 @@
                             <td class="tc"><input name="articleIds" value="<s:property value="id"/>" type="checkbox"></td>
                             <td><s:property value="id"/></td>
                             <td>
-                            	<a target="_blank" href="sort.action?sortByColumn=<s:property value="articletype.linkname"/>" title="<s:property value="articletype.value"/>">
+                            	<a target="_blank" href="sort?sortByColumn=<s:property value="articletype.linkname"/>" title="<s:property value="articletype.value"/>">
                             		<s:property value="articletype.value"/>
                             	</a>
                             </td>

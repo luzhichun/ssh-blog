@@ -34,7 +34,7 @@
 	<div id="wrapper" class="clearfix">
 	<div class="gap"></div>
 	<div id="breadcrumbs" class="con_box clearfix">
-				<div class="bcrumbs"><strong><a href="<%=request.getContextPath() %>/index.action" title="返回首页">home</a></strong>
+				<div class="bcrumbs"><strong><a href="<%=request.getContextPath() %>/index" title="返回首页">home</a></strong>
 				<a><s:property value="user.username"/> 的全部文章</a>
 				</div>
 	</div> 

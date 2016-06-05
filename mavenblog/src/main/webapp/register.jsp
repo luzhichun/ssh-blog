@@ -3,7 +3,7 @@
 <html>
 <head>  
   <title>用户注册</title> 
-  <%@ include file="../path.jsp" %>
+  <%@ include file="path.jsp" %>
   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   	<link rel="shortcut icon" href="file/pic/blog.ico"/>
 	<script type="text/javascript" src="file/js/jquery.min.js"></script>
@@ -19,7 +19,7 @@
 		<div id="wrapper" class="clearfix">
 		<div class="gap"></div>
 		<div id="breadcrumbs" class="con_box clearfix">
-		<div class="bcrumbs"><strong><a href="index.action" title="返回首页">home</a></strong>
+		<div class="bcrumbs"><strong><a href="index" title="返回首页">home</a></strong>
 			<a rel="category tag">
 				注册
 			</a>
@@ -29,7 +29,7 @@
  		<div id="art_main" class="fl">
  			<div class="register_main"> 
 					<div class="register_form"> 
-	<form class="form-horizontal" id="form" role="form" method="post" action="user/subregister.action">
+	<form class="form-horizontal" id="form" role="form" method="post" action="user/subregister">
    <div class="form-group">
       <label for="" class="col-sm-2 control-label">用户名</label>
       <div class="col-sm-10">
@@ -88,7 +88,7 @@
    <div class="height-fill"></div>
    <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-         <a href="./login.action">我已有账号，立即登录
+         <a href="./login">我已有账号，立即登录
          </a>
       </div>
    </div>
