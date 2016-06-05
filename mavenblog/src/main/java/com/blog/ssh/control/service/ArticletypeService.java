@@ -4,18 +4,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.blog.ssh.control.dao.ArticletypeHbmSQL;
+import com.blog.ssh.control.dao.ArticletypeDAO;
 import com.blog.ssh.model.pojo.Article;
 import com.blog.ssh.model.pojo.Articletype;
 
 public class ArticletypeService {
-	private ArticletypeHbmSQL articletypeDAO;
+	private ArticletypeDAO articletypeDAO;
 
-	public ArticletypeHbmSQL getArticletypeDAO() {
+	public ArticletypeDAO getArticletypeDAO() {
 		return articletypeDAO;
 	}
 
-	public void setArticletypeDAO(ArticletypeHbmSQL articletypeDAO) {
+	public void setArticletypeDAO(ArticletypeDAO articletypeDAO) {
 		this.articletypeDAO = articletypeDAO;
 	}
 	public void insertArticletype(Articletype articletype){

@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.blog.ssh.model.pojo.ArticleContent;
 import org.apache.struts2.ServletActionContext;
 import org.jsoup.Jsoup;
 
@@ -203,6 +204,9 @@ public class ReleaseArticle {
 			a.setBeagincontent(getBeaginContent(content));
 			a.setReleasetime(Time.time());
 			a.setTags(getArticleTags());
+			ArticleContent ac = new ArticleContent();
+			ac.setContent(content);
+			a.setArticleContent(ac);
 			articleService.insertArticle(a, articletypeId);
 			headerSiderService.setApplication();//发布文章后，重新设置session
 			return "success";

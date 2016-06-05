@@ -44,6 +44,7 @@
 				<value>com/blog/ssh/model/pojo/Message.hbm.xml</value>
 				<value>com/blog/ssh/model/pojo/Tag.hbm.xml</value>
 				<value>com/blog/ssh/model/pojo/Bloginfo.hbm.xml</value>
+				<value>com/blog/ssh/model/pojo/ArticleContent.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -275,6 +276,12 @@
 		<property name="articleDAO">
 			<ref bean="articleDAO"/>
 		</property>
+		<property name="commentDAO">
+			<ref bean="commentDAO"/>
+		</property>
+		<property name="tagDAO">
+			<ref bean="tagDAO"/>
+		</property>
 	</bean>
 	<bean id="articletypeService" class="com.blog.ssh.control.service.ArticletypeService">
 		<property name="articletypeDAO">
@@ -309,27 +316,37 @@
 	<!-- service层结束 -->
 	
 	<!-- DAO层开始-->
-	<bean id="userDAO" class="com.blog.ssh.control.dao.UserHbmSQL">
+	<bean id="baseDAO" class="com.blog.ssh.control.dao.BaseDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="articleDAO" class="com.blog.ssh.control.dao.ArticleHbmSQL">
+	<bean id="articleContentDAO" class="com.blog.ssh.control.dao.ArticleContentDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="articletypeDAO" class="com.blog.ssh.control.dao.ArticletypeHbmSQL">
+	<bean id="userDAO" class="com.blog.ssh.control.dao.UserDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="messageDAO" class="com.blog.ssh.control.dao.MessageHbmSQL">
+	<bean id="articleDAO" class="com.blog.ssh.control.dao.ArticleDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="commentDAO" class="com.blog.ssh.control.dao.CommentHbmSQL">
+	<bean id="articletypeDAO" class="com.blog.ssh.control.dao.ArticletypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="messageDAO" class="com.blog.ssh.control.dao.MessageDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="commentDAO" class="com.blog.ssh.control.dao.CommentDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>

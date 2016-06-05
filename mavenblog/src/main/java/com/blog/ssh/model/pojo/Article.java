@@ -1,5 +1,12 @@
 package com.blog.ssh.model.pojo;
 
+import org.apache.struts2.json.annotations.JSON;
+import org.hibernate.bytecode.internal.javassist.FieldHandled;
+import org.hibernate.bytecode.internal.javassist.FieldHandler;
+
+import javax.persistence.Basic;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,27 +16,78 @@ import java.util.Set;
  */
 
 public class Article implements java.io.Serializable {
-
 	// Fields
-
 	private Integer id;
 	private String title;
 	private String content;
+	private byte[] byteContent;
 	private String beagincontent;
 	private String releasetime;
 	private String filename;
 	private User user;
+	private Integer userId;
 	private Articletype articletype;
+	private Integer articletypeId;
 	private String imagename;
 	private Integer visits;
-	private Set comments = new HashSet(0);
-	private Set tags = new HashSet(0);
+	private Set comments = new HashSet();
+	private Integer commentCount;
+	private Set tags = new HashSet();
+	private ArticleContent articleContent;
 	// Constructors
 
 	/** default constructor */
 	public Article() {
 	}
-	
+	/** 显示文章列表*/
+	public Article(Integer id, String title, String beagincontent,
+				   String releasetime, String filename,
+				   Integer userId, String username, String url,
+				   Integer articletypeId, String value, String linkname,
+				   String imagename, Integer visits) {
+		this.id = id;
+		this.title = title;
+		this.beagincontent = beagincontent;
+		this.releasetime = releasetime;
+		this.filename = filename;
+		this.user= new User();
+		user.setId(userId);
+		user.setUsername(username);
+		user.setUrl(url);
+		this.articletype = new Articletype();
+		articletype.setId(articletypeId);
+		articletype.setValue(value);
+		articletype.setLinkname(linkname);
+		this.articletypeId = articletypeId;
+		this.imagename = imagename;
+		this.visits = visits;
+	}
+
+	/**
+	 * @param id
+	 * @param title
+     */
+	public Article(Integer id, String title) {
+		this.id = id;
+		this.title = title;
+	}
+	public Article(Integer id, String title,
+				   String beagincontent, String releasetime, String filename,
+				   User user, Articletype articletype, String imagename,
+				   Integer visits, Set comments, Set tags) {
+		this.id = id;
+		this.title = title;
+		this.beagincontent = beagincontent;
+		this.releasetime = releasetime;
+		this.filename = filename;
+		this.user = user;
+		this.articletype = articletype;
+		this.imagename = imagename;
+		this.visits = visits;
+		this.comments = comments;
+		this.tags = tags;
+	}
+
 	/** full constructor */
 	public Article(Integer id, String title, String content,
 			String beagincontent, String releasetime, String filename,
@@ -42,7 +100,8 @@ public class Article implements java.io.Serializable {
 		this.releasetime = releasetime;
 		this.filename = filename;
 		this.user = user;
-		this.articletype = articletype;
+
+		this.articletype = articletypeId;
 		this.imagename = imagename;
 		this.visits = visits;
 		this.comments = comments;
@@ -50,7 +109,13 @@ public class Article implements java.io.Serializable {
 	}
 
 	// Property accessors
-	
+	public Integer getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(Integer commentCount) {
+		this.commentCount = commentCount;
+	}
 	public Integer getId() {
 		return this.id;
 	}
@@ -146,5 +211,12 @@ public class Article implements java.io.Serializable {
 	public void setTags(Set tags) {
 		this.tags = tags;
 	}
-	
+
+	public ArticleContent getArticleContent() {
+		return articleContent;
+	}
+
+	public void setArticleContent(ArticleContent articleContent) {
+		this.articleContent = articleContent;
+	}
 }

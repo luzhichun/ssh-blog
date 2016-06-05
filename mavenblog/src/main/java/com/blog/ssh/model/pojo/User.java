@@ -16,13 +16,13 @@ public class User implements java.io.Serializable {
 	private String password;
 	private String registertime;
 	private String url;
-	private String headpicname;//Í·ÏñÎÄ¼şÃû
+	private String headpicname;//å¤´åƒæ–‡ä»¶å
 	private Set articles;
 	private Bloginfo bloginfo;
 	private Integer throughFlag;
-	private Integer blogComments;//Êı¾İ¿âÖĞ²»´æÔÚ¸Ã×Ö¶Î£¬ÓÃÓÚÏÔÊ¾ÓÃ»§²©¿ÍµÄÆÀÂÛÊı
-	private Integer msgCounts;//Êı¾İ¿âÖĞ²»´æÔÚ¸Ã×Ö¶Î£¬ÓÃÓÚÏÔÊ¾ÓÃ»§²©¿ÍµÄÏûÏ¢Êı
-	private Integer articleCounts;//Êı¾İ¿âÖĞ²»´æÔÚ¸Ã×Ö¶Î£¬ÓÃÓÚÏÔÊ¾ÓÃ»§²©¿ÍÎÄÕÂÊı
+	private Integer blogComments;//æ•°æ®åº“ä¸­ä¸å­˜åœ¨è¯¥å­—æ®µï¼Œç”¨äºæ˜¾ç¤ºç”¨æˆ·åšå®¢çš„è¯„è®ºæ•°
+	private Integer msgCounts;//æ•°æ®åº“ä¸­ä¸å­˜åœ¨è¯¥å­—æ®µï¼Œç”¨äºæ˜¾ç¤ºç”¨æˆ·åšå®¢çš„æ¶ˆæ¯æ•°
+	private Integer articleCounts;//æ•°æ®åº“ä¸­ä¸å­˜åœ¨è¯¥å­—æ®µï¼Œç”¨äºæ˜¾ç¤ºç”¨æˆ·åšå®¢æ–‡ç« æ•°
 	// Constructors
 
 	/** default constructor */
@@ -31,8 +31,8 @@ public class User implements java.io.Serializable {
 
 	/** full constructor */
 	public User(Integer id, String username, String email, String password,
-			String registertime, String url,String headpicname,Set articles,
-			Bloginfo bloginfo,Integer throughFlag) {
+				String registertime, String url,String headpicname,Set articles,
+				Bloginfo bloginfo,Integer throughFlag) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -45,7 +45,7 @@ public class User implements java.io.Serializable {
 		this.bloginfo = bloginfo;
 		this.throughFlag = throughFlag;
 	}
-	
+
 	// Property accessors
 
 	public Integer getId() {
@@ -151,5 +151,5 @@ public class User implements java.io.Serializable {
 	public void setArticleCounts(Integer articleCounts) {
 		this.articleCounts = articleCounts;
 	}
-	
+
 }

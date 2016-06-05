@@ -1,7 +1,7 @@
 package com.blog.ssh.control.dao;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -69,6 +69,34 @@ public class TagDAO {
 		}
 	}
 
+	/**
+	 * 根据文章id获取tags
+	 * @param id
+	 * @return
+     */
+	public List<Tag> getTagsByArticleId(Integer id){
+		String sql = "SELECT\n" +
+				"\tt.id,\n" +
+				"\tt.\n" +
+				"value\n" +
+				"\n" +
+				"FROM\n" +
+				"\tarticle_tag AS atag,\n" +
+				"\ttag AS t\n" +
+				"WHERE\n" +
+				"\tatag.article_id = 40\n" +
+				"AND t.id = atag.tag_id;";
+		Session s = getCurrentSession();
+		List<Object []> objects = s.createSQLQuery(sql).list();
+		List<Tag> tList = new ArrayList<Tag>();
+		for(Object [] o:objects){
+			Tag t = new Tag();
+			t.setId((Integer) o[0]);
+			t.setValue((String) o[1]);
+			tList.add(t);
+		}
+		return tList;
+	}
 	public Tag findById(java.lang.Integer id) {
 		log.debug("getting Tag instance with id: " + id);
 		try {
@@ -95,7 +123,6 @@ public class TagDAO {
 			throw re;
 		}
 	}
-
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding Tag instance with property: " + propertyName
 				+ ", value: " + value);
@@ -166,13 +193,5 @@ public class TagDAO {
 	}
 	public static TagDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (TagDAO) ctx.getBean("TagDAO");
-	}
-	public static void main(String args []){
-		Configuration conf = new Configuration().configure();
-		SessionFactory sf = conf.buildSessionFactory();
-		Session s = sf.openSession();
-		Query query = s.createQuery("select Tag from Tag as t left join t.articles order by count(articles)");
-		@SuppressWarnings("unchecked")
-		List<Article> list = query.list();
 	}
 }

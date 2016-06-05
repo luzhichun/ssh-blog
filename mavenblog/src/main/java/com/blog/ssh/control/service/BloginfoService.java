@@ -12,10 +12,6 @@ public class BloginfoService {
 	public void setBloginfoDAO(BloginfoDAO bloginfoDAO) {
 		this.bloginfoDAO = bloginfoDAO;
 	}
-	/**
-	 * 设置博客访问量
-	 * @param fileName
-	 */
 	public Bloginfo createDefaultBloginfo(){
 		Bloginfo bloginfo = new Bloginfo();
 		bloginfo.setBackground("black.jpg");

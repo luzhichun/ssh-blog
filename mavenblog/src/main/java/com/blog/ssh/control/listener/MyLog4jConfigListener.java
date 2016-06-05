@@ -7,7 +7,6 @@ package com.blog.ssh.control.listener;
 import org.springframework.web.util.Log4jConfigListener;
 
 import javax.servlet.ServletContextEvent;
-import javax.servlet.annotation.WebListener;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Properties;

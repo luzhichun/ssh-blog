@@ -2,10 +2,10 @@ package com.blog.ssh.control.service;
 
 import java.util.Map;
 
-import com.blog.ssh.control.dao.ArticleHbmSQL;
-import com.blog.ssh.control.dao.ArticletypeHbmSQL;
-import com.blog.ssh.control.dao.CommentHbmSQL;
-import com.blog.ssh.control.dao.MessageHbmSQL;
+import com.blog.ssh.control.dao.ArticleDAO;
+import com.blog.ssh.control.dao.ArticletypeDAO;
+import com.blog.ssh.control.dao.CommentDAO;
+import com.blog.ssh.control.dao.MessageDAO;
 import com.blog.ssh.control.dao.TagDAO;
 import com.blog.ssh.model.pojo.HeaderAndSider;
 import com.opensymphony.xwork2.ActionContext;
@@ -17,37 +17,37 @@ import com.opensymphony.xwork2.ActionContext;
  *
  */
 public class HeaderSiderService {
-	private ArticleHbmSQL articleDAO;
-	private ArticletypeHbmSQL articletypeDAO;
-	private CommentHbmSQL commentDAO;
-	private MessageHbmSQL messageDAO;
+	private ArticleDAO articleDAO;
+	private ArticletypeDAO articletypeDAO;
+	private CommentDAO commentDAO;
+	private MessageDAO messageDAO;
 	private TagDAO tagDAO;
 	private HeaderAndSider headerAndSider;
 	public HeaderSiderService(){
 		headerAndSider = new HeaderAndSider();
 	}
-	public ArticleHbmSQL getArticleDAO() {
+	public ArticleDAO getArticleDAO() {
 		return articleDAO;
 	}
-	public void setArticleDAO(ArticleHbmSQL articleDAO) {
+	public void setArticleDAO(ArticleDAO articleDAO) {
 		this.articleDAO = articleDAO;
 	}
-	public ArticletypeHbmSQL getArticletypeDAO() {
+	public ArticletypeDAO getArticletypeDAO() {
 		return articletypeDAO;
 	}
-	public void setArticletypeDAO(ArticletypeHbmSQL articletypeDAO) {
+	public void setArticletypeDAO(ArticletypeDAO articletypeDAO) {
 		this.articletypeDAO = articletypeDAO;
 	}
-	public CommentHbmSQL getCommentDAO() {
+	public CommentDAO getCommentDAO() {
 		return commentDAO;
 	}
-	public void setCommentDAO(CommentHbmSQL commentDAO) {
+	public void setCommentDAO(CommentDAO commentDAO) {
 		this.commentDAO = commentDAO;
 	}
-	public MessageHbmSQL getMessageDAO() {
+	public MessageDAO getMessageDAO() {
 		return messageDAO;
 	}
-	public void setMessageDAO(MessageHbmSQL messageDAO) {
+	public void setMessageDAO(MessageDAO messageDAO) {
 		this.messageDAO = messageDAO;
 	}
 	public HeaderAndSider getHeaderAndSider() {

@@ -4,18 +4,16 @@ package com.blog.ssh.control.service;
 import java.util.List;
 import java.util.Map;
 
-import com.blog.ssh.control.dao.UserHbmSQL;
-import com.blog.ssh.model.pojo.Article;
-import com.blog.ssh.model.pojo.Comment;
+import com.blog.ssh.control.dao.UserDAO;
 import com.blog.ssh.model.pojo.User;
 import com.opensymphony.xwork2.ActionContext;
 
 public class UserService {
-	private UserHbmSQL userDAO;
-	public UserHbmSQL getUserDAO() {
+	private UserDAO userDAO;
+	public UserDAO getUserDAO() {
 		return userDAO;
 	}
-	public void setUserDAO(UserHbmSQL userDAO) {
+	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
 	public void insertUser(User user){

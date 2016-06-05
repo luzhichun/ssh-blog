@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <error-page>
-    <error-code>404</error-code>
-    <location>/404.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>500</error-code>
-    <location>/500.jsp</location>
-  </error-page>
+  <!--<error-page>-->
+    <!--<error-code>404</error-code>-->
+    <!--<location>/404.jsp</location>-->
+  <!--</error-page>-->
+  <!--<error-page>-->
+    <!--<error-code>500</error-code>-->
+    <!--<location>/500.jsp</location>-->
+  <!--</error-page>-->
   <display-name>blog</display-name>
   <welcome-file-list>
     <welcome-file>/index.jsp</welcome-file>
@@ -35,6 +35,13 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- Context Configuration locations for Spring XML files -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <!-- <param-value>/WEB-INF/applicationContext-*.xml,classpath*:applicationContext-*.xml</param-value> -->
+    <!-- 加入你的配置文件放在了src下的，命名规则为：applicationContext-*.xml形式，则可以从以下方式配置-->
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
     <context-param>  
         <param-name>log4jRefreshInterval</param-name>  
         <param-value>60000</param-value>  
@@ -45,13 +52,6 @@
         </listener-class>
     </listener>
 	<!-- log4j end -->
-	<!-- Context Configuration locations for Spring XML files -->
-	<context-param> 
-		<param-name>contextConfigLocation</param-name>
-		<!-- <param-value>/WEB-INF/applicationContext-*.xml,classpath*:applicationContext-*.xml</param-value> -->
-		<!-- 加入你的配置文件放在了src下的，命名规则为：applicationContext-*.xml形式，则可以从以下方式配置-->
-		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

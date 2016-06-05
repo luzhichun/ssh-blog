@@ -10,7 +10,7 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="article" class="com.blog.ssh.model.pojo.Article" lazy="no-proxy">
+        <many-to-one name="article" class="com.blog.ssh.model.pojo.Article" lazy="proxy">
         	<column name="article_id" not-null="true" />
         </many-to-one>
         <property name="content" type="java.lang.String">

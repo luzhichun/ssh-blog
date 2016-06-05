@@ -18,7 +18,7 @@ public class MyStrutsFilter extends StrutsPrepareAndExecuteFilter {
         //不过滤的url
         String url = request.getRequestURI();
         //System.out.println(url);
-        if (url.contains("/file/ueditor/jsp/")) {
+        if (url.contains("/file/ueditor/jsp/") || url.contains("/user/controller.jsp")) {
             //System.out.println("使用自定义的过滤器");
             chain.doFilter(req, res);
         }else{

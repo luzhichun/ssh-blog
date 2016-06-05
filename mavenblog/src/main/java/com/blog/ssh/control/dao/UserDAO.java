@@ -10,11 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.blog.ssh.model.pojo.Article;
 import com.blog.ssh.model.pojo.User;
 @Transactional
-public class UserHbmSQL {
-	private final Logger log = LoggerFactory.getLogger(UserHbmSQL.class);
+public class UserDAO {
+	private final Logger log = LoggerFactory.getLogger(UserDAO.class);
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -38,6 +37,9 @@ public class UserHbmSQL {
 			log.error("save failed", re);
 			throw re;
 		}
+	}
+	public void merge(User u){
+		getCurrentSession().merge(u);
 	}
 	public void update(User u){
 		getCurrentSession().update(u);

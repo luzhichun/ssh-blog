@@ -2,17 +2,16 @@ package com.blog.ssh.control.service;
 
 import java.util.List;
 
-import com.blog.ssh.control.dao.ArticleHbmSQL;
-import com.blog.ssh.control.dao.CommentHbmSQL;
+import com.blog.ssh.control.dao.CommentDAO;
 import com.blog.ssh.model.pojo.Comment;
 
 public class CommentService {
-	private CommentHbmSQL commentDAO;
-	public CommentHbmSQL getCommentDAO() {
+	private CommentDAO commentDAO;
+	public CommentDAO getCommentDAO() {
 		return commentDAO;
 	}
 
-	public void setCommentDAO(CommentHbmSQL commentDAO) {
+	public void setCommentDAO(CommentDAO commentDAO) {
 		this.commentDAO = commentDAO;
 	}
 	/**

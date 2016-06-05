@@ -3,26 +3,50 @@ package com.blog.ssh.control.service;
 import java.util.List;
 
 
-
-
-import com.blog.ssh.control.dao.ArticleHbmSQL;
+import com.blog.ssh.control.dao.ArticleContentDAO;
+import com.blog.ssh.control.dao.ArticleDAO;
+import com.blog.ssh.control.dao.CommentDAO;
+import com.blog.ssh.control.dao.TagDAO;
 import com.blog.ssh.model.pojo.Article;
-import com.blog.ssh.model.pojo.Articletype;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ArticleService {
-	private ArticleHbmSQL articleDAO;
-	public ArticleHbmSQL getArticleDAO() {
+	private ArticleDAO articleDAO;
+	private CommentDAO commentDAO;
+	@Autowired
+	private ArticleContentDAO articleContentDAO;
+	private TagDAO tagDAO;
+	public ArticleDAO getArticleDAO() {
 		return articleDAO;
 	}
 
-	public void setArticleDAO(ArticleHbmSQL articleDAO) {
+	public void setArticleDAO(ArticleDAO articleDAO) {
 		this.articleDAO = articleDAO;
 	}
+
+	public CommentDAO getCommentDAO() {
+		return commentDAO;
+	}
+
+	public void setCommentDAO(CommentDAO commentDAO) {
+		this.commentDAO = commentDAO;
+	}
+
+	public TagDAO getTagDAO() {
+		return tagDAO;
+	}
+
+	public void setTagDAO(TagDAO tagDAO) {
+		this.tagDAO = tagDAO;
+	}
+
 	/**
 	 * 插入文章
 	 * @param a
 	 * @param articletype_id
 	 */
 	public void insertArticle(Article a,int articletype_id){
+		articleContentDAO.save(a.getArticleContent());
 		articleDAO.insertArticle(a, articletype_id);
 	}
 	/**
@@ -30,7 +54,15 @@ public class ArticleService {
 	 * @return 所有文章列表
 	 */
 	public List<Article> getAllArticle(){
-		return articleDAO.getAllArticle();
+		List<Article> articleList = articleDAO.getAllArticle1();
+//		for(Article article:articleList){
+//			int commentCount = commentDAO.getArticleCommentCount(article.getId());
+//			article.setCommentCount(commentCount);
+//			Set<Tag> s = new HashSet<Tag>();
+//			s.addAll(tagDAO.getTagsByArticleId(article.getId()));
+//			article.setTags(s);
+//		}
+		return articleList;
 	}
 	/**
 	 * 获取最热文章

@@ -2,12 +2,8 @@ package com.blog.ssh.model.pojo;
 
 import java.util.List;
 
-import com.blog.ssh.control.dao.ArticleHbmSQL;
-import com.blog.ssh.control.dao.ArticletypeHbmSQL;
-import com.blog.ssh.control.dao.CommentHbmSQL;
-import com.blog.ssh.control.dao.MessageHbmSQL;
 /**
- * ÍøÒ³header²¿·ÖºÍsider²¿·ÖËùÐèÒªµÄÊý¾Ý
+ * ï¿½ï¿½Ò³headerï¿½ï¿½ï¿½Öºï¿½siderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class HeaderAndSider {
 	private List<Article> latestArticles;

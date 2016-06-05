@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.blog.ssh.model.pojo.Article;
 import com.blog.ssh.model.pojo.Articletype;
 @Transactional
-public class ArticletypeHbmSQL {
-	private final Logger log = LoggerFactory.getLogger(ArticletypeHbmSQL.class);
+public class ArticletypeDAO {
+	private final Logger log = LoggerFactory.getLogger(ArticletypeDAO.class);
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {

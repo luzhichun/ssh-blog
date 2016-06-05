@@ -152,7 +152,7 @@ public class MD5{
     private MD5(){};
      
     public static void main(String[] args){
-        String str=MD5.getInstance().getMD5("123456");
+        String str=MD5.getInstance().getMD5("12345");
         System.out.println(str);
     }
 }

@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.blog.ssh.model.pojo.Article;
 import com.blog.ssh.model.pojo.Comment;
 @Transactional
-public class CommentHbmSQL {
-	private final Logger log = LoggerFactory.getLogger(CommentHbmSQL.class);
+public class CommentDAO {
+	private final Logger log = LoggerFactory.getLogger(CommentDAO.class);
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -299,7 +299,7 @@ public class CommentHbmSQL {
 	 */
 	public int getArticleCommentCount(int article_id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select count(*) from Comment as c where c.throughFlag=1 and c.articleId=" + article_id);
+		Query query = session.createQuery("select count(*) from Comment as c where c.throughFlag=1 and c.article.id=" + article_id);
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}

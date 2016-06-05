@@ -2,17 +2,17 @@ package com.blog.ssh.control.service;
 
 import java.util.List;
 
-import com.blog.ssh.control.dao.MessageHbmSQL;
+import com.blog.ssh.control.dao.MessageDAO;
 import com.blog.ssh.model.pojo.Message;
 
 public class MessageService {
-	private MessageHbmSQL messageDAO;
+	private MessageDAO messageDAO;
 
-	public MessageHbmSQL getMessageDAO() {
+	public MessageDAO getMessageDAO() {
 		return messageDAO;
 	}
 
-	public void setMessageDAO(MessageHbmSQL messageDAO) {
+	public void setMessageDAO(MessageDAO messageDAO) {
 		this.messageDAO = messageDAO;
 	}
 	public void insertMessage(Message message){

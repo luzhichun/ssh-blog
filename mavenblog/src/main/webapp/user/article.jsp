@@ -64,7 +64,7 @@
 				</div>
 				<div class="clear"></div>
 				<div id="content">
-				<s:property escape="false" value="article.content" />
+				<s:property escape="false" value="article.articleContent.content" />
 				</div>			﻿
 				<div class="clear"></div>	
 				

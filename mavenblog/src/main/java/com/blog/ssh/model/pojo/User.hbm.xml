@@ -11,13 +11,13 @@
             <generator class="identity" />
         </id>
         <property name="username" type="java.lang.String">
-            <column name="username" length="20" not-null="true" />
+            <column name="username" length="20" not-null="false" />
         </property>
         <property name="email" type="java.lang.String">
-            <column name="email" length="30" not-null="true" />
+            <column name="email" length="30" not-null="false" />
         </property>
         <property name="password" type="java.lang.String">
-            <column name="password" length="30" not-null="true" />
+            <column name="password" length="30" not-null="false" />
         </property>
         <property name="registertime" type="java.lang.String">
             <column name="registertime" length="30" not-null="false" />
@@ -26,7 +26,7 @@
             <column name="url" length="20" not-null="true" />
         </property>
         <property name="headpicname" type="java.lang.String">
-            <column name="headpicname" length="20" not-null="true" />
+            <column name="headpicname" length="20" not-null="false" />
         </property>
         <set name="articles" inverse="true" lazy="true" order-by="id desc" cascade="delete">
 			<key>
@@ -36,7 +36,7 @@
 		</set>
 		 <many-to-one name="bloginfo" column="bloginfo_id" unique="true" lazy="no-proxy"></many-to-one>
     	<property name="throughFlag" type="java.lang.Integer">
-            <column name="through_flag" not-null="true" />
+            <column name="through_flag" not-null="false" />
         </property>
     </class>
 </hibernate-mapping>
