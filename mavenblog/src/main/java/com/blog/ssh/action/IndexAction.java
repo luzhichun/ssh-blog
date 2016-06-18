@@ -10,9 +10,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class IndexAction extends ActionSupport{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private List<Article> articles;//首页文章介绍，包含相关联的属性
 	@Autowired
@@ -28,20 +25,6 @@ public class IndexAction extends ActionSupport{
 
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
-	}
-
-	public ArticleService getArticleService() {
-		return articleService;
-	}
-	public void setArticleService(ArticleService articleService) {
-		this.articleService = articleService;
-	}
-
-	public HeaderSiderService getHeaderSiderService() {
-		return headerSiderService;
-	}
-	public void setHeaderSiderService(HeaderSiderService headerSiderService) {
-		this.headerSiderService = headerSiderService;
 	}
 	/**
 	 * 访问index.action执行的方法

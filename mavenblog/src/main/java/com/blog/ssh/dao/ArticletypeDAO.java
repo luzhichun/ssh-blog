@@ -69,27 +69,11 @@ public class ArticletypeDAO {
 			throw re;
 		}
 	}
-
-	public List findByExample(Articletype instance) {
-		log.debug("finding Articletype instance by example");
-		try {
-			List results = getCurrentSession()
-					.createCriteria("com.blog.ssh.pojo.Articletype")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding Articletype instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Articletype as atype where atype."
+			String queryString = "from com.blog.ssh.pojo.Articletype as atype where atype."
 					+ propertyName + "= ?";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);

@@ -1,26 +1,43 @@
 package com.blog.ssh.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Set;
 
 
 /**
  * Message entity. @author MyEclipse Persistence Tools
  */
-
+@Entity(name="message")
 public class Message implements java.io.Serializable {
 
 	// Fields
-
+	@GenericGenerator(name = "message", strategy = "increment")
+	@Id
 	private Integer id;
+	@Column
 	private String time;
+	@Column
 	private String content;
+	@Column(name="through_flag")
 	private Integer throughFlag;
+	@Column(name="auditing_flag")
 	private Integer auditingFlag;
+	@Column
 	private Integer light;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private User user;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "parent_id")
 	private Message parMessage;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "parMessage")
 	private Set<Message> chiMessages;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "reply_id")
 	private Message replyMessage;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "replyMessage")
 	private Set<Message> byreplyMessages;
 
 	// Constructors

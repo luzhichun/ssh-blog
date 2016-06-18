@@ -143,6 +143,7 @@
     	</action>
     	<action name="sendVlidatecode" class="userAction" method="sendVlidatecode">
     		<result name="success" type="json"></result>
+			<result name="failed" type="json"></result>
     	</action>
     	<action name="emailVlidate" class="userAction" method="emailVlidate">
     		<result name="success" type="json"></result>

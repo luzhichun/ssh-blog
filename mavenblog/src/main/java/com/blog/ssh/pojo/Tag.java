@@ -1,19 +1,28 @@
 package com.blog.ssh.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Tag entity. @author MyEclipse Persistence Tools
  */
-
+@Entity(name="tag")
 public class Tag implements java.io.Serializable {
 
 	// Fields
-
+	@GenericGenerator(name = "generator", strategy = "increment")
+	@Id
 	private Integer id;
+	@Column
 	private String value;
-	private Set articles = new HashSet(0);
+	@ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+	@JoinTable(name = "article_tag",
+			joinColumns = {@JoinColumn(name="tag_id")},
+			inverseJoinColumns = {@JoinColumn(name="article_id")})
+	private Set<Article> articles = new HashSet(0);
 
 	// Constructors
 

@@ -1,14 +1,22 @@
 package com.blog.ssh.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Bloginfo entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
 public class ArticleContent implements java.io.Serializable {
 
 	// Fields
-
+	@GenericGenerator(name="ac", strategy = "increment")
+	@Id
 	private Integer id;
+	@Column
 	private String content;
 
 	// Constructors

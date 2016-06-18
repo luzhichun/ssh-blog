@@ -1,26 +1,45 @@
 package com.blog.ssh.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * Comment entity. @author MyEclipse Persistence Tools
  */
-
+@Entity(name="comment")
 public class Comment implements java.io.Serializable {
 
 	// Fields
-	
+	@GenericGenerator(name = "generator", strategy = "increment")
+	@Id
 	private Integer id;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="article_id")
 	private Article article;
+	@Column
 	private String content;
+	@Column
 	private String time;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
 	private User user;
+	@Column(name="through_flag")
 	private Integer throughFlag;
+	@Column(name="auditing_flag")
 	private Integer auditingFlag;
+	@Column
 	private Integer light;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="parent_id")
 	private Comment parComment;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "parComment")
 	private Set<Comment> chiComments;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "reply_id")
 	private Comment replyComment;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "replyComment")
 	private Set<Comment> byreplyComments;
 
 	/** default constructor */

@@ -30,10 +30,6 @@ public class CommentDAO {
 		return sessionFactory.getCurrentSession();
 	}
 
-	protected void initDao() {
-		// do nothing
-	}
-
 	public void save(Comment transientInstance) {
 		log.debug("saving Comment instance");
 		try {
@@ -66,36 +62,6 @@ public class CommentDAO {
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExample(Comment instance) {
-		log.debug("finding Comment instance by example");
-		try {
-			List results = getCurrentSession()
-					.createCriteria("com.blog.ssh.pojo.Comment")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Comment instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from Comment as where."
-					+ propertyName + "= ?";
-			Query queryObject = getCurrentSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
 			throw re;
 		}
 	}

@@ -30,7 +30,7 @@ public static void main(String args []){
         Properties properties = new Properties();
         InputStream resourceAsStream = null;
         try {
-             resourceAsStream = TestEmail.class.getResourceAsStream("email.properties");
+             resourceAsStream = TestEmail.class.getResourceAsStream("/email.properties");
             properties.load(resourceAsStream);
         } finally{
             if (resourceAsStream!=null) {

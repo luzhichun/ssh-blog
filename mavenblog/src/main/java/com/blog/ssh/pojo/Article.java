@@ -1,12 +1,8 @@
 package com.blog.ssh.pojo;
 
-import org.apache.struts2.json.annotations.JSON;
-import org.hibernate.bytecode.internal.javassist.FieldHandled;
-import org.hibernate.bytecode.internal.javassist.FieldHandler;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Basic;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,25 +10,42 @@ import java.util.Set;
  * AbstractArticle entity provides the base persistence definition of the
  * Article entity. @author MyEclipse Persistence Tools
  */
-
+@Entity(name="article")
 public class Article implements java.io.Serializable {
 	// Fields
+	@GenericGenerator(name = "article", strategy = "increment")
+	@Id
 	private Integer id;
+	@Column
 	private String title;
 	private String content;
-	private byte[] byteContent;
+	@Column
 	private String beagincontent;
+	@Column
 	private String releasetime;
+	@Column
 	private String filename;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private User user;
-	private Integer userId;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name = "articletype_id")
 	private Articletype articletype;
 	private Integer articletypeId;
+	@Column
 	private String imagename;
+	@Column
 	private Integer visits;
-	private Set comments = new HashSet();
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "article")
+	private Set<Comment> comments = new HashSet();
 	private Integer commentCount;
-	private Set tags = new HashSet();
+	@ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+	@JoinTable(name = "article_tag",
+			joinColumns = {@JoinColumn(name="article_id")},
+			inverseJoinColumns = {@JoinColumn(name="tag_id")})
+	private Set<Tag> tags = new HashSet();
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="content_id")
 	private ArticleContent articleContent;
 	// Constructors
 

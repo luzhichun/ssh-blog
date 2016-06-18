@@ -19,8 +19,6 @@ import com.blog.ssh.pojo.Articletype;
 @Repository
 @Transactional
 public class ArticleDAO {
-//	private final Logger log = LoggerFactory.getLogger(ArticleHbmSQL.class);
-//	private final Logger log = Logger.getLogger(ArticleHbmSQL.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -71,35 +69,6 @@ public class ArticleDAO {
 			throw re;
 		}
 	}
-
-	public List findByExample(Article instance) {
-		//log.debug("finding Article instance by example");
-		try {
-			List results = getCurrentSession()
-					.createCriteria("com.blog.ssh.pojo.Article")
-					.add(Example.create(instance)).list();
-			//log.debug("find by example successful, result size: "+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			//log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
-		//log.debug("finding Article instance with property: " + propertyName+ ", value: " + value);
-		try {
-			String queryString = "from Article as where.pojo."
-					+ propertyName + "= ?";
-			Query queryObject = getCurrentSession().createQuery(queryString);
-			queryObject.setParameter(0, value);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			//log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
 	public List findAll() {
 		//log.debug("finding all Article instances");
 		try {
@@ -146,7 +115,7 @@ public class ArticleDAO {
 		return list;
 	}
 	public List<Article> getAllArticle1(){
-		String hql = "from Article ";
+		String hql = "from com.blog.ssh.pojo.Article ";
 		Session session = getCurrentSession();//得到一个Session对象
 		Query query = session.createQuery(hql);
 		List<Article> articleList = query.list();

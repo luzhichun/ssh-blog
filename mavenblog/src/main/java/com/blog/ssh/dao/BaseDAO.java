@@ -1,5 +1,6 @@
 package com.blog.ssh.dao;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class BaseDAO {
+    private Logger log = Logger.getLogger(getClass());
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -30,9 +32,9 @@ public class BaseDAO {
             Session s = getCurrentSession();
             s.save(object);
             s.flush();
-            //log.debug("save successful");
+            log.debug("save successful");
         } catch (RuntimeException re) {
-            //log.error("save failed", re);
+            log.error("save failed", re);
             throw re;
         }
     }

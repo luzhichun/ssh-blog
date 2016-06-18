@@ -45,8 +45,8 @@ public class ArticleDAOTest {
     @Test
     public void testGetAllArticle1(){
         articleList = articleDAO.getAllArticle1();
-        System.out.println("文章数目:" + articleList.size());
-        System.out.println(articleList.get(0).getArticleContent().getContent());
+//        System.out.println("文章数目:" + articleList.size());
+//        System.out.println(articleList.get(0).getArticleContent().getContent());
     }
     @Test
     public void testInsertArticle(){

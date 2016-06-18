@@ -1,21 +1,31 @@
 package com.blog.ssh.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Articletype entity. @author MyEclipse Persistence Tools
  */
-
+@Entity(name="articletype")
 public class Articletype implements java.io.Serializable {
 
 	// Fields
-
+	@GenericGenerator(name = "articletype", strategy = "increment")
+	@Id
 	private Integer id;
+	@Column
 	private String value;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="pid")
 	private Articletype parArticletype;
+	@Column
 	private String linkname;
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "articletype")
 	private Set<Article> articles = new HashSet<Article>(0);
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "parArticletype")
 	private Set<Articletype> chiArticletypes = new HashSet<Articletype>(0);
 
 	// Constructors

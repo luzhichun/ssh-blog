@@ -1,6 +1,7 @@
 package com.blog.ssh.dao;
 
-import com.blog.ssh.pojo.Tag;
+import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.util.MySpringJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,16 +10,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
+
 /**
- * Created by wy on 2016/6/5 0005.
+ * Created by wy on 2016/6/12 0012.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
-public class TagDAOTest {
+public class ArticletypeDAOTest {
     @Autowired
-    private TagDAO tagDAO;
+    ArticletypeDAO articletypeDAO;
     @Test
-    public void getTagsByArticleId(){
-        List<Tag> tags = tagDAO.getTagsByArticleId(54);
+    public void testFindByProperty(){
+        List<Articletype> articletypeList = articletypeDAO.findByProperty("value", "java");
+        assertEquals(1, articletypeList.size());
     }
 }

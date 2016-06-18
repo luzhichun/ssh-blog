@@ -1,24 +1,38 @@
 package com.blog.ssh.pojo;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
-
+@Entity(name="user'")
 public class User implements java.io.Serializable {
 
 	// Fields
-
+	@Id
+	@GenericGenerator(name = "generator", strategy = "increment")
 	private Integer id;
+	@Column
 	private String username;
+	@Column
 	private String email;
+	@Column
 	private String password;
+	@Column
 	private String registertime;
+	@Column
 	private String url;
+	@Column
 	private String headpicname;//头像文件名
-	private Set articles;
+	@OneToMany
+	private Set<Article> articles;
+	@OneToOne
+	@JoinColumn(name = "bloginfo_id", unique = true)
 	private Bloginfo bloginfo;
+	@Column
 	private Integer throughFlag;
 	private Integer blogComments;//数据库中不存在该字段，用于显示用户博客的评论数
 	private Integer msgCounts;//数据库中不存在该字段，用于显示用户博客的消息数

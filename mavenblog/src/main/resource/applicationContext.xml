@@ -12,13 +12,33 @@
 	</bean>
 	<!-- hibernate数据源 -->
 	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource">
+		class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
 		<property name="driverClassName" value="${driver}"></property>
 		<property name="url"
 			value="${url}">
 		</property>
 		<property name="username" value="${username}"></property>
 		<property name="password" value="${password}"></property>
+		<!--initialSize: 初始化连接-->
+		<property name="initialSize" value="5"/>
+		<!--maxIdle: 最大空闲连接-->
+		<property name="maxIdle" value="10"/>
+		<!--minIdle: 最小空闲连接-->
+		<property name="minIdle" value="5"/>
+		<!--maxActive: 最大连接数量-->
+		<property name="maxActive" value="15"/>
+		<!--removeAbandoned: 是否自动回收超时连接-->
+		<property name="removeAbandoned" value="true"/>
+		<!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->
+		<property name="removeAbandonedTimeout" value="180"/>
+		<!--maxWait: 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒-->
+		<property name="maxWait" value="3000"/>
+		<property name="validationQuery">
+			<value>SELECT 1</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>true</value>
+		</property>
 	</bean>
 	<!-- hibernate session -->
 	<bean id="sessionFactory"
@@ -36,18 +56,24 @@
 				<prop key="hibernate.connection.release_mode">after_transaction</prop>
 			</props>
 		</property>
-		<property name="mappingResources">
+		<!-->自动扫描实体<-->
+		<property name="packagesToScan">
 			<list>
-				<value>com/blog/ssh/pojo/User.hbm.xml</value>
-				<value>com/blog/ssh/pojo/Article.hbm.xml</value>
-				<value>com/blog/ssh/pojo/Articletype.hbm.xml</value>
-				<value>com/blog/ssh/pojo/Comment.hbm.xml</value>
-				<value>com/blog/ssh/pojo/Message.hbm.xml</value>
-				<value>com/blog/ssh/pojo/Tag.hbm.xml</value>
-				<value>com/blog/ssh/pojo/Bloginfo.hbm.xml</value>
-				<value>com/blog/ssh/pojo/ArticleContent.hbm.xml</value>
+				<value>com.blog.ssh.pojo</value>
 			</list>
 		</property>
+		<!--<property name="mappingResources">-->
+			<!--<list>-->
+				<!--<value>com/blog/ssh/pojo/User.hbm.xml</value>-->
+				<!--<value>com/blog/ssh/pojo/Article.hbm.xml</value>-->
+				<!--<value>com/blog/ssh/pojo/Articletype.hbm.xml</value>-->
+				<!--<value>com/blog/ssh/pojo/Comment.hbm.xml</value>-->
+				<!--<value>com/blog/ssh/pojo/Message.hbm.xml</value>-->
+				<!--<value>com/blog/ssh/pojo/Tag.hbm.xml</value>-->
+				<!--<value>com/blog/ssh/pojo.Bloginfo.java</value>-->
+				<!--<value>com/blog/ssh/pojo/ArticleContent.hbm.xml</value>-->
+			<!--</list>-->
+		<!--</property>-->
 	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">

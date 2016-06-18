@@ -99,7 +99,7 @@ public class MessageDAO {
 	public List findAll() {
 		log.debug("finding all Message instances");
 		try {
-			String queryString = "from Message";
+			String queryString = "from com.blog.ssh.pojo.Message";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
