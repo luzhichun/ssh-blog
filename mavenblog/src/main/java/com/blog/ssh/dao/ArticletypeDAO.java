@@ -88,7 +88,7 @@ public class ArticletypeDAO {
 	 */
 	public List findArticleByArticletype(String linkname){
 		Session session = getCurrentSession();
-		String hql = "from Article as a where a.articletype.linkname='" + linkname +  "' or a.articletype.parArticletype.linkname='" + linkname +  "'";
+		String hql = "from com.blog.ssh.pojo.Article as a where a.articletype.linkname='" + linkname +  "' or a.articletype.parArticletype.linkname='" + linkname +  "'";
 		Query q = session.createQuery(hql);
 		List<Article> ats = q.list();
 		return ats;
@@ -96,7 +96,7 @@ public class ArticletypeDAO {
 	public List findAll() {
 		log.debug("finding all Articletype instances");
 		try {
-			String queryString = "from Articletype";
+			String queryString = "from com.blog.ssh.pojo.Articletype";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -111,7 +111,7 @@ public class ArticletypeDAO {
 	 */
 	public List<Articletype> getAllChildrenArticletype(){
 		Session session = getCurrentSession();
-		String hql = "from Articletype as at where at.parArticletype is not null";
+		String hql = "from com.blog.ssh.pojo.Articletype as at where at.parArticletype is not null";
 		Query q = session.createQuery(hql);
 		List<Articletype> ats = q.list();
 		return ats;
@@ -123,7 +123,7 @@ public class ArticletypeDAO {
 	 */
 	public List<Articletype> getChildrenArticletype(int pid){
 		Session session = getCurrentSession();
-		String hql = "from Articletype as at where at.pid =" + pid;
+		String hql = "from com.blog.ssh.pojo.Articletype as at where at.parArticletype.id =" + pid;
 		Query q = session.createQuery(hql);
 		List<Articletype> ats = q.list();
 		//System.out.println(ats);
@@ -136,7 +136,7 @@ public class ArticletypeDAO {
 	 */
 	public List<Articletype> getAllParentArticletype(){
 		Session session = getCurrentSession();
-		String hql = "from Articletype as at where at.parArticletype is null";
+		String hql = "from com.blog.ssh.pojo.Articletype as at where at.parArticletype is null";
 		Query q = session.createQuery(hql);
 		List<Articletype> ats = q.list();
 		//System.out.println(ats);
@@ -159,7 +159,7 @@ public class ArticletypeDAO {
 		Configuration conf = new Configuration().configure();
 		SessionFactory sf = conf.buildSessionFactory();
 		Session s = sf.openSession();
-		String hql = "from Article as a where a.articletype.linkname=? or a.articletype.parArticletype.linkname=?";
+		String hql = "from com.blog.ssh.pojo.Article as a where a.articletype.linkname=? or a.articletype.parArticletype.linkname=?";
 		Query q = s.createQuery(hql);
 		q.setParameter(0, "else");
 		q.setParameter(1, "else");
