@@ -7,7 +7,9 @@ import java.util.Map;
 import com.blog.ssh.dao.UserDAO;
 import com.blog.ssh.pojo.User;
 import com.blog.ssh.util.MD5;
+import com.blog.ssh.vo.UserVO;
 import com.opensymphony.xwork2.ActionContext;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +51,7 @@ public class UserService {
 	 * @return 0表示密码错误 1登录成功 2表示用户被封禁
 	 */
 	public int checkLogin(String username,String password){
-		List<User> us= userDAO.findByProperty("username",username);
+		List<User> us = userDAO.findByProperty("username",username);
 		if(us.size() == 0){
 			return 0;
 		}
@@ -94,9 +96,6 @@ public class UserService {
 		User user = (User) userDAO.findByProperty("url", url).get(0);
 		return user;
 	}
-	public List findByExample(User instance){
-		return userDAO.findByExample(instance);
-	}
 	public int getBlogComments(int user_id){
 		return userDAO.getBlogComments(user_id);
 	}
@@ -118,18 +117,20 @@ public class UserService {
 		userDAO.update(u);
 	}
 	/**
-	 * 当用户处理消息后，刷新用户session
+	 * 刷新用户session
 	 * @param user_id
 	 */
-	public void setUserSession(Integer user_id){
+	public UserVO setUserSession(Integer user_id){
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User user = userDAO.findById(user_id);
-		//TODO
-//		user.setBlogComments(userDAO.getBlogComments(user_id));
-//		user.setMsgCounts(userDAO.getmsgCounts(user_id));
-//		user.setArticleCounts(userDAO.getArticleCounts(user_id));
-		session.put("user", user);
-		System.out.println("设置用户session");
+		UserVO uv = new UserVO();
+		BeanUtils.copyProperties(uv, user);
+		uv.setBlogComments(userDAO.getBlogComments(user_id));
+		uv.setMsgCounts(userDAO.getmsgCounts(user_id));
+		uv.setArticleCounts(userDAO.getArticleCounts(user_id));
+		session.put("user", uv);
+		System.out.println("用户session设置成功");
+		return uv;
 	}
 	public int getmsgCounts(Integer user_id){
 		return userDAO.getmsgCounts(user_id);

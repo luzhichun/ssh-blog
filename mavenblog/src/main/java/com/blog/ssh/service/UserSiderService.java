@@ -1,5 +1,5 @@
 package com.blog.ssh.service;
-import com.blog.ssh.pojo.UserSider;
+import com.blog.ssh.vo.UserSider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

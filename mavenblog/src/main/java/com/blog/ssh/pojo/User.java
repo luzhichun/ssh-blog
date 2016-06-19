@@ -34,9 +34,7 @@ public class User implements java.io.Serializable {
 	private Bloginfo bloginfo;
 	@Column(name="through_flag")
 	private Integer throughFlag;
-//	private Integer blogComments;//数据库中不存在该字段，用于显示用户博客的评论数
-//	private Integer msgCounts;//数据库中不存在该字段，用于显示用户博客的消息数
-//	private Integer articleCounts;//数据库中不存在该字段，用于显示用户博客文章数
+
 	// Constructors
 
 	/** default constructor */
@@ -141,29 +139,19 @@ public class User implements java.io.Serializable {
 	public void setThroughFlag(Integer throughFlag) {
 		this.throughFlag = throughFlag;
 	}
-//	public Integer getBlogComments() {
-//		return blogComments;
-//	}
-//
-//	public void setBlogComments(Integer blogComments) {
-//		this.blogComments = blogComments;
-//	}
-//
-//
-//	public Integer getMsgCounts() {
-//		return msgCounts;
-//	}
-//
-//	public void setMsgCounts(Integer msgCounts) {
-//		this.msgCounts = msgCounts;
-//	}
-//
-//	public Integer getArticleCounts() {
-//		return articleCounts;
-//	}
-//
-//	public void setArticleCounts(Integer articleCounts) {
-//		this.articleCounts = articleCounts;
-//	}
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", registertime='" + registertime + '\'' +
+				", url='" + url + '\'' +
+				", headpicname='" + headpicname + '\'' +
+				", bloginfo=" + bloginfo +
+				", throughFlag=" + throughFlag +
+				'}';
+	}
 }

@@ -92,7 +92,10 @@ public class UserAction {
 		this.vlidatecode = vlidatecode;
 	}
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * user登录
+	 * @return 登录状态
+     */
 	public String login(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		if(username == null || password == null){
@@ -121,6 +124,11 @@ public class UserAction {
 			return "failed";
 		}
 	}
+
+	/**
+	 * 注销登录
+	 * @return
+     */
 	public String loginOut(){
 		userService.loginOut();
 		return "success";

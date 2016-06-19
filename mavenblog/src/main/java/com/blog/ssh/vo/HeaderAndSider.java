@@ -1,10 +1,8 @@
-package com.blog.ssh.pojo;
+package com.blog.ssh.vo;
+
+import com.blog.ssh.pojo.*;
 
 import java.util.List;
-
-/**
- * ��ҳheader���ֺ�sider��������Ҫ������
- */
 public class HeaderAndSider {
 	private List<Article> latestArticles;
 	private List<Article> hotArticles;

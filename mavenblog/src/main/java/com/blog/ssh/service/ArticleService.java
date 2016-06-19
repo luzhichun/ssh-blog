@@ -70,13 +70,6 @@ public class ArticleService {
 	 */
 	public List<Article> getAllArticle(){
 		List<Article> articleList = articleDAO.getAllArticle1();
-//		for(Article article:articleList){
-//			int commentCount = commentDAO.getArticleCommentCount(article.getId());
-//			article.setCommentCount(commentCount);
-//			Set<Tag> s = new HashSet<Tag>();
-//			s.addAll(tagDAO.getTagsByArticleId(article.getId()));
-//			article.setTags(s);
-//		}
 		return articleList;
 	}
 	/**
@@ -153,7 +146,6 @@ public class ArticleService {
 		Article a = articleDAO.getArticle(id);
 		a.setVisits(a.getVisits() + 1);
 		articleDAO.update(a);
-		
 	}
 	/**
 	 * 获取数据库中文章数量

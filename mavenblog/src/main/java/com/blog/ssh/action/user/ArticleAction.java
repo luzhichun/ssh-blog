@@ -2,7 +2,7 @@ package com.blog.ssh.action.user;
 import com.blog.ssh.service.ArticleService;
 import com.blog.ssh.service.UserSiderService;
 import com.blog.ssh.pojo.Article;
-import com.blog.ssh.pojo.UserSider;
+import com.blog.ssh.vo.UserSider;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;

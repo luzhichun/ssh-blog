@@ -1,4 +1,9 @@
-package com.blog.ssh.pojo;
+package com.blog.ssh.vo;
+
+import com.blog.ssh.pojo.Article;
+import com.blog.ssh.pojo.Comment;
+import com.blog.ssh.pojo.Tag;
+import com.blog.ssh.pojo.User;
 
 import java.util.List;
 

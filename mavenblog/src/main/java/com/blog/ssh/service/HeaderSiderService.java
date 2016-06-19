@@ -7,7 +7,7 @@ import com.blog.ssh.dao.ArticletypeDAO;
 import com.blog.ssh.dao.CommentDAO;
 import com.blog.ssh.dao.MessageDAO;
 import com.blog.ssh.dao.TagDAO;
-import com.blog.ssh.pojo.HeaderAndSider;
+import com.blog.ssh.vo.HeaderAndSider;
 import com.opensymphony.xwork2.ActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -5,11 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
-/**
- * AbstractArticle entity provides the base persistence definition of the
- * Article entity. @author MyEclipse Persistence Tools
- */
 @Entity(name="article")
 public class Article implements java.io.Serializable {
 	// Fields

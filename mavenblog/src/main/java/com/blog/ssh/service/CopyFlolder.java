@@ -18,7 +18,6 @@ public class CopyFlolder {
     
     
     public static void main(String[] args) throws IOException {
-        // TODO Auto-generated method stub
         //创建目标文件夹
       (new File(url2)).mkdirs();
       //获取源文件夹当前下的文件或目录

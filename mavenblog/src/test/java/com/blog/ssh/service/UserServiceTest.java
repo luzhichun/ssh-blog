@@ -1,10 +1,8 @@
-package com.blog.ssh.dao;
+package com.blog.ssh.service;
 
 import com.blog.ssh.util.MySpringJUnit4ClassRunner;
-import com.blog.ssh.service.BloginfoService;
-import com.blog.ssh.pojo.Bloginfo;
-import com.blog.ssh.pojo.User;
 import com.blog.ssh.vo.UserVO;
+import com.opensymphony.xwork2.ActionContext;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,25 +10,22 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import java.util.Map;
+
 /**
- * Created by wy on 2016/6/5 0005.
+ * Created by wy on 2016/6/19 0019.
  */
 @RunWith(MySpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
-public class UserDAOTest {
+public class UserServiceTest {
     @Autowired
-    private UserDAO userDAO;
-    @Autowired
-    private BloginfoDAO bloginfoDAO;
-    @Autowired
-    private BloginfoService bloginfoService;
+    private UserService userService;
     @Autowired
     private SessionFactory sessionFactory;
     private Session session;
@@ -46,28 +41,7 @@ public class UserDAOTest {
         TransactionSynchronizationManager.unbindResource(sessionFactory);
         SessionFactoryUtils.closeSession(session);
     }
-    /**
-     * 测试一对一插入
-     */
     @Test
-    public void testMerge(){
-        Bloginfo bi = new Bloginfo();
-        bi.setVisits(10);
-        bloginfoDAO.save(bi);
-        User u = new User();
-        u.setUsername("test");
-        u.setBloginfo(bi);
-        userDAO.save(u);
-    }
-    @Test
-    public void testFindById(){
-        User u = (User) userDAO.get(35);
-//        System.out.println(u.getBloginfo().getIntro());
-        UserVO uv = new UserVO();
-        System.out.println(u.toString());
-        System.out.println(uv.toString());
-        BeanUtils.copyProperties(u, uv);
-        System.out.println(u.toString());
-        System.out.println(uv.getArticles().size());
+    public void testSetUserSession(){
     }
 }

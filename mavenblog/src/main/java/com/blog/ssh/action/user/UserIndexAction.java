@@ -3,7 +3,7 @@ package com.blog.ssh.action.user;
 import com.blog.ssh.service.UserService;
 import com.blog.ssh.service.UserSiderService;
 import com.blog.ssh.pojo.User;
-import com.blog.ssh.pojo.UserSider;
+import com.blog.ssh.vo.UserSider;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import org.springframework.beans.factory.annotation.Autowired;
