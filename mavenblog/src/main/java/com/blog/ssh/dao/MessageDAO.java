@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.blog.ssh.pojo.Message;
 @Repository
 @Transactional
-public class MessageDAO {
+public class  MessageDAO {
 	private final Logger log = LoggerFactory.getLogger(MessageDAO.class);
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -33,7 +33,7 @@ public class MessageDAO {
 	}
 
 	public void save(Message transientInstance) {
-		log.debug("saving Message instance");
+		log.debug("saving  com.blog.ssh.pojo.Message instance");
 		try {
 			getCurrentSession().save(transientInstance);
 			log.debug("save successful");
@@ -44,7 +44,7 @@ public class MessageDAO {
 	}
 
 	public void delete(Message persistentInstance) {
-		log.debug("deleting Message instance");
+		log.debug("deleting  com.blog.ssh.pojo.Message instance");
 		try {
 			getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -54,8 +54,8 @@ public class MessageDAO {
 		}
 	}
 
-	public Message findById(java.lang.Integer id) {
-		log.debug("getting Message instance with id: " + id);
+	public  com.blog.ssh.pojo.Message findById(java.lang.Integer id) {
+		log.debug("getting  com.blog.ssh.pojo.Message instance with id: " + id);
 		try {
 			Message instance = (Message) getCurrentSession().get(
 					"com.blog.ssh.pojo.Message", id);
@@ -67,7 +67,7 @@ public class MessageDAO {
 	}
 
 	public List findByExample(Message instance) {
-		log.debug("finding Message instance by example");
+		log.debug("finding  com.blog.ssh.pojo.Message instance by example");
 		try {
 			List results = getCurrentSession()
 					.createCriteria("com.blog.ssh.pojo.Message")
@@ -82,10 +82,10 @@ public class MessageDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Message instance with property: " + propertyName
+		log.debug("finding  com.blog.ssh.pojo.Message instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Message as where.pojo."
+			String queryString = "from  com.blog.ssh.pojo.Message as where.pojo."
 					+ propertyName + "= ?";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -97,7 +97,7 @@ public class MessageDAO {
 	}
 
 	public List findAll() {
-		log.debug("finding all Message instances");
+		log.debug("finding all  com.blog.ssh.pojo.Message instances");
 		try {
 			String queryString = "from com.blog.ssh.pojo.Message";
 			Query queryObject = getCurrentSession().createQuery(queryString);
@@ -114,7 +114,7 @@ public class MessageDAO {
 	 */
 	public List<Message> getAllMessage(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("from Message as m order by m.id desc");
+		Query query = session.createQuery("from  com.blog.ssh.pojo.Message as m order by m.id desc");
 		List<Message> list = query.list();
 		
 		return list;
@@ -125,7 +125,7 @@ public class MessageDAO {
 	 */
 	public List<Message> getAllParMessages(){
 		Session session = getCurrentSession();
-		String hql = "from Message as m where m.parMessage is null order by m.id desc";
+		String hql = "from  com.blog.ssh.pojo.Message as m where m.parMessage is null order by m.id desc";
 		Query q = session.createQuery(hql);
 		List<Message> msgs = q.list();
 		//System.out.println(msgs.get(0).getUser().getUsername());
@@ -153,7 +153,7 @@ public class MessageDAO {
 	 */
 	public void auditing(int id ,int flag){
 		Session session = getCurrentSession();
-		String hql = "UPDATE Message as m SET m.throughFlag=" + flag + " ,m.auditingFlag=1 WHERE m.id="+id;
+		String hql = "UPDATE  com.blog.ssh.pojo.Message as m SET m.throughFlag=" + flag + " ,m.auditingFlag=1 WHERE m.id="+id;
 		try{
 			Query q = session.createQuery(hql);
 			q.executeUpdate();
@@ -168,7 +168,7 @@ public class MessageDAO {
 	 */
 	public List<Message> getChildrenMsgs(int parent_id){
 		Session session = getCurrentSession();
-		String hql = "from Message as m where throughFlag=1 and parentFid=" + parent_id;
+		String hql = "from  com.blog.ssh.pojo.Message as m where throughFlag=1 and m.parMessage.id=" + parent_id;
 		Query q = session.createQuery(hql);
 		List<Message> cMsgs = q.list();
 		
@@ -180,7 +180,7 @@ public class MessageDAO {
 	 */
 	public List<Message> getUnAuditing(){
 		Session session = getCurrentSession();
-		String hql = "from Message as m where auditingFlag=0";
+		String hql = "from  com.blog.ssh.pojo.Message as m where auditingFlag=0";
 		Query q = session.createQuery(hql);
 		List<Message> cMsgs = q.list();
 		
@@ -192,7 +192,7 @@ public class MessageDAO {
 	 */
 	public List<Message> getLatestMessage(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("from Message as m where m.throughFlag=1 order by m.id desc");
+		Query query = session.createQuery("from  com.blog.ssh.pojo.Message as m where m.throughFlag=1 order by m.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Message> list = query.list();
@@ -205,7 +205,7 @@ public class MessageDAO {
 	 * @param id
 	 */
 	public void setMessageLight(int id){
-		String hql = "update Message as m set m.light=m.light+1 where m.id=" + id;
+		String hql = "update  com.blog.ssh.pojo.Message as m set m.light=m.light+1 where m.id=" + id;
 		Session session = getCurrentSession();
 		try{
 			Query q = session.createQuery(hql);
@@ -220,13 +220,13 @@ public class MessageDAO {
 	 */
 	public int getMessageCount(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select count(*) from Message as m");
+		Query query = session.createQuery("select count(*) from  com.blog.ssh.pojo.Message as m");
 		int count = ((Number)query.uniqueResult()).intValue();
 		
 		System.out.println(count);
 		return count;
 	}
-	public Message getMessage(Integer id){
+	public  com.blog.ssh.pojo.Message getMessage(Integer id){
 		Session session = getCurrentSession();
 		Message message;
 		message = (Message) session.get(Message.class, id);
