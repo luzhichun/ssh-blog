@@ -73,7 +73,7 @@ public class CommentDAO {
 	public List findAll(Integer user_id) {
 		log.debug("finding all Comment instances");
 		try {
-			String queryString = "from Comment as c where c.article.user.id=" + user_id + " order by c.id desc";
+			String queryString = "from com.blog.ssh.pojo.Comment as c where c.article.user.id=" + user_id + " order by c.id desc";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -84,7 +84,7 @@ public class CommentDAO {
 	public List findAll() {
 		log.debug("finding all Comment instances");
 		try {
-			String queryString = "from Comment as c order by c.id desc";
+			String queryString = "from com.blog.ssh.pojo.Comment as c order by c.id desc";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -113,7 +113,7 @@ public class CommentDAO {
 	 */
 	public List<Comment> getAllComment(){
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from Comment as c");
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c");
 		List<Comment> cl = query.list();
 		return cl;
 	}
@@ -122,13 +122,13 @@ public class CommentDAO {
 	 */
 	public List<Comment> getUnauditing(){
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from Comment as c where c.auditingFlag=0");
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c where c.auditingFlag=0");
 		List<Comment> cl = query.list();
 		return cl;
 	}
 	public List<Comment> getUnauditing(Integer user_id){
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from Comment as c where c.auditingFlag=0 and c.article.user.id=" + user_id);
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c where c.auditingFlag=0 and c.article.user.id=" + user_id);
 		List<Comment> cl = query.list();
 		return cl;
 	}
@@ -147,7 +147,7 @@ public class CommentDAO {
 	@SuppressWarnings("unchecked")
 	public List<Comment> getParentComments(int article_id){
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from Comment as c where c.throughFlag=1 and parentId=0 and article_id=" + article_id);
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c where c.throughFlag=1 and parentId=0 and article_id=" + article_id);
 		List<Comment> cl = query.list();
 		return cl;
 	}
@@ -159,7 +159,7 @@ public class CommentDAO {
 	@SuppressWarnings("unchecked")
 	public List<Comment> getChildrenComments(int parent_id){
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from Comment as c where c.throughFlag=1 and parentId=" + parent_id);
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c where c.throughFlag=1 and parentId=" + parent_id);
 		List<Comment> cl = query.list();
 		return cl;
 	}
@@ -170,7 +170,7 @@ public class CommentDAO {
 	@SuppressWarnings("unchecked")
 	public List<Comment> getLatestComments(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("from Comment as c where c.throughFlag=1 order by c.id desc");
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c where c.throughFlag=1 order by c.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Comment> list = query.list();
@@ -178,7 +178,7 @@ public class CommentDAO {
 	}
 	public List<Comment> getLatestComments(Integer user_id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("from Comment as c where c.article.user.id=" + user_id + " and c.throughFlag=1 order by c.id desc");
+		Query query = session.createQuery("from com.blog.ssh.pojo.Comment as c where c.article.user.id=" + user_id + " and c.throughFlag=1 order by c.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Comment> list = query.list();
@@ -191,7 +191,7 @@ public class CommentDAO {
 	 */
 	public int getUser_id(int id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select c.userId from Comment as c where id=" + id);
+		Query query = session.createQuery("select c.userId from com.blog.ssh.pojo.Comment as c where id=" + id);
 		int userId = ((Number)query.uniqueResult()).intValue();
 		return userId;
 	}
@@ -200,7 +200,7 @@ public class CommentDAO {
 	 * @param article_id
 	 */
 	public void deleteArticleAllComment(int article_id){
-		String hql = "DELETE FROM Comment as c WHERE c.articleId =" + article_id;
+		String hql = "DELETE FROM com.blog.ssh.pojo.Comment as c WHERE c.articleId =" + article_id;
 		Session session = getCurrentSession();
 		try{
 			Query q = session.createQuery(hql);
@@ -215,7 +215,7 @@ public class CommentDAO {
 	 * @param flag 审核标志，1表示通过，0表示不通过
 	 */
 	public void auditing(int id ,int flag){
-		String hql = "UPDATE Comment c SET c.throughFlag=" + flag + " ,c.auditingFlag=1 WHERE ID="+id;
+		String hql = "UPDATE com.blog.ssh.pojo.Comment c SET c.throughFlag=" + flag + " ,c.auditingFlag=1 WHERE ID="+id;
 		Session session = getCurrentSession();
 		try{
 			Query q = session.createQuery(hql);
@@ -229,7 +229,7 @@ public class CommentDAO {
 	 * @return
 	 */
 	public int getCommentCount(){
-		String hql = "select count(*) from Comment";
+		String hql = "select count(*) from com.blog.ssh.pojo.Comment";
 		Session session = getCurrentSession();
 		Query q = session.createQuery(hql);
 		int count = ((Number)q.uniqueResult()).intValue();
@@ -240,7 +240,7 @@ public class CommentDAO {
 	 * @param id
 	 */
 	public void deleteComment(int id){
-		String hql = "delete from Comment as c where c.id=" + id;
+		String hql = "delete from com.blog.ssh.pojo.Comment as c where c.id=" + id;
 		Session session = getCurrentSession();
 		try{
 			Query q = session.createQuery(hql);
@@ -254,7 +254,7 @@ public class CommentDAO {
 	 * @param id
 	 */
 	public void setCommentLight(int id){
-		String hql = "update Comment as c set c.light=c.light+1 where c.id=" + id;
+		String hql = "update com.blog.ssh.pojo.Comment as c set c.light=c.light+1 where c.id=" + id;
 		Session session = getCurrentSession();
 		try{
 			Query q = session.createQuery(hql);
@@ -269,7 +269,7 @@ public class CommentDAO {
 	 */
 	public int getArticleCommentCount(int article_id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select count(*) from Comment as c where c.throughFlag=1 and c.article.id=" + article_id);
+		Query query = session.createQuery("select count(*) from com.blog.ssh.pojo.Comment as c where c.throughFlag=1 and c.article.id=" + article_id);
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}
