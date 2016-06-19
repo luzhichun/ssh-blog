@@ -128,7 +128,7 @@ public class TagDAO {
 		log.debug("finding Tag instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Tag as where."
+			String queryString = "from com.blog.ssh.pojo.Tag as where."
 					+ propertyName + "= ?";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -146,7 +146,7 @@ public class TagDAO {
 	public List findAll() {
 		log.debug("finding all Tag instances");
 		try {
-			String queryString = "from Tag";
+			String queryString = "from com.blog.ssh.pojo.Tag";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -157,7 +157,7 @@ public class TagDAO {
 	public List findHotTags(int size){
 		log.debug("finding all Tag instances");
 		try {
-			String queryString = "from Tag";
+			String queryString = "from com.blog.ssh.pojo.Tag";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setFirstResult(0);
 			queryObject.setMaxResults(size);

@@ -105,6 +105,7 @@ public class UserAction {
 		try{
 			System.out.println(username);
 			int rVal = userService.checkLogin(username,password);
+			System.out.println("登录状态:" + rVal);
 			if(rVal == 1){
 				//登录成功
 				request.setAttribute("loginState", "登录成功");
@@ -120,6 +121,7 @@ public class UserAction {
 				//登录失败
 			}
 		} catch(Exception e){
+			e.printStackTrace();
 			request.setAttribute("loginState", "账号或密码错误");
 			return "failed";
 		}

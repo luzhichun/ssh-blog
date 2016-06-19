@@ -41,7 +41,12 @@ public class UserServiceTest {
         TransactionSynchronizationManager.unbindResource(sessionFactory);
         SessionFactoryUtils.closeSession(session);
     }
+//    @Test
+//    public void testSetUserSession(){
+//    }
     @Test
-    public void testSetUserSession(){
+    public void testCheckLogin(){
+        int result = userService.checkLogin("admin","12345");
+        System.out.println(result);
     }
 }

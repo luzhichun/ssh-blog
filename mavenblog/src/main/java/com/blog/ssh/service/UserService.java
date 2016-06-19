@@ -9,12 +9,15 @@ import com.blog.ssh.pojo.User;
 import com.blog.ssh.util.MD5;
 import com.blog.ssh.vo.UserVO;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.util.logging.Logger;
+import com.opensymphony.xwork2.util.logging.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+	private Logger log = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private UserDAO userDAO;
 	public UserDAO getUserDAO() {
@@ -51,21 +54,24 @@ public class UserService {
 	 * @return 0表示密码错误 1登录成功 2表示用户被封禁
 	 */
 	public int checkLogin(String username,String password){
+		log.debug("username:" + username + "---password:" + password);
 		List<User> us = userDAO.findByProperty("username",username);
 		if(us.size() == 0){
 			return 0;
 		}
 		else{
 			if(us.get(0).getPassword().equals(MD5.getInstance().getMD5(password))){
+				log.debug("登录成功!");
 				if(us.get(0).getThroughFlag() == 1){
 					setUserSession(us.get(0).getId());
 					return 1;
 				}
 				else{
-					//用户被封禁
+					log.debug("用户被封禁!");
 					return 2;
 				}
 			}
+			log.debug("密码错误!");
 			return 0;
 		}
 	}
