@@ -130,10 +130,10 @@ public class UserService {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User user = userDAO.findById(user_id);
 		UserVO uv = new UserVO();
-		BeanUtils.copyProperties(uv, user);
 		uv.setBlogComments(userDAO.getBlogComments(user_id));
 		uv.setMsgCounts(userDAO.getmsgCounts(user_id));
 		uv.setArticleCounts(userDAO.getArticleCounts(user_id));
+		BeanUtils.copyProperties(user, uv);
 		session.put("user", uv);
 		System.out.println("用户session设置成功");
 		return uv;

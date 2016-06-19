@@ -70,4 +70,11 @@ public class UserDAOTest {
         System.out.println(u.toString());
         System.out.println(uv.getArticles().size());
     }
+    @Test
+    public void testGetMsgCounts(){
+        int i = userDAO.getArticleCounts(35);
+        int j  = userDAO.getBlogComments(35);
+        System.out.println(i);
+        System.out.println(j);
+    }
 }

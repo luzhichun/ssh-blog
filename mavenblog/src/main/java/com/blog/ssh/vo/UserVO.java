@@ -11,7 +11,7 @@ public class UserVO extends User{
 	private Integer msgCounts;//博客的消息数
 	private Integer articleCounts;//博客文章数
 
-    public Integer getBlogComments() {
+	public Integer getBlogComments() {
 		return blogComments;
 	}
 

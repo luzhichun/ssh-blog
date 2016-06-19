@@ -126,7 +126,6 @@ public class UserAction {
 			return "failed";
 		}
 	}
-
 	/**
 	 * 注销登录
 	 * @return
