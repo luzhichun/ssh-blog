@@ -9,7 +9,7 @@ import javax.persistence.Id;
 /**
  * Bloginfo entity. @author MyEclipse Persistence Tools
  */
-@Entity
+@Entity(name="articlecontent")
 public class ArticleContent implements java.io.Serializable {
 
 	// Fields

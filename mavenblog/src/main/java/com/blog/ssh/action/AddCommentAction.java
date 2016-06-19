@@ -116,7 +116,6 @@ public class AddCommentAction {
 			try {
 				TestEmail.send_email(article.getUser().getEmail(),"【梦想博客】你的文章有新评论了",content);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

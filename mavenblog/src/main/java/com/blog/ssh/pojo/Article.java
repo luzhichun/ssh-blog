@@ -31,14 +31,12 @@ public class Article implements java.io.Serializable {
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "articletype_id")
 	private Articletype articletype;
-	private Integer articletypeId;
 	@Column
 	private String imagename;
 	@Column
 	private Integer visits;
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "article")
 	private Set<Comment> comments = new HashSet();
-	private Integer commentCount;
 	@ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
 	@JoinTable(name = "article_tag",
 			joinColumns = {@JoinColumn(name="article_id")},
@@ -56,7 +54,7 @@ public class Article implements java.io.Serializable {
 	public Article(Integer id, String title, String beagincontent,
 				   String releasetime, String filename,
 				   Integer userId, String username, String url,
-				   Integer articletypeId, String value, String linkname,
+				   String value, String linkname,
 				   String imagename, Integer visits) {
 		this.id = id;
 		this.title = title;
@@ -68,10 +66,8 @@ public class Article implements java.io.Serializable {
 		user.setUsername(username);
 		user.setUrl(url);
 		this.articletype = new Articletype();
-		articletype.setId(articletypeId);
 		articletype.setValue(value);
 		articletype.setLinkname(linkname);
-		this.articletypeId = articletypeId;
 		this.imagename = imagename;
 		this.visits = visits;
 	}
@@ -121,14 +117,6 @@ public class Article implements java.io.Serializable {
 		this.tags = tags;
 	}
 
-	// Property accessors
-	public Integer getCommentCount() {
-		return commentCount;
-	}
-
-	public void setCommentCount(Integer commentCount) {
-		this.commentCount = commentCount;
-	}
 	public Integer getId() {
 		return this.id;
 	}
@@ -231,5 +219,24 @@ public class Article implements java.io.Serializable {
 
 	public void setArticleContent(ArticleContent articleContent) {
 		this.articleContent = articleContent;
+	}
+
+	@Override
+	public String toString() {
+		return "Article{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", content='" + content + '\'' +
+				", beagincontent='" + beagincontent + '\'' +
+				", releasetime='" + releasetime + '\'' +
+				", filename='" + filename + '\'' +
+				", user=" + user +
+				", articletype=" + articletype +
+				", imagename='" + imagename + '\'' +
+				", visits=" + visits +
+				", comments=" + comments +
+				", tags=" + tags +
+				", articleContent=" + articleContent +
+				'}';
 	}
 }

@@ -151,7 +151,6 @@ public class UserAction {
 		"</span>";
 			TestEmail.send_email(email,"【梦想博客】账号注册验证码",content);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "failed";
 		}

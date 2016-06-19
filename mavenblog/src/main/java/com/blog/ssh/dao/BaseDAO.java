@@ -7,17 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
 /**
  * Created by wy on 2016/6/5 0005.
  */
 @Repository
 @Transactional
-public class BaseDAO {
+public class BaseDAO<T> {
     private Logger log = Logger.getLogger(getClass());
     @Autowired
     private SessionFactory sessionFactory;
-
+    private Class<T> entity;
     public BaseDAO() {
+        Type type = getClass().getGenericSuperclass();
+        if (type instanceof ParameterizedType) {
+            this.entity = (Class<T>) ((ParameterizedType) type).getActualTypeArguments()[0];
+        } else {
+            this.entity = null;
+        }
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -37,5 +46,9 @@ public class BaseDAO {
             log.error("save failed", re);
             throw re;
         }
+    }
+    public Object get(Integer id){
+        Object object = getCurrentSession().get(this.entity, id);
+        return object;
     }
 }

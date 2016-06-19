@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.orm.hibernate4.SessionHolder;
@@ -59,7 +60,7 @@ public class UserDAOTest {
     }
     @Test
     public void testFindById(){
-        User u = userDAO.findById(42);
+        User u = (User) userDAO.get(42);
         System.out.println(u.getBloginfo().getIntro());
     }
 }

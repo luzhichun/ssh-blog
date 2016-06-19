@@ -24,26 +24,6 @@ public class Bloginfo implements java.io.Serializable {
 	@Column(name = "email_notice_flag")
 	private Integer emailNoticeflag;
 
-	// Constructors
-
-	/** default constructor */
-	public Bloginfo() {
-	}
-
-	public Bloginfo(Integer id, String intro, Integer visits,
-			String background) {
-		super();
-		this.id = id;
-		this.intro = intro;
-		this.visits = visits;
-		this.background = background;
-	}
-
-	/** full constructor */
-
-
-	// Property accessors
-
 	public Integer getId() {
 		return this.id;
 	}
@@ -83,5 +63,15 @@ public class Bloginfo implements java.io.Serializable {
 	public void setEmailNoticeflag(Integer emailNoticeflag) {
 		this.emailNoticeflag = emailNoticeflag;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Bloginfo{" +
+				"id=" + id +
+				", intro='" + intro + '\'' +
+				", visits=" + visits +
+				", background='" + background + '\'' +
+				", emailNoticeflag=" + emailNoticeflag +
+				'}';
+	}
 }

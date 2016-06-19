@@ -13,7 +13,6 @@ public class SystemManage {
 		try {
 			ip = InetAddress.getLocalHost().getHostAddress();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         System.out.println("host ip:" + ip);

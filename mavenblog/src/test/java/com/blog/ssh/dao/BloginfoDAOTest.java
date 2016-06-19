@@ -19,5 +19,7 @@ public class BloginfoDAOTest {
     public void testFindById(){
         Bloginfo bi = bloginfoDAO.findById(1);
         System.out.println(bi.getIntro());
+        Bloginfo bi1 = (Bloginfo) bloginfoDAO.get(1);
+        System.out.println(bi.toString());
     }
 }

@@ -29,7 +29,7 @@ import com.blog.ssh.pojo.Bloginfo;
  */
 @Repository
 @Transactional
-public class BloginfoDAO {
+public class BloginfoDAO extends BaseDAO<Bloginfo>{
 	private static final Logger log = LoggerFactory
 			.getLogger(BloginfoDAO.class);
 	// property constants

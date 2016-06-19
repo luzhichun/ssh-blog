@@ -8,12 +8,12 @@ import java.util.Set;
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
-@Entity(name="user'")
+@Entity(name="user")
 public class User implements java.io.Serializable {
 
 	// Fields
 	@Id
-	@GenericGenerator(name = "generator", strategy = "increment")
+	@GenericGenerator(name = "user", strategy = "increment")
 	private Integer id;
 	@Column
 	private String username;
@@ -27,16 +27,16 @@ public class User implements java.io.Serializable {
 	private String url;
 	@Column
 	private String headpicname;//头像文件名
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "user")
 	private Set<Article> articles;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "bloginfo_id", unique = true)
 	private Bloginfo bloginfo;
-	@Column
+	@Column(name="through_flag")
 	private Integer throughFlag;
-	private Integer blogComments;//数据库中不存在该字段，用于显示用户博客的评论数
-	private Integer msgCounts;//数据库中不存在该字段，用于显示用户博客的消息数
-	private Integer articleCounts;//数据库中不存在该字段，用于显示用户博客文章数
+//	private Integer blogComments;//数据库中不存在该字段，用于显示用户博客的评论数
+//	private Integer msgCounts;//数据库中不存在该字段，用于显示用户博客的消息数
+//	private Integer articleCounts;//数据库中不存在该字段，用于显示用户博客文章数
 	// Constructors
 
 	/** default constructor */
@@ -134,14 +134,6 @@ public class User implements java.io.Serializable {
 		this.bloginfo = bloginfo;
 	}
 
-	public Integer getBlogComments() {
-		return blogComments;
-	}
-
-	public void setBlogComments(Integer blogComments) {
-		this.blogComments = blogComments;
-	}
-
 	public Integer getThroughFlag() {
 		return throughFlag;
 	}
@@ -149,21 +141,29 @@ public class User implements java.io.Serializable {
 	public void setThroughFlag(Integer throughFlag) {
 		this.throughFlag = throughFlag;
 	}
-
-	public Integer getMsgCounts() {
-		return msgCounts;
-	}
-
-	public void setMsgCounts(Integer msgCounts) {
-		this.msgCounts = msgCounts;
-	}
-
-	public Integer getArticleCounts() {
-		return articleCounts;
-	}
-
-	public void setArticleCounts(Integer articleCounts) {
-		this.articleCounts = articleCounts;
-	}
+//	public Integer getBlogComments() {
+//		return blogComments;
+//	}
+//
+//	public void setBlogComments(Integer blogComments) {
+//		this.blogComments = blogComments;
+//	}
+//
+//
+//	public Integer getMsgCounts() {
+//		return msgCounts;
+//	}
+//
+//	public void setMsgCounts(Integer msgCounts) {
+//		this.msgCounts = msgCounts;
+//	}
+//
+//	public Integer getArticleCounts() {
+//		return articleCounts;
+//	}
+//
+//	public void setArticleCounts(Integer articleCounts) {
+//		this.articleCounts = articleCounts;
+//	}
 
 }

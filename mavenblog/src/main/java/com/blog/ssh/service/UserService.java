@@ -124,9 +124,10 @@ public class UserService {
 	public void setUserSession(Integer user_id){
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User user = userDAO.findById(user_id);
-		user.setBlogComments(userDAO.getBlogComments(user_id));
-		user.setMsgCounts(userDAO.getmsgCounts(user_id));
-		user.setArticleCounts(userDAO.getArticleCounts(user_id));
+		//TODO
+//		user.setBlogComments(userDAO.getBlogComments(user_id));
+//		user.setMsgCounts(userDAO.getmsgCounts(user_id));
+//		user.setArticleCounts(userDAO.getArticleCounts(user_id));
 		session.put("user", user);
 		System.out.println("设置用户session");
 	}

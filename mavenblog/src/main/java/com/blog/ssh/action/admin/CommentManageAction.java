@@ -92,7 +92,8 @@ public class CommentManageAction {
 		headerSiderService.setApplication();//设置评论后，重新设置网站session
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		User user = (User) session.get("user");
-		user.setMsgCounts(userService.getmsgCounts(user.getId()));
+		//TODO Auto-generated method stub
+//		user.setMsgCounts(userService.getmsgCounts(user.getId()));
 		session.put("user", user);
 		return "success";
 	}

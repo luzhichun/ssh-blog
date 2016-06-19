@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Example;
-import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +19,7 @@ import com.blog.ssh.pojo.Articletype;
 @Repository
 @Transactional
 public class ArticleDAO {
+	private final Log log = LogFactory.getLog(getClass());
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -29,29 +30,25 @@ public class ArticleDAO {
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
-	protected void initDao() {
-		// do nothing
-	}
 
 	public void save(Article transientInstance) {
-		//log.debug("saving Article instance");
+		log.debug("saving Article instance");
 		try {
 			getCurrentSession().save(transientInstance);
-			//log.debug("save successful");
+			log.debug("save successful");
 		} catch (RuntimeException re) {
-			//log.error("save failed", re);
+			log.error("save failed", re);
 			throw re;
 		}
 	}
 
 	public void delete(Article persistentInstance) {
-		//log.debug("deleting Article instance");
+		log.debug("deleting Article instance");
 		try {
 			getCurrentSession().delete(persistentInstance);
-			//log.debug("delete successful");
+			log.debug("delete successful");
 		} catch (RuntimeException re) {
-			//log.error("delete failed", re);
+			log.error("delete failed", re);
 			throw re;
 		}
 	}
@@ -72,7 +69,7 @@ public class ArticleDAO {
 	public List findAll() {
 		//log.debug("finding all Article instances");
 		try {
-			String queryString = "from Article";
+			String queryString = "from com.blog.ssh.pojo.Article";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -100,12 +97,12 @@ public class ArticleDAO {
 	 * @return 所有文章列表
 	 */
 	public List<Article> getAllArticle(){
-		String hql = "select new Article(a.id, a.title," +
+		String hql = "select new com.blog.ssh.pojo.Article(a.id, a.title," +
 				"a.beagincontent, a.releasetime, a.filename," +
 				"u.id, u.username, u.url," +
 				"atype.id, atype.value, atype.linkname, " +
 				"a.imagename, a.visits) from " +
-				"Article as a,Articletype as atype,User as u " +
+				"com.blog.ssh.pojo.Article as a,com.blog.ssh.pojo.Articletype as atype,com.blog.ssh.pojo.User as u " +
 				"where a.articletype.id = atype.id and a.user.id = u.id order by a.id desc";
 //		hql = "select new Article(id, c.id) from Article as a,Comment as c where a.id = c.article.id order by a.id desc";
 		Session session = getCurrentSession();//得到一个Session对象
@@ -127,7 +124,8 @@ public class ArticleDAO {
 	 */
 	public List<Article> getHotArticleTitle(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select new Article(id,title) from Article as u order by u.visits desc");
+		String sql = "select new com.blog.ssh.pojo.Article(id,title) from com.blog.ssh.pojo.Article as u order by u.visits desc";
+		Query query = session.createQuery(sql);
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Article> list = query.list();
@@ -139,7 +137,7 @@ public class ArticleDAO {
 	 */
 	public List<Article> getHotArticleTitle(Integer user_id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select new Article(id,title) from Article as a where a.user.id=" + user_id + " order by a.visits desc");
+		Query query = session.createQuery("select new com.blog.ssh.pojo.Article(id,title) from com.blog.ssh.pojo.Article as a where a.user.id=" + user_id + " order by a.visits desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Article> list = query.list();
@@ -151,7 +149,7 @@ public class ArticleDAO {
 	 */
 	public List<Article> getLatestArticleTitle(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select new Article(id,title) from Article as u order by u.id desc");
+		Query query = session.createQuery("select new com.blog.ssh.pojo.Article(id,title) from com.blog.ssh.pojo.Article as u order by u.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Article> list = query.list();
@@ -163,7 +161,7 @@ public class ArticleDAO {
 	 */
 	public List<Article> getLatestArticleTitle(Integer user_id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select new Article(id,title) from Article as a where a.user.id=" + user_id + " order by a.id desc");
+		Query query = session.createQuery("select new com.blog.ssh.pojo.Article(id,title) from com.blog.ssh.pojo.Article as a where a.user.id=" + user_id + " order by a.id desc");
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		List<Article> list = query.list();
@@ -176,7 +174,7 @@ public class ArticleDAO {
 	 */
 	public List<Article> getRandomArticleTitle(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select new Article(id,title) from Article as u");
+		Query query = session.createQuery("select new com.blog.ssh.pojo.Article(id,title) from com.blog.ssh.pojo.Article as u");
 		List<Article> list = query.list();
 
 		Collections.shuffle(list);//将list顺序打乱
@@ -193,7 +191,7 @@ public class ArticleDAO {
 	 */
 	public List<Article> getRandomArticleTitle(Integer user_id){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select new Article(id,title) from Article as a where a.user.id=" + user_id);
+		Query query = session.createQuery("select new com.blog.ssh.pojo.Article(id,title) from com.blog.ssh.pojo.Article as a where a.user.id=" + user_id);
 		List<Article> list = query.list();
 		
 		Collections.shuffle(list);//将list顺序打乱
@@ -220,7 +218,7 @@ public class ArticleDAO {
 	 */
 	public Article getArticle(String fileName){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("from Article where fileName='" + fileName + "'");
+		Query query = session.createQuery("from com.blog.ssh.pojo.Article as a where a.filename='" + fileName + "'");
 		@SuppressWarnings("unchecked")
 		List<Article> list = query.list();
 		return list.get(0);
@@ -231,13 +229,13 @@ public class ArticleDAO {
 	 */
 	public int getArticleCount(){
 		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("select count(*) from Article as a");
+		Query query = session.createQuery("select count(*) from com.blog.ssh.pojo.Article as a");
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}
 	public List<Article> serach(String value){
 		Session session = getCurrentSession();//得到一个Session对象
-		String hql="from Article as a where a.title like ? or a.content like ?";
+		String hql="from com.blog.ssh.pojo.Article as a where a.title like ? or a.content like ?";
 		Query query = session.createQuery(hql); 
 		query.setString(0,"%"+value+"%");
 		query.setString(1,"%"+value+"%");
@@ -248,7 +246,7 @@ public class ArticleDAO {
 		Configuration conf = new Configuration().configure();
 		SessionFactory sf = conf.buildSessionFactory();
 		Session s = sf.openSession();
-		String hql="from Article as a where a.title like ? or a.content like ?";
+		String hql="from com.blog.ssh.pojo.Article as a where a.title like ? or a.content like ?";
 		Query query = s.createQuery(hql);
 		query.setString(0,"%"+"java"+"%");
 		query.setString(1,"%"+"java"+"%");

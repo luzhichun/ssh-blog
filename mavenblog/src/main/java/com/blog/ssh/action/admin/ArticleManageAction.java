@@ -70,7 +70,6 @@ public class ArticleManageAction {
 				//删除本地workspace图片
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			System.out.println("删除缩略图失败");
 			e.printStackTrace();
 		}
