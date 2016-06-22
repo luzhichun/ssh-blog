@@ -1,5 +1,6 @@
 package com.blog.ssh.dao;
 
+import com.blog.ssh.pojo.ArticleContent;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,6 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class ArticleContentDAO extends BaseDAO{
+public class ArticleContentDAO extends BaseDAO<ArticleContent>{
 
 }

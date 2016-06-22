@@ -18,7 +18,7 @@ import com.blog.ssh.pojo.Articletype;
 
 @Repository
 @Transactional
-public class ArticleDAO {
+public class ArticleDAO extends BaseDAO<Article>{
 	private final Log log = LogFactory.getLog(getClass());
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -31,51 +31,8 @@ public class ArticleDAO {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public void save(Article transientInstance) {
-		log.debug("saving Article instance");
-		try {
-			getCurrentSession().save(transientInstance);
-			log.debug("save successful");
-		} catch (RuntimeException re) {
-			log.error("save failed", re);
-			throw re;
-		}
-	}
-
-	public void delete(Article persistentInstance) {
-		log.debug("deleting Article instance");
-		try {
-			getCurrentSession().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
 	public void update(Article persistentInstance){
 		getCurrentSession().update(persistentInstance);
-	}
-	public Article findById(java.lang.Integer id) {
-		//log.debug("getting Article instance with id: " + id);
-		try {
-			Article instance = (Article) getCurrentSession().get(
-					"com.blog.ssh.pojo.Article", id);
-			return instance;
-		} catch (RuntimeException re) {
-			//log.error("get failed", re);
-			throw re;
-		}
-	}
-	public List findAll() {
-		//log.debug("finding all Article instances");
-		try {
-			String queryString = "from com.blog.ssh.pojo.Article";
-			Query queryObject = getCurrentSession().createQuery(queryString);
-			return queryObject.list();
-		} catch (RuntimeException re) {
-			//log.error("find all failed", re);
-			throw re;
-		}
 	}
 	/**
 	 * 插入文章
@@ -91,25 +48,6 @@ public class ArticleDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
-	/**
-	 * 获取所有文章列表，以及该文章用户和该文章类型(不包括content)
-	 * @return 所有文章列表
-	 */
-	public List<Article> getAllArticle(){
-		String hql = "select new com.blog.ssh.pojo.Article(a.id, a.title," +
-				"a.beagincontent, a.releasetime, a.filename," +
-				"u.id, u.username, u.url," +
-				"atype.id, atype.value, atype.linkname, " +
-				"a.imagename, a.visits) from " +
-				"com.blog.ssh.pojo.Article as a,com.blog.ssh.pojo.Articletype as atype,com.blog.ssh.pojo.User as u " +
-				"where a.articletype.id = atype.id and a.user.id = u.id order by a.id desc";
-//		hql = "select new Article(id, c.id) from Article as a,Comment as c where a.id = c.article.id order by a.id desc";
-		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Article> list = query.list();
-		return list;
 	}
 	public List<Article> getAllArticle1(){
 		String hql = "from com.blog.ssh.pojo.Article ";
@@ -241,15 +179,5 @@ public class ArticleDAO {
 		query.setString(1,"%"+value+"%");
 		List list=query.list(); 
 		return list;
-	}
-	public static void main(String args[]){
-		Configuration conf = new Configuration().configure();
-		SessionFactory sf = conf.buildSessionFactory();
-		Session s = sf.openSession();
-		String hql="from com.blog.ssh.pojo.Article as a where a.title like ? or a.content like ?";
-		Query query = s.createQuery(hql);
-		query.setString(0,"%"+"java"+"%");
-		query.setString(1,"%"+"java"+"%");
-		List list=query.list();
 	}
 }

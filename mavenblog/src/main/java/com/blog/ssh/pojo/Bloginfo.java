@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Bloginfo implements java.io.Serializable {
 
 	// Fields
-	@GenericGenerator(name = "generator", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Integer id;
 	@Column

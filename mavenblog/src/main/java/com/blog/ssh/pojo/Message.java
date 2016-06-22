@@ -13,8 +13,8 @@ import java.util.Set;
 public class Message implements java.io.Serializable {
 
 	// Fields
-	@GenericGenerator(name = "message", strategy = "increment")
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column
 	private String time;

@@ -12,17 +12,18 @@ import java.util.Set;
 public class Comment implements java.io.Serializable {
 
 	// Fields
-	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name="article_id")
 	private Article article;
 	@Column
 	private String content;
 	@Column
 	private String time;
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;
 	@Column(name="through_flag")
@@ -31,15 +32,15 @@ public class Comment implements java.io.Serializable {
 	private Integer auditingFlag;
 	@Column
 	private Integer light;
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name="parent_id")
 	private Comment parComment;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "parComment")
+	@OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY,mappedBy = "parComment")
 	private Set<Comment> chiComments;
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name = "reply_id")
 	private Comment replyComment;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "replyComment")
+	@OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY,mappedBy = "replyComment")
 	private Set<Comment> byreplyComments;
 
 	/** default constructor */
@@ -164,6 +165,18 @@ public class Comment implements java.io.Serializable {
 	public void setByreplyComments(Set<Comment> byreplyComments) {
 		this.byreplyComments = byreplyComments;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Comment{" +
+				"id=" + id +
+				", content='" + content + '\'' +
+				", time='" + time + '\'' +
+				", throughFlag=" + throughFlag +
+				", auditingFlag=" + auditingFlag +
+				", light=" + light +
+				", parComment=" + parComment +
+				", replyComment=" + replyComment +
+				'}';
+	}
 }

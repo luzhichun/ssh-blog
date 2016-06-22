@@ -13,7 +13,7 @@ import java.util.Set;
 public class Tag implements java.io.Serializable {
 
 	// Fields
-	@GenericGenerator(name = "generator", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Integer id;
 	@Column

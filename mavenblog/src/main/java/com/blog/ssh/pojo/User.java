@@ -13,7 +13,7 @@ public class User implements java.io.Serializable {
 
 	// Fields
 	@Id
-	@GenericGenerator(name = "user", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column
 	private String username;
@@ -34,8 +34,6 @@ public class User implements java.io.Serializable {
 	private Bloginfo bloginfo;
 	@Column(name="through_flag")
 	private Integer throughFlag;
-
-	// Constructors
 
 	/** default constructor */
 	public User() {

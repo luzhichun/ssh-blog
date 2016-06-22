@@ -17,7 +17,7 @@ import com.blog.ssh.pojo.Article;
 import com.blog.ssh.pojo.Comment;
 @Repository
 @Transactional
-public class CommentDAO {
+public class CommentDAO extends BaseDAO<Comment>{
 	private final Logger log = LoggerFactory.getLogger(CommentDAO.class);
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -30,27 +30,6 @@ public class CommentDAO {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public void save(Comment transientInstance) {
-		log.debug("saving Comment instance");
-		try {
-			getCurrentSession().save(transientInstance);
-			log.debug("save successful");
-		} catch (RuntimeException re) {
-			log.error("save failed", re);
-			throw re;
-		}
-	}
-
-	public void delete(Comment persistentInstance) {
-		log.debug("deleting Comment instance");
-		try {
-			getCurrentSession().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
 	public void update(Comment c){
 		getCurrentSession().update(c);
 	}

@@ -13,7 +13,7 @@ import java.util.Set;
 public class Articletype implements java.io.Serializable {
 
 	// Fields
-	@GenericGenerator(name = "articletype", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Integer id;
 	@Column

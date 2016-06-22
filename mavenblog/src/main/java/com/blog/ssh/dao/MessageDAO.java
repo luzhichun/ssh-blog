@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.blog.ssh.pojo.Message;
 @Repository
 @Transactional
-public class  MessageDAO {
+public class  MessageDAO extends BaseDAO<Message>{
 	private final Logger log = LoggerFactory.getLogger(MessageDAO.class);
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -26,32 +26,6 @@ public class  MessageDAO {
 
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
-	}
-
-	protected void initDao() {
-		// do nothing
-	}
-
-	public void save(Message transientInstance) {
-		log.debug("saving  com.blog.ssh.pojo.Message instance");
-		try {
-			getCurrentSession().save(transientInstance);
-			log.debug("save successful");
-		} catch (RuntimeException re) {
-			log.error("save failed", re);
-			throw re;
-		}
-	}
-
-	public void delete(Message persistentInstance) {
-		log.debug("deleting  com.blog.ssh.pojo.Message instance");
-		try {
-			getCurrentSession().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
 	}
 
 	public  com.blog.ssh.pojo.Message findById(java.lang.Integer id) {
@@ -231,8 +205,5 @@ public class  MessageDAO {
 		Message message;
 		message = (Message) session.get(Message.class, id);
 		return message;
-	}
-	public void main(String args []){
-		System.out.println(getLatestMessage().get(1).getUser().getUsername());
 	}
 }

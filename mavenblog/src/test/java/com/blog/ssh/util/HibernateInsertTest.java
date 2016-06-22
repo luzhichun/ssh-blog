@@ -1,8 +1,9 @@
-package com.blog.ssh.dao;
+package com.blog.ssh.util;
 
+import com.blog.ssh.dao.ArticleDAO;
 import com.blog.ssh.pojo.Article;
 import com.blog.ssh.pojo.Comment;
-import com.blog.ssh.util.MySpringJUnit4ClassRunner;
+import com.blog.ssh.service.ArticleService;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,16 +17,19 @@ import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import java.util.List;
+
 /**
- * Created by wy on 2016/6/18 0018.
+ * Created by wy on 2016/6/22 0022.
  */
 @RunWith(MySpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
-public class CommentDAOTest {
-    @Autowired
-    private CommentDAO commentDAO;
+public class HibernateInsertTest {
     @Autowired
     private ArticleDAO articleDAO;
+    @Autowired
+    private ArticleService articleService;
+    private List<Article> articleList;
     @Autowired
     private SessionFactory sessionFactory;
     private Session session;
@@ -42,24 +46,16 @@ public class CommentDAOTest {
         SessionFactoryUtils.closeSession(session);
     }
     @Test
-    public void testFindById(){
-        Comment m = commentDAO.findById(17);
-        System.out.println(m.getChiComments().size());
-        System.out.println(m.getContent());
-    }
-    @Test
-    public void testMerage(){
-        Comment c = new Comment();
-        c.setContent("test");
-        Article a = articleDAO.getArticle(40);
-        a.getComments().add(c);
-        session.update(a);
-    }
-    @Test
-    public void testSave(){
+    /**
+     * 测试插入一对多插入多端
+     * 插入Comment(评论)
+     */
+    public void testManyToOneInsertMany(){
         Comment comment = new Comment();
         comment.setContent("test");
-//        commentDAO.insertComment(comment, 40);
-        session.save(comment);
+        Article a = new Article();
+        a.setId(40);
+        comment.setArticle(a);
+        System.out.println(session.save(comment));
     }
 }

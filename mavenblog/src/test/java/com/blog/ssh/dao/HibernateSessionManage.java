@@ -1,28 +1,25 @@
 package com.blog.ssh.dao;
 
-import com.blog.ssh.pojo.Message;
-import com.blog.ssh.util.MySpringJUnit4ClassRunner;
+import com.blog.ssh.pojo.Article;
 import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.orm.hibernate4.SessionHolder;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 /**
- * Created by wy on 2016/6/18 0018.
+ * Created by wy on 2016/6/22 0022.
  */
-@RunWith(MySpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:applicationContext.xml"})
-public class MessageDAOTest {
-    @Autowired
-    private MessageDAO messageDAO;
+public class HibernateSessionManage {
     @Autowired
     private SessionFactory sessionFactory;
     private Session session;
@@ -37,17 +34,5 @@ public class MessageDAOTest {
     public void closeSession()  throws Exception {
         TransactionSynchronizationManager.unbindResource(sessionFactory);
         SessionFactoryUtils.closeSession(session);
-    }
-    @Test
-    public void testFindById(){
-        Message m = messageDAO.findById(4);
-        System.out.println(m.getChiMessages().size());
-        System.out.println(m.getContent());
-    }
-    @Test
-    public void testInsert(){
-        Message m = new Message();
-        m.setContent("test");
-        session.save(m);
     }
 }

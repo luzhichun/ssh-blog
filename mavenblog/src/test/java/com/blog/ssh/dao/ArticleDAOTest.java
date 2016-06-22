@@ -84,7 +84,6 @@ public class ArticleDAOTest {
     @Test
     public void testFindById(){
         Article a = articleDAO.findById(40);
-        System.out.println(a.getBeagincontent());
-        System.out.println(a.getUser());
+        System.out.println(a.toString());
     }
 }

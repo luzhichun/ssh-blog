@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity(name="article")
 public class Article implements java.io.Serializable {
 	// Fields
-	@GenericGenerator(name = "article", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Integer id;
 	@Column
@@ -40,8 +40,6 @@ public class Article implements java.io.Serializable {
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="content_id")
 	private ArticleContent articleContent;
-	// Constructors
-
 	/** default constructor */
 	public Article() {
 	}
