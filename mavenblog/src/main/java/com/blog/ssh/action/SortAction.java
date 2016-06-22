@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Set;
 
 import com.blog.ssh.service.ArticleService;
-import com.blog.ssh.service.ArticletypeService;
+import com.blog.ssh.service.ArticleTypeService;
 import com.blog.ssh.service.HeaderSiderService;
 import com.blog.ssh.service.TagService;
 import com.blog.ssh.pojo.Article;
-import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.pojo.ArticleType;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +17,16 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class SortAction extends ActionSupport{
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 	private String sortByColumn;
 	private Integer sortByTag;
-	private Articletype articletype;
+	private ArticleType articletype;
 	@Autowired
 	private TagService tagService;
 	private String tagValue;
 	private Set articles;
 	@Autowired
-	private ArticletypeService articletypeService;
+	private ArticleTypeService articletypeService;
 	@Autowired
 	private HeaderSiderService headerSiderService;
 	private String q;
@@ -50,10 +47,10 @@ public class SortAction extends ActionSupport{
 	public void setSortByTag(Integer sortByTag) {
 		this.sortByTag = sortByTag;
 	}
-	public Articletype getArticletype() {
+	public ArticleType getArticletype() {
 		return articletype;
 	}
-	public void setArticletype(Articletype articletype) {
+	public void setArticletype(ArticleType articletype) {
 		this.articletype = articletype;
 	}
 	
@@ -63,11 +60,11 @@ public class SortAction extends ActionSupport{
 	public void setTagService(TagService tagService) {
 		this.tagService = tagService;
 	}
-	public ArticletypeService getArticletypeService() {
+	public ArticleTypeService getArticletypeService() {
 		return articletypeService;
 	}
 
-	public void setArticletypeService(ArticletypeService articletypeService) {
+	public void setArticletypeService(ArticleTypeService articletypeService) {
 		this.articletypeService = articletypeService;
 	}
 
@@ -110,8 +107,8 @@ public class SortAction extends ActionSupport{
 		Map request = (Map) ActionContext.getContext().get("request");
 		headerSiderService.SessionManage();
 		if(sortByColumn != null){
-			this.articletype = articletypeService.getArticletype(this.sortByColumn);
-			this.articles = articletypeService.findArticleByArticletype(this.sortByColumn);
+			this.articletype = articletypeService.getArticleType(this.sortByColumn);
+			this.articles = articletypeService.findArticleByArticleType(this.sortByColumn);
 			request.put("title", articletype.getValue());
 			return "success";
 		}
@@ -123,16 +120,7 @@ public class SortAction extends ActionSupport{
 		}
 		if(q != null && !q.equals("") && !q.equals("请输入关键字进行搜索")){
 			String ts = null;
-			//System.out.println(q);
-			List<Article> as = articleService.serach(q);
-//			System.out.println("articles size:" + as.size());
-//			for(int i = 0;i < as.size();i++){
-//				ts = as.get(i).getTitle();
-//				//System.out.println(ts);
-//				ts = ts.replaceAll(q, "<font color=\"red\">" + q + "</font>");
-//				as.get(i).setTitle(ts);
-//				System.out.println(ts);
-//			}
+			List<Article> as = articleService.search(q);
 			this.articles = new HashSet();
 			this.articles.addAll(as);
 			request.put("title","包含 " + q + " 关键字的搜索结果");

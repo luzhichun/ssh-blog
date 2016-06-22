@@ -1,7 +1,6 @@
 package com.blog.ssh.dao;
 
-import com.blog.ssh.pojo.Articletype;
-import com.blog.ssh.util.MySpringJUnit4ClassRunner;
+import com.blog.ssh.pojo.ArticleType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +16,12 @@ import static junit.framework.TestCase.assertEquals;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:applicationContext.xml"})
-public class ArticletypeDAOTest {
+public class ArticleTypeDAOTest {
     @Autowired
-    ArticletypeDAO articletypeDAO;
+    ArticleTypeDAO articletypeDAO;
     @Test
     public void testFindByProperty(){
-        List<Articletype> articletypeList = articletypeDAO.findByProperty("value", "java");
+        List<ArticleType> articletypeList = articletypeDAO.findByProperty("value", "java");
         assertEquals(1, articletypeList.size());
     }
 }

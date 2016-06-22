@@ -2,7 +2,7 @@ package com.blog.ssh.dao;
 
 import com.blog.ssh.util.MySpringJUnit4ClassRunner;
 import com.blog.ssh.service.BloginfoService;
-import com.blog.ssh.pojo.Bloginfo;
+import com.blog.ssh.pojo.BlogInfo;
 import com.blog.ssh.pojo.User;
 import com.blog.ssh.vo.UserVO;
 import org.hibernate.FlushMode;
@@ -28,7 +28,7 @@ public class UserDAOTest {
     @Autowired
     private UserDAO userDAO;
     @Autowired
-    private BloginfoDAO bloginfoDAO;
+    private BlogInfoDAO bloginfoDAO;
     @Autowired
     private BloginfoService bloginfoService;
     @Autowired
@@ -51,7 +51,7 @@ public class UserDAOTest {
      */
     @Test
     public void testMerge(){
-        Bloginfo bi = new Bloginfo();
+        BlogInfo bi = new BlogInfo();
         bi.setVisits(10);
         bloginfoDAO.save(bi);
         User u = new User();
@@ -61,7 +61,7 @@ public class UserDAOTest {
     }
     @Test
     public void testFindById(){
-        User u = (User) userDAO.get(35);
+        User u = (User) userDAO.findById(35);
 //        System.out.println(u.getBloginfo().getIntro());
         UserVO uv = new UserVO();
         System.out.println(u.toString());

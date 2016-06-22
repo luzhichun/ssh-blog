@@ -9,12 +9,11 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.blog.ssh.pojo.Article;
-import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.pojo.ArticleType;
 
 @Repository
 @Transactional
@@ -31,9 +30,6 @@ public class ArticleDAO extends BaseDAO<Article>{
 		return sessionFactory.getCurrentSession();
 	}
 
-	public void update(Article persistentInstance){
-		getCurrentSession().update(persistentInstance);
-	}
 	/**
 	 * 插入文章
 	 * @param a
@@ -41,7 +37,7 @@ public class ArticleDAO extends BaseDAO<Article>{
 	 */
 	public void insertArticle(Article a,int articletype_id){
 		Session session = getCurrentSession();
-		Articletype at = (Articletype)session.get(Articletype.class, articletype_id);
+		ArticleType at = (ArticleType)session.get(ArticleType.class, articletype_id);
 		a.setArticletype(at);
 		try{
 			session.merge(a);
@@ -140,28 +136,6 @@ public class ArticleDAO extends BaseDAO<Article>{
 		return randomList;
 	}
 	/**
-	 * 通过id查找Article
-	 * @param id 文章id
-	 * @return Article
-	 */
-	public Article getArticle(Integer id){
-		Article article;
-		article = (Article) getCurrentSession().get(Article.class, id);
-		return article;
-	}
-	/**
-	 * 通过文件名查找Article
-	 * @param fileName 文章对应页面的文件名
-	 * @return Article
-	 */
-	public Article getArticle(String fileName){
-		Session session = getCurrentSession();//得到一个Session对象
-		Query query = session.createQuery("from com.blog.ssh.pojo.Article as a where a.filename='" + fileName + "'");
-		@SuppressWarnings("unchecked")
-		List<Article> list = query.list();
-		return list.get(0);
-	}
-	/**
 	 * 获取数据库中文章数量
 	 * @return 文章数量
 	 */
@@ -171,7 +145,7 @@ public class ArticleDAO extends BaseDAO<Article>{
 		int count = ((Number)query.uniqueResult()).intValue();
 		return count;
 	}
-	public List<Article> serach(String value){
+	public List<Article> search(String value){
 		Session session = getCurrentSession();//得到一个Session对象
 		String hql="from com.blog.ssh.pojo.Article as a where a.title like ? or a.content like ?";
 		Query query = session.createQuery(hql); 

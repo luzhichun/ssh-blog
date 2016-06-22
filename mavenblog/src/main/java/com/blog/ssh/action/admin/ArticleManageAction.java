@@ -2,7 +2,7 @@ package com.blog.ssh.action.admin;
 import org.apache.struts2.ServletActionContext;
 
 import com.blog.ssh.service.ArticleService;
-import com.blog.ssh.service.ArticletypeService;
+import com.blog.ssh.service.ArticleTypeService;
 import com.blog.ssh.service.FileManage;
 import com.blog.ssh.service.HeaderSiderService;
 import com.blog.ssh.service.SystemManage;
@@ -16,7 +16,7 @@ public class ArticleManageAction {
 	@Autowired
 	private ArticleService articleService;
 	@Autowired
-	private ArticletypeService articletypeService;
+	private ArticleTypeService articletypeService;
 	@Autowired
 	private HeaderSiderService headerSiderService;
 	public ArticleManageAction(){
@@ -44,10 +44,10 @@ public class ArticleManageAction {
 		this.articleService = articleService;
 	}
 	
-	public ArticletypeService getArticletypeService() {
+	public ArticleTypeService getArticletypeService() {
 		return articletypeService;
 	}
-	public void setArticletypeService(ArticletypeService articletypeService) {
+	public void setArticletypeService(ArticleTypeService articletypeService) {
 		this.articletypeService = articletypeService;
 	}
 	

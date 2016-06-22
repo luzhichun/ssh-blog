@@ -10,14 +10,14 @@ import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.blog.ssh.service.ArticletypeService;
+import com.blog.ssh.service.ArticleTypeService;
 import com.blog.ssh.service.BloginfoService;
 import com.blog.ssh.service.CommentService;
 import com.blog.ssh.service.TagService;
 import com.blog.ssh.service.UserService;
 import com.blog.ssh.service.UserSiderService;
-import com.blog.ssh.pojo.Articletype;
-import com.blog.ssh.pojo.Bloginfo;
+import com.blog.ssh.pojo.ArticleType;
+import com.blog.ssh.pojo.BlogInfo;
 import com.blog.ssh.pojo.Comment;
 import com.blog.ssh.pojo.Tag;
 import com.blog.ssh.pojo.User;
@@ -38,9 +38,9 @@ public class MyCenterAction {
 	@Autowired
 	private BloginfoService bloginfoService;
 	private User user;
-	private List<Articletype> chiArticletypes;
+	private List<ArticleType> chiArticletypes;
 	@Autowired
-	private ArticletypeService articletypeService;
+	private ArticleTypeService articletypeService;
 	private List<Comment> comments;
 	@Autowired
 	private CommentService commentService;
@@ -75,16 +75,16 @@ public class MyCenterAction {
 		this.user = user;
 	}
 	
-	public List<Articletype> getChiArticletypes() {
+	public List<ArticleType> getChiArticletypes() {
 		return chiArticletypes;
 	}
-	public void setChiArticletypes(List<Articletype> chiArticletypes) {
+	public void setChiArticletypes(List<ArticleType> chiArticletypes) {
 		this.chiArticletypes = chiArticletypes;
 	}
-	public ArticletypeService getArticletypeService() {
+	public ArticleTypeService getArticletypeService() {
 		return articletypeService;
 	}
-	public void setArticletypeService(ArticletypeService articletypeService) {
+	public void setArticletypeService(ArticleTypeService articletypeService) {
 		this.articletypeService = articletypeService;
 	}
 	
@@ -237,7 +237,7 @@ public class MyCenterAction {
 				u.setHeadpicname(uploadFileFileName);
 				userService.update(u);
 			}
-			Bloginfo bi = u.getBloginfo();
+			BlogInfo bi = u.getBloginfo();
 			bi.setBackground(skin);
 			bi.setIntro(personinfo);
 			bi.setEmailNoticeflag(email_notice);
@@ -302,7 +302,7 @@ public class MyCenterAction {
 		else{
 			//this.user = user;
 			this.user = userService.getUser(Integer.valueOf(u.getId()));
-			chiArticletypes = articletypeService.getAllChildrenArticletype();
+			chiArticletypes = articletypeService.getAllChildrenArticleType();
 			tags = tagService.getHotTags(10);
 			this.currentPage = "releaseArticle";//表示当前页面处于发布文章页面
 			this.background = u.getBloginfo().getBackground();

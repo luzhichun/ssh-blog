@@ -120,15 +120,7 @@ public class ArticleService {
 	 * @return Article
 	 */
 	public Article getArticle(Integer id){
-		return articleDAO.getArticle(id);
-	}
-	/**
-	 * 通过文件名查找Article
-	 * @param fileName 文章对应页面的文件名
-	 * @return Article
-	 */
-	public Article getArticle(String fileName){
-		return articleDAO.getArticle(fileName);
+		return articleDAO.findById(id);
 	}
 	/**
 	 * 通过id删除文章
@@ -143,23 +135,14 @@ public class ArticleService {
 	 * @param id 文章id
 	 */
 	public void setArticleVisits(int id){
-		Article a = articleDAO.getArticle(id);
+		Article a = articleDAO.findById(id);
 		a.setVisits(a.getVisits() + 1);
 		articleDAO.update(a);
-	}
-	/**
-	 * 获取数据库中文章数量
-	 * @return 文章数量
-	 */
-	public int getArticleCount(){
-		return articleDAO.getArticleCount();
 	}
 	public void update(Article a){
 		articleDAO.update(a);
 	}
-	public List<Article> serach(String value){
-		return articleDAO.serach(value);
-	}
-	public static void main(String args []){
+	public List<Article> search(String value){
+		return articleDAO.search(value);
 	}
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "bloginfo")
-public class Bloginfo implements java.io.Serializable {
+public class BlogInfo implements java.io.Serializable {
 
 	// Fields
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

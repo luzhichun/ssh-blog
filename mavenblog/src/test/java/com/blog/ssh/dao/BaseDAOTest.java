@@ -30,7 +30,7 @@ public class BaseDAOTest extends HibernateSessionManage{
     }
     @Test
     public void testGet(){
-        Comment c = (Comment) commentDAO.get(24);
+        Comment c = (Comment) commentDAO.findById(24);
         System.out.println(c.toString());
 
     }

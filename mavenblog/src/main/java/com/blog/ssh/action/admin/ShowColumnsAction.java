@@ -2,8 +2,8 @@ package com.blog.ssh.action.admin;
 
 import java.util.List;
 
-import com.blog.ssh.service.ArticletypeService;
-import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.service.ArticleTypeService;
+import com.blog.ssh.pojo.ArticleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -14,35 +14,35 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ShowColumnsAction {
-	private List<Articletype> chiArticletypes;
-	private List<Articletype> parArticletypes;
+	private List<ArticleType> chiArticletypes;
+	private List<ArticleType> parArticletypes;
 	@Autowired
-	private ArticletypeService articletypeService;
+	private ArticleTypeService articletypeService;
 	public ShowColumnsAction(){
 		
 	}
 	
-	public List<Articletype> getChiArticletypes() {
+	public List<ArticleType> getChiArticletypes() {
 		return chiArticletypes;
 	}
 
-	public void setChiArticletypes(List<Articletype> chiArticletypes) {
+	public void setChiArticletypes(List<ArticleType> chiArticletypes) {
 		this.chiArticletypes = chiArticletypes;
 	}
 
-	public List<Articletype> getParArticletypes() {
+	public List<ArticleType> getParArticletypes() {
 		return parArticletypes;
 	}
 
-	public void setParArticletypes(List<Articletype> parArticletypes) {
+	public void setParArticletypes(List<ArticleType> parArticletypes) {
 		this.parArticletypes = parArticletypes;
 	}
 	
-	public ArticletypeService getArticletypeService() {
+	public ArticleTypeService getArticletypeService() {
 		return articletypeService;
 	}
 
-	public void setArticletypeService(ArticletypeService articletypeService) {
+	public void setArticletypeService(ArticleTypeService articletypeService) {
 		this.articletypeService = articletypeService;
 	}
 	
@@ -50,8 +50,8 @@ public class ShowColumnsAction {
 		if(!RightsManagementAction.adminIsLogin()){
 			return "notlogin";
 		}
-		this.chiArticletypes = articletypeService.getAllChildrenArticletype();
-		this.parArticletypes = articletypeService.getAllParentArticletype();
+		this.chiArticletypes = articletypeService.getAllChildrenArticleType();
+		this.parArticletypes = articletypeService.getAllParentArticleType();
 		return "success";
 	}
 }

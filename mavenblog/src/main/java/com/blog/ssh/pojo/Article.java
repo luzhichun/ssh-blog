@@ -1,7 +1,5 @@
 package com.blog.ssh.pojo;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +23,7 @@ public class Article implements java.io.Serializable {
 	private User user;
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "articletype_id")
-	private Articletype articletype;
+	private ArticleType articleType;
 	@Column
 	private String imagename;
 	@Column
@@ -58,9 +56,9 @@ public class Article implements java.io.Serializable {
 		user.setId(userId);
 		user.setUsername(username);
 		user.setUrl(url);
-		this.articletype = new Articletype();
-		articletype.setValue(value);
-		articletype.setLinkname(linkname);
+		this.articleType = new ArticleType();
+		articleType.setValue(value);
+		articleType.setLinkname(linkname);
 		this.imagename = imagename;
 		this.visits = visits;
 	}
@@ -75,7 +73,7 @@ public class Article implements java.io.Serializable {
 	}
 	public Article(Integer id, String title,
 				   String beagincontent, String releasetime, String filename,
-				   User user, Articletype articletype, String imagename,
+				   User user, ArticleType articletype, String imagename,
 				   Integer visits, Set comments, Set tags) {
 		this.id = id;
 		this.title = title;
@@ -83,7 +81,7 @@ public class Article implements java.io.Serializable {
 		this.releasetime = releasetime;
 		this.filename = filename;
 		this.user = user;
-		this.articletype = articletype;
+		this.articleType = articletype;
 		this.imagename = imagename;
 		this.visits = visits;
 		this.comments = comments;
@@ -92,9 +90,9 @@ public class Article implements java.io.Serializable {
 
 	/** full constructor */
 	public Article(Integer id, String title, String content,
-			String beagincontent, String releasetime, String filename,
-			User user, Articletype articletypeId, String imagename,
-			Integer visits, Set comments, Set tags) {
+				   String beagincontent, String releasetime, String filename,
+				   User user, ArticleType articletypeId, String imagename,
+				   Integer visits, Set comments, Set tags) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
@@ -102,8 +100,7 @@ public class Article implements java.io.Serializable {
 		this.releasetime = releasetime;
 		this.filename = filename;
 		this.user = user;
-
-		this.articletype = articletypeId;
+		this.articleType = articletypeId;
 		this.imagename = imagename;
 		this.visits = visits;
 		this.comments = comments;
@@ -166,12 +163,20 @@ public class Article implements java.io.Serializable {
 		this.user = user;
 	}
 
-	public Articletype getArticletype() {
-		return this.articletype;
+	public ArticleType getArticleType() {
+		return articleType;
 	}
 
-	public void setArticletype(Articletype articletypeId) {
-		this.articletype = articletypeId;
+	public void setArticleType(ArticleType articleType) {
+		this.articleType = articleType;
+	}
+
+	public ArticleType getArticletype() {
+		return this.articleType;
+	}
+
+	public void setArticletype(ArticleType articletypeId) {
+		this.articleType = articletypeId;
 	}
 
 	public String getImagename() {
@@ -224,7 +229,7 @@ public class Article implements java.io.Serializable {
 				", releasetime='" + releasetime + '\'' +
 				", filename='" + filename + '\'' +
 				", user=" + user +
-				", articletype=" + articletype +
+				", articletype=" + articleType +
 				", imagename='" + imagename + '\'' +
 				", visits=" + visits +
 				", comments=" + comments +

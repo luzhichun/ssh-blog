@@ -10,7 +10,7 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one lazy="no-proxy" name="articletype" class="com.blog.ssh.pojo.Articletype">
+        <many-to-one lazy="no-proxy" name="articletype" class="com.blog.ssh.pojo.ArticleType">
         	<column name="articletype_id" not-null="false" />
         </many-to-one>
         

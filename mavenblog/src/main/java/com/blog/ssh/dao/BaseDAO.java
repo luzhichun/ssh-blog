@@ -59,12 +59,19 @@ public class BaseDAO<T> {
     }
 
     /**
+     * 更新
+     * @param object
+     */
+    public void update(T object){
+        getCurrentSession().update(object);
+    }
+    /**
      * 根据id查询
      * @param id
      * @return
      */
-    public Object findById(Integer id){
-        Object object = getCurrentSession().get(this.entity, id);
+    public T findById(Integer id){
+        T object = (T) getCurrentSession().get(this.entity, id);
         return object;
     }
 

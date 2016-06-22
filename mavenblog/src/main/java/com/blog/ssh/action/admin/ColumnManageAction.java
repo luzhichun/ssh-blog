@@ -1,8 +1,8 @@
 package com.blog.ssh.action.admin;
 
-import com.blog.ssh.service.ArticletypeService;
+import com.blog.ssh.service.ArticleTypeService;
 import com.blog.ssh.service.HeaderSiderService;
-import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.pojo.ArticleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -13,7 +13,7 @@ public class ColumnManageAction {
 	private String columnName;
 	private String linkName;
 	@Autowired
-	private ArticletypeService articletypeService;
+	private ArticleTypeService articletypeService;
 	@Autowired
 	private HeaderSiderService headerSiderService;
 	public ColumnManageAction(){
@@ -44,10 +44,10 @@ public class ColumnManageAction {
 		this.linkName = linkName;
 	}
 	
-	public ArticletypeService getArticletypeService() {
+	public ArticleTypeService getArticletypeService() {
 		return articletypeService;
 	}
-	public void setArticletypeService(ArticletypeService articletypeService) {
+	public void setArticletypeService(ArticleTypeService articletypeService) {
 		this.articletypeService = articletypeService;
 	}
 	
@@ -63,12 +63,12 @@ public class ColumnManageAction {
 		}
 		if(what.equals("addColumn")){
 			//新增栏目
-			Articletype pat = articletypeService.getArticletype(pid);
-			Articletype at = new Articletype();
+			ArticleType pat = articletypeService.getArticleType(pid);
+			ArticleType at = new ArticleType();
 			at.setValue(columnName);
 			at.setLinkname(linkName);
-			at.setParArticletype(pat);
-			articletypeService.insertArticletype(at);
+			at.setParArticleType(pat);
+			articletypeService.insertArticleType(at);
 			headerSiderService.setApplication();
 		}
 		return "success";

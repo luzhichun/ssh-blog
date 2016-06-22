@@ -1,7 +1,5 @@
 package com.blog.ssh.pojo;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -31,7 +29,7 @@ public class User implements java.io.Serializable {
 	private Set<Article> articles;
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "bloginfo_id", unique = true)
-	private Bloginfo bloginfo;
+	private BlogInfo bloginfo;
 	@Column(name="through_flag")
 	private Integer throughFlag;
 
@@ -41,8 +39,8 @@ public class User implements java.io.Serializable {
 
 	/** full constructor */
 	public User(Integer id, String username, String email, String password,
-				String registertime, String url,String headpicname,Set articles,
-				Bloginfo bloginfo,Integer throughFlag) {
+				String registertime, String url, String headpicname, Set articles,
+				BlogInfo bloginfo, Integer throughFlag) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -122,11 +120,11 @@ public class User implements java.io.Serializable {
 		this.articles = articles;
 	}
 
-	public Bloginfo getBloginfo() {
+	public BlogInfo getBloginfo() {
 		return bloginfo;
 	}
 
-	public void setBloginfo(Bloginfo bloginfo) {
+	public void setBloginfo(BlogInfo bloginfo) {
 		this.bloginfo = bloginfo;
 	}
 

@@ -2,9 +2,9 @@ package com.blog.ssh.action.admin;
 
 import java.util.List;
 import com.blog.ssh.service.ArticleService;
-import com.blog.ssh.service.ArticletypeService;
+import com.blog.ssh.service.ArticleTypeService;
 import com.blog.ssh.pojo.Article;
-import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.pojo.ArticleType;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ import org.springframework.stereotype.Controller;
 public class ShowArticlesAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private List<Article> articles;
-	private Articletype articletype;
-	private List<Articletype> articletypes;
+	private ArticleType articletype;
+	private List<ArticleType> articletypes;
 	private String sort;//分类管理
 	@Autowired
-	private ArticletypeService articletypeService;
+	private ArticleTypeService articletypeService;
 	@Autowired
 	private ArticleService articleService;
 	public ShowArticlesAction(){
@@ -41,24 +41,24 @@ public class ShowArticlesAction extends ActionSupport{
 		this.sort = sort;
 	}
 	
-	public Articletype getArticletype() {
+	public ArticleType getArticletype() {
 		return articletype;
 	}
-	public void setArticletype(Articletype articletype) {
+	public void setArticletype(ArticleType articletype) {
 		this.articletype = articletype;
 	}
 	
-	public List<Articletype> getArticletypes() {
+	public List<ArticleType> getArticletypes() {
 		return articletypes;
 	}
-	public void setArticletypes(List<Articletype> articletypes) {
+	public void setArticletypes(List<ArticleType> articletypes) {
 		this.articletypes = articletypes;
 	}
 	
-	public ArticletypeService getArticletypeService() {
+	public ArticleTypeService getArticletypeService() {
 		return articletypeService;
 	}
-	public void setArticletypeService(ArticletypeService articletypeService) {
+	public void setArticletypeService(ArticleTypeService articletypeService) {
 		this.articletypeService = articletypeService;
 	}
 	
@@ -76,13 +76,13 @@ public class ShowArticlesAction extends ActionSupport{
 		if(sort != null && !sort.equals("all")){
 			//分类管理文
 			this.articletype = articletypeService.getArticletype(sort);
-			this.articletypes = articletypeService.getAllChildrenArticletype();
+			this.articletypes = articletypeService.getAllChildrenArticleType();
 			cxt.put("articles", articletype.getArticles());
 			System.out.println("分类查看全部文章");
 		}
 		else{
 			this.articles = articleService.getAllArticle();
-			this.articletypes = articletypeService.getAllChildrenArticletype();
+			this.articletypes = articletypeService.getAllChildrenArticleType();
 			cxt.put("articles", articles);
 			System.out.println("查看全部文章");
 		}

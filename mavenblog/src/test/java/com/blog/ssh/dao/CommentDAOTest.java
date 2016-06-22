@@ -51,7 +51,7 @@ public class CommentDAOTest {
     public void testMerage(){
         Comment c = new Comment();
         c.setContent("test");
-        Article a = articleDAO.getArticle(40);
+        Article a = articleDAO.findById(40);
         a.getComments().add(c);
         session.update(a);
     }

@@ -4,74 +4,77 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.blog.ssh.dao.ArticletypeDAO;
+import com.blog.ssh.dao.ArticleTypeDAO;
 import com.blog.ssh.pojo.Article;
-import com.blog.ssh.pojo.Articletype;
+import com.blog.ssh.pojo.ArticleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArticletypeService {
+public class ArticleTypeService {
 	@Autowired
-	private ArticletypeDAO articletypeDAO;
+	private ArticleTypeDAO articleTypeDAO;
 
-	public ArticletypeDAO getArticletypeDAO() {
-		return articletypeDAO;
+	public ArticleTypeDAO getArticleTypeDAO() {
+		return articleTypeDAO;
 	}
 
-	public void setArticletypeDAO(ArticletypeDAO articletypeDAO) {
-		this.articletypeDAO = articletypeDAO;
+	public void setArticleTypeDAO(ArticleTypeDAO articleTypeDAO) {
+		this.articleTypeDAO = articleTypeDAO;
 	}
-	public void insertArticletype(Articletype articletype){
-		articletypeDAO.save(articletype);
+	public void insertArticleType(ArticleType at){
+		articleTypeDAO.save(at);
 	}
 	/**
 	 * 获取所有子分类
 	 * @return
 	 */
-	public List<Articletype> getAllChildrenArticletype(){
-		return articletypeDAO.getAllChildrenArticletype();
-	}
-	/**
-	 * 根据pid获取所有子分类
-	 * @param pid 父id
-	 * @return
-	 */
-	public List<Articletype> getChildrenArticletype(int pid){
-		return articletypeDAO.getChildrenArticletype(pid);
-	}
-	/**
-	 * 获取所有父分类
-	 * @return
-	 */
-	public List<Articletype> getAllParentArticletype(){
-		return articletypeDAO.getAllParentArticletype();
-	}
-	/**
-	 * 通过id查询Articletype
-	 * @param id
-	 * @return
-	 */
-	public Articletype getArticletype(int id){
-		return articletypeDAO.getArticletype(id);
+	public List<ArticleType> getAllChildrenArticleType(){
+		return articleTypeDAO.getAllChildrenArticleType();
 	}
 	/**
 	 * 通过linkName获取Articletype
 	 * @param linkName
 	 * @return
 	 */
-	public Articletype getArticletype(String linkName){
-		return (Articletype) articletypeDAO.findByProperty("linkname", linkName).get(0);
+	public ArticleType getArticletype(String linkName){
+		return articleTypeDAO.findByProperty("linkname", linkName).get(0);
 	}
-	public Set findArticleByArticletype(String linkname){
-		List list = articletypeDAO.findArticleByArticletype(linkname);
+	/**
+	 * 根据pid获取所有子分类
+	 * @param pid 父id
+	 * @return
+	 */
+	public List<ArticleType> getChildrenArticleType(int pid){
+		return articleTypeDAO.getChildrenArticleType(pid);
+	}
+	/**
+	 * 获取所有父分类
+	 * @return
+	 */
+	public List<ArticleType> getAllParentArticleType(){
+		return articleTypeDAO.getAllParentArticleType();
+	}
+	/**
+	 * 通过id查询ArticleType
+	 * @param id
+	 * @return
+	 */
+	public ArticleType getArticleType(int id){
+		return articleTypeDAO.findById(id);
+	}
+	public ArticleType getArticleType(String linkeName){
+		return articleTypeDAO.findByProperty("linkname", linkeName).get(0);
+	}
+	public Set findArticleByArticleType(String linkname){
+		List list = articleTypeDAO.findArticleByArticleType(linkname);
 		Set<Article> set=new HashSet<Article>();
 		set.addAll(list);
 		return set;
 	}
 	public void removeArticle(Article a){
-		Articletype at = a.getArticletype();
+		ArticleType at = a.getArticleType();
 		at.getArticles().remove(a);
-		articletypeDAO.update(at);
+		articleTypeDAO.update(at);
 	}
 }

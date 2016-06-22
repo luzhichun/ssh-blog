@@ -3,7 +3,7 @@ package com.blog.ssh.service;
 import java.util.Map;
 
 import com.blog.ssh.dao.ArticleDAO;
-import com.blog.ssh.dao.ArticletypeDAO;
+import com.blog.ssh.dao.ArticleTypeDAO;
 import com.blog.ssh.dao.CommentDAO;
 import com.blog.ssh.dao.MessageDAO;
 import com.blog.ssh.dao.TagDAO;
@@ -23,7 +23,7 @@ public class HeaderSiderService {
 	@Autowired
 	private ArticleDAO articleDAO;
 	@Autowired
-	private ArticletypeDAO articletypeDAO;
+	private ArticleTypeDAO articletypeDAO;
 	@Autowired
 	private CommentDAO commentDAO;
 	@Autowired
@@ -40,10 +40,10 @@ public class HeaderSiderService {
 	public void setArticleDAO(ArticleDAO articleDAO) {
 		this.articleDAO = articleDAO;
 	}
-	public ArticletypeDAO getArticletypeDAO() {
+	public ArticleTypeDAO getArticletypeDAO() {
 		return articletypeDAO;
 	}
-	public void setArticletypeDAO(ArticletypeDAO articletypeDAO) {
+	public void setArticletypeDAO(ArticleTypeDAO articletypeDAO) {
 		this.articletypeDAO = articletypeDAO;
 	}
 	public CommentDAO getCommentDAO() {
@@ -81,7 +81,7 @@ public class HeaderSiderService {
 		this.headerAndSider.setRandomArticles(articleDAO.getRandomArticleTitle());
 		this.headerAndSider.setLatestComments(commentDAO.getLatestComments());
 		this.headerAndSider.setLatestMsgs(messageDAO.getLatestMessage());
-		this.headerAndSider.setParArticletypes(articletypeDAO.getAllParentArticletype());
+		this.headerAndSider.setParArticletypes(articletypeDAO.getAllParentArticleType());
 		this.headerAndSider.setHotTags(tagDAO.findHotTags(20));
 		Map application = (Map) ActionContext.getContext().getApplication();
 		application.put("headerAndSider", headerAndSider);

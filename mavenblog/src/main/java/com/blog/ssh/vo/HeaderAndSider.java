@@ -9,7 +9,7 @@ public class HeaderAndSider {
 	private List<Article> randomArticles;
 	private List<Message> latestMsgs;
 	private List<Comment> latestComments;
-	private List<Articletype> parArticletypes;
+	private List<ArticleType> parArticletypes;
 	private List<Tag> hotTags;
 	public HeaderAndSider(){
 		
@@ -44,10 +44,10 @@ public class HeaderAndSider {
 	public void setLatestComments(List<Comment> latestComments) {
 		this.latestComments = latestComments;
 	}
-	public List<Articletype> getParArticletypes() {
+	public List<ArticleType> getParArticletypes() {
 		return parArticletypes;
 	}
-	public void setParArticletypes(List<Articletype> parArticletypes) {
+	public void setParArticletypes(List<ArticleType> parArticletypes) {
 		this.parArticletypes = parArticletypes;
 	}
 	public List<Tag> getHotTags() {

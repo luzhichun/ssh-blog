@@ -1,17 +1,14 @@
 package com.blog.ssh.pojo;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Articletype entity. @author MyEclipse Persistence Tools
+ * ArticleType entity. @author MyEclipse Persistence Tools
  */
-@Entity(name="articletype")
-public class Articletype implements java.io.Serializable {
-
+@Entity(name="article_type")
+public class ArticleType implements java.io.Serializable {
 	// Fields
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -20,30 +17,30 @@ public class Articletype implements java.io.Serializable {
 	private String value;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="pid")
-	private Articletype parArticletype;
+	private ArticleType parArticleType;
 	@Column
 	private String linkname;
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "articletype")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "articleType")
 	private Set<Article> articles = new HashSet<Article>(0);
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "parArticletype")
-	private Set<Articletype> chiArticletypes = new HashSet<Articletype>(0);
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "parArticleType")
+	private Set<ArticleType> chiArticleTypes = new HashSet<ArticleType>(0);
 
 	// Constructors
 
 	/** default constructor */
-	public Articletype() {
+	public ArticleType() {
 	
 	}
 	
-	public Articletype(Integer id, String value, Articletype parArticletype,
-			String linkname, Set articles, Set chiArticletypes) {
+	public ArticleType(Integer id, String value, ArticleType parArticleType,
+					   String linkname, Set articles, Set chiArticleTypes) {
 		super();
 		this.id = id;
 		this.value = value;
-		this.parArticletype = parArticletype;
+		this.parArticleType = parArticleType;
 		this.linkname = linkname;
 		this.articles = articles;
-		this.chiArticletypes = chiArticletypes;
+		this.chiArticleTypes = chiArticleTypes;
 	}
 
 	public Integer getId() {
@@ -62,12 +59,12 @@ public class Articletype implements java.io.Serializable {
 		this.value = value;
 	}
 
-	public Articletype getParArticletype() {
-		return parArticletype;
+	public ArticleType getParArticleType() {
+		return parArticleType;
 	}
 
-	public void setParArticletype(Articletype parArticletype) {
-		this.parArticletype = parArticletype;
+	public void setParArticleType(ArticleType parArticleType) {
+		this.parArticleType = parArticleType;
 	}
 
 	public String getLinkname() {
@@ -86,11 +83,11 @@ public class Articletype implements java.io.Serializable {
 		this.articles = articles;
 	}
 
-	public Set getChiArticletypes() {
-		return chiArticletypes;
+	public Set getChiArticleTypes() {
+		return chiArticleTypes;
 	}
 
-	public void setChiArticletypes(Set chiArticletypes) {
-		this.chiArticletypes = chiArticletypes;
+	public void setChiArticleTypes(Set chiArticleTypes) {
+		this.chiArticleTypes = chiArticleTypes;
 	}
 }
