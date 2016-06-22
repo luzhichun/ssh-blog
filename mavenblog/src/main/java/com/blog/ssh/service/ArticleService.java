@@ -61,7 +61,7 @@ public class ArticleService {
 	 * @param articletype_id
 	 */
 	public void insertArticle(Article a,int articletype_id){
-		articleContentDAO.save(a.getArticleContent());
+		a.getArticleContent().setId(articleContentDAO.save(a.getArticleContent()));
 		articleDAO.insertArticle(a, articletype_id);
 	}
 	/**

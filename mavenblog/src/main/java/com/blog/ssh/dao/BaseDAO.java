@@ -110,7 +110,7 @@ public class BaseDAO<T> {
             throw re;
         }
     }
-    public List<T> findByAll(){
+    public List<T> findAll(){
         try {
             String queryString = "from " + StaticConstants.POJO_PACKAGE_NAME + "." + entity.getSimpleName();
             Query queryObject = getCurrentSession().createQuery(queryString);

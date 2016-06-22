@@ -201,7 +201,6 @@ public class ReleaseArticleAction {
 					FileManage.copyFile(ServletActionContext.getRequest().getRealPath("/upload/" + uploadFileFileName) , "D:/myworkspaces/myeclipse/SSH_Blog/WebRoot/upload/" + uploadFileFileName);//复制文件本地
 				}
 			}
-//			System.out.println(content);
 			content = SensitivewordFilter.filter(content);
 			User user = (User)ActionContext.getContext().getSession().get("user");
 			a.setTitle(SensitivewordFilter.filter(title));

@@ -55,7 +55,7 @@ public class ArticleDAOTest {
     }
     @Test
     public void testGetAllArticle(){
-        articleList = articleDAO.findByAll();
+        articleList = articleDAO.findAll();
         System.out.println("文章数目:" + articleList.size());
         System.out.println(articleList.get(0).getContent());
     }

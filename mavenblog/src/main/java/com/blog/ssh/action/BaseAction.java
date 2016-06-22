@@ -3,10 +3,6 @@ package com.blog.ssh.action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
-
-/**
- * Created by wy on 2016/6/5 0005.
- */
 public class BaseAction extends ActionSupport {
     private String urlName;
 
